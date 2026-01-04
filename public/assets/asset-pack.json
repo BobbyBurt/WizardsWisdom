@@ -1,0 +1,74 @@
+{
+    "section1": {
+        "files": [
+            {
+                "url": [
+                    "assets/dialogue/bye/bye-2.wav"
+                ],
+                "type": "audio",
+                "key": "bye-2"
+            },
+            {
+                "url": "assets/images/displacement-test.png",
+                "type": "image",
+                "key": "displacement-test"
+            },
+            {
+                "textureURL": "assets/fonts/monogram-italic.png",
+                "fontDataURL": "assets/fonts/monogram-italic.xml",
+                "type": "bitmapFont",
+                "key": "monogram-italic"
+            },
+            {
+                "textureURL": "assets/fonts/nokia.png",
+                "fontDataURL": "assets/fonts/nokia.xml",
+                "type": "bitmapFont",
+                "key": "nokia"
+            },
+            {
+                "url": "assets/images/orb-inside-mask.png",
+                "type": "image",
+                "key": "orb-inside-mask"
+            },
+            {
+                "url": "assets/images/orb-overlap.png",
+                "type": "image",
+                "key": "orb-overlap"
+            },
+            {
+                "url": "assets/images/orb-test-3.png",
+                "type": "image",
+                "key": "orb-test-3"
+            },
+            {
+                "url": "assets/images/orb-texture-2.png",
+                "type": "image",
+                "key": "orb-texture-2"
+            },
+            {
+                "url": "assets/images/white-pixel.png",
+                "type": "image",
+                "key": "white-pixel"
+            },
+            {
+                "url": "assets/animation/wizard.json",
+                "type": "spineJson",
+                "key": "wizard",
+                "previewAtlasKey": "wizard-atlas"
+            },
+            {
+                "url": "assets/animation/wizard.atlas",
+                "type": "spineAtlas",
+                "key": "wizard-atlas"
+            }
+        ]
+    },
+    "meta": {
+        "app": "Phaser Editor 2D - Asset Pack Editor",
+        "contentType": "phasereditor2d.pack.core.AssetContentType",
+        "url": "https://phasereditor2d.com",
+        "version": 2,
+        "showAllFilesInBlocks": false,
+        "visible": true
+    }
+}

@@ -1,0 +1,182 @@
+{
+    "section1": {
+        "files": [
+            {
+                "url": [
+                    "assets/dialogue/Bye messages/bye-1.wav"
+                ],
+                "type": "audio",
+                "key": "bye-1"
+            },
+            {
+                "url": [
+                    "assets/dialogue/Bye messages/bye-2.wav"
+                ],
+                "type": "audio",
+                "key": "bye-2"
+            },
+            {
+                "url": [
+                    "assets/dialogue/Bye messages/bye-3.wav"
+                ],
+                "type": "audio",
+                "key": "bye-3"
+            },
+            {
+                "url": [
+                    "assets/dialogue/Bye messages/bye-4.wav"
+                ],
+                "type": "audio",
+                "key": "bye-4"
+            },
+            {
+                "url": [
+                    "assets/dialogue/Bye messages/bye-5.wav"
+                ],
+                "type": "audio",
+                "key": "bye-5"
+            },
+            {
+                "url": [
+                    "assets/dialogue/Reaction-Positive/reaction-positive-1.wav"
+                ],
+                "type": "audio",
+                "key": "reaction-positive-1"
+            },
+            {
+                "url": [
+                    "assets/dialogue/Reaction-Positive/reaction-positive-10.wav"
+                ],
+                "type": "audio",
+                "key": "reaction-positive-10"
+            },
+            {
+                "url": [
+                    "assets/dialogue/Reaction-Positive/reaction-positive-11.wav"
+                ],
+                "type": "audio",
+                "key": "reaction-positive-11"
+            },
+            {
+                "url": [
+                    "assets/dialogue/Reaction-Positive/reaction-positive-12.wav"
+                ],
+                "type": "audio",
+                "key": "reaction-positive-12"
+            },
+            {
+                "url": [
+                    "assets/dialogue/Reaction-Positive/reaction-positive-13.wav"
+                ],
+                "type": "audio",
+                "key": "reaction-positive-13"
+            },
+            {
+                "url": [
+                    "assets/dialogue/Reaction-Positive/reaction-positive-14.wav"
+                ],
+                "type": "audio",
+                "key": "reaction-positive-14"
+            },
+            {
+                "url": [
+                    "assets/dialogue/Reaction-Positive/reaction-positive-15.wav"
+                ],
+                "type": "audio",
+                "key": "reaction-positive-15"
+            },
+            {
+                "url": [
+                    "assets/dialogue/Reaction-Positive/reaction-positive-16.wav"
+                ],
+                "type": "audio",
+                "key": "reaction-positive-16"
+            },
+            {
+                "url": [
+                    "assets/dialogue/Reaction-Positive/reaction-positive-17.wav"
+                ],
+                "type": "audio",
+                "key": "reaction-positive-17"
+            },
+            {
+                "url": [
+                    "assets/dialogue/Reaction-Positive/reaction-positive-18.wav"
+                ],
+                "type": "audio",
+                "key": "reaction-positive-18"
+            },
+            {
+                "url": [
+                    "assets/dialogue/Reaction-Positive/reaction-positive-19.wav"
+                ],
+                "type": "audio",
+                "key": "reaction-positive-19"
+            },
+            {
+                "url": [
+                    "assets/dialogue/Reaction-Positive/reaction-positive-2.wav"
+                ],
+                "type": "audio",
+                "key": "reaction-positive-2"
+            },
+            {
+                "url": [
+                    "assets/dialogue/Reaction-Positive/reaction-positive-3.wav"
+                ],
+                "type": "audio",
+                "key": "reaction-positive-3"
+            },
+            {
+                "url": [
+                    "assets/dialogue/Reaction-Positive/reaction-positive-4.wav"
+                ],
+                "type": "audio",
+                "key": "reaction-positive-4"
+            },
+            {
+                "url": [
+                    "assets/dialogue/Reaction-Positive/reaction-positive-5.wav"
+                ],
+                "type": "audio",
+                "key": "reaction-positive-5"
+            },
+            {
+                "url": [
+                    "assets/dialogue/Reaction-Positive/reaction-positive-6.wav"
+                ],
+                "type": "audio",
+                "key": "reaction-positive-6"
+            },
+            {
+                "url": [
+                    "assets/dialogue/Reaction-Positive/reaction-positive-7.wav"
+                ],
+                "type": "audio",
+                "key": "reaction-positive-7"
+            },
+            {
+                "url": [
+                    "assets/dialogue/Reaction-Positive/reaction-positive-8.wav"
+                ],
+                "type": "audio",
+                "key": "reaction-positive-8"
+            },
+            {
+                "url": [
+                    "assets/dialogue/Reaction-Positive/reaction-positive-9.wav"
+                ],
+                "type": "audio",
+                "key": "reaction-positive-9"
+            }
+        ]
+    },
+    "meta": {
+        "app": "Phaser Editor 2D - Asset Pack Editor",
+        "contentType": "phasereditor2d.pack.core.AssetContentType",
+        "url": "https://phasereditor2d.com",
+        "version": 2,
+        "showAllFilesInBlocks": false,
+        "visible": true
+    }
+}

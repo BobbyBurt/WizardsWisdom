@@ -1,0 +1,320 @@
+{
+    "id": "785fa18a-6418-465f-98bd-14993c520100",
+    "sceneType": "SCENE",
+    "settings": {
+        "exportClass": true,
+        "autoImport": true,
+        "preloadPackFiles": [],
+        "createMethodName": "editorCreate",
+        "sceneKey": "wizard",
+        "compilerOutputLanguage": "TYPE_SCRIPT",
+        "borderWidth": 1080,
+        "borderHeight": 1920
+    },
+    "displayList": [
+        {
+            "type": "Image",
+            "id": "db224c4b-e130-474e-88c4-0722a287bf7a",
+            "label": "displacement_test",
+            "texture": {
+                "key": "displacement-test"
+            },
+            "x": -112,
+            "y": 773,
+            "scaleX": 35.981488078279575,
+            "scaleY": -27.397985958338662,
+            "visible": false,
+            "alpha": 0.2,
+            "alphaTopLeft": 0.2,
+            "alphaTopRight": 0.2,
+            "alphaBottomLeft": 0.2,
+            "alphaBottomRight": 0.2
+        },
+        {
+            "type": "SpineGameObject",
+            "id": "26ebafea-f3da-4630-9538-a77655611b0d",
+            "label": "wizardSpineObject",
+            "scope": "CLASS",
+            "dataKey": "wizard",
+            "atlasKey": "wizard-atlas",
+            "skinName": "default",
+            "bpType": 1,
+            "previewAnimation": "",
+            "x": 965,
+            "y": 560
+        },
+        {
+            "type": "Image",
+            "id": "46832bf8-7b69-41c5-962a-59413c4161a9",
+            "label": "orbBack",
+            "scope": "CLASS",
+            "texture": {
+                "key": "white-pixel"
+            },
+            "x": 960,
+            "y": 870,
+            "scaleX": 535.0364126804407,
+            "scaleY": 498.1917593818383,
+            "tintTopLeft": "#000000",
+            "tintTopRight": "#000000",
+            "tintBottomLeft": "#000000",
+            "tintBottomRight": "#000000"
+        },
+        {
+            "type": "TileSprite",
+            "id": "584cfb0a-a9f8-4611-a319-4f8bdba484e6",
+            "label": "orbEffect1",
+            "scope": "CLASS",
+            "blendMode": 1,
+            "texture": {
+                "key": "orb-test-3"
+            },
+            "x": 1045,
+            "y": 857,
+            "scaleX": 1.1425012389526452,
+            "scaleY": 1.1425012389526452,
+            "alpha": 0.4,
+            "alphaTopLeft": 0.4,
+            "alphaTopRight": 0.4,
+            "alphaBottomLeft": 0.4,
+            "alphaBottomRight": 0.4,
+            "width": 798,
+            "height": 400,
+            "tilePositionY": 78,
+            "tileScaleX": 2.91,
+            "tileScaleY": 1.26
+        },
+        {
+            "type": "TileSprite",
+            "id": "2ba281c1-00b6-4f92-8e55-d129aeb2af7e",
+            "label": "orbEffect2",
+            "scope": "CLASS",
+            "blendMode": 1,
+            "texture": {
+                "key": "orb-test-3"
+            },
+            "x": 985,
+            "y": 854,
+            "scaleX": 1.1425012389526452,
+            "scaleY": 1.1425012389526452,
+            "alpha": 0.7,
+            "alphaTopLeft": 0.7,
+            "alphaTopRight": 0.7,
+            "alphaBottomLeft": 0.7,
+            "alphaBottomRight": 0.7,
+            "width": 798,
+            "height": 400,
+            "tileScaleX": 2.3
+        },
+        {
+            "type": "TileSprite",
+            "id": "88d4b6ea-87ae-4c10-a6bf-4c5ff3d82d54",
+            "label": "orbEffect3",
+            "scope": "CLASS",
+            "blendMode": 1,
+            "texture": {
+                "key": "orb-test-3"
+            },
+            "x": 979,
+            "y": 859,
+            "scaleX": 1.1425012389526452,
+            "scaleY": 1.1425012389526452,
+            "alpha": 0.4,
+            "alphaTopLeft": 0.4,
+            "alphaTopRight": 0.4,
+            "alphaBottomLeft": 0.4,
+            "alphaBottomRight": 0.4,
+            "width": 798,
+            "height": 400,
+            "tileScaleY": 1.25
+        },
+        {
+            "type": "TileSprite",
+            "id": "feb8d851-4b1e-4030-87e8-9f39c060dadd",
+            "label": "orbClouds2",
+            "scope": "CLASS",
+            "blendMode": 1,
+            "texture": {
+                "key": "orb-texture-2"
+            },
+            "x": 993,
+            "y": 868,
+            "scaleY": 1.264417829224711,
+            "visible": false,
+            "alpha": 0.2,
+            "alphaTopLeft": 0.2,
+            "alphaTopRight": 0.2,
+            "alphaBottomLeft": 0.2,
+            "alphaBottomRight": 0.2,
+            "width": 737,
+            "height": 492
+        },
+        {
+            "type": "TileSprite",
+            "id": "26be8301-6ef9-46d1-9bd5-511efc7cb966",
+            "label": "orbClouds1",
+            "scope": "CLASS",
+            "blendMode": 1,
+            "texture": {
+                "key": "orb-texture-2"
+            },
+            "x": 989,
+            "y": 869,
+            "scaleY": 1.327039111834162,
+            "angle": -8,
+            "visible": false,
+            "alpha": 0.2,
+            "alphaTopLeft": 0.2,
+            "alphaTopRight": 0.2,
+            "alphaBottomLeft": 0.2,
+            "alphaBottomRight": 0.2,
+            "width": 737,
+            "height": 492
+        },
+        {
+            "type": "Ellipse",
+            "id": "4d58a81a-4bb1-4a42-a8f6-237392d45af0",
+            "label": "orbEffectMask",
+            "scope": "CLASS",
+            "x": 960,
+            "y": 890,
+            "scaleX": 3.9851915253699906,
+            "scaleY": 3.9851915253699906,
+            "visible": false,
+            "isFilled": true,
+            "fillAlpha": 0.3,
+            "width": 128,
+            "height": 128
+        },
+        {
+            "type": "Image",
+            "id": "9eb56515-8d92-411c-8c1e-7b6973852580",
+            "label": "fullscreenButtonBack",
+            "scope": "CLASS",
+            "texture": {
+                "key": "white-pixel"
+            },
+            "x": 22,
+            "y": 25,
+            "scaleX": 169.4188682791527,
+            "scaleY": 54.95243253147957,
+            "originX": 0,
+            "originY": 0
+        },
+        {
+            "type": "BitmapText",
+            "id": "4c1824df-0d81-4f54-9850-44312125fd4f",
+            "label": "fullscreenButtonText",
+            "scope": "CLASS",
+            "x": 99,
+            "y": 37,
+            "originX": 0.5,
+            "tintTopLeft": "#000000",
+            "tintTopRight": "#000000",
+            "tintBottomLeft": "#000000",
+            "tintBottomRight": "#000000",
+            "text": "Fullscreen",
+            "font": "monogram-italic",
+            "align": 1,
+            "fontSize": 24
+        },
+        {
+            "type": "BitmapText",
+            "id": "3122965c-21de-424e-ad45-9898aff9b8a1",
+            "label": "wisdomText",
+            "scope": "CLASS",
+            "x": 960,
+            "y": 863,
+            "originX": 0.5,
+            "originY": 0.5,
+            "text": "Lorem ipsum dolor \nsit amet, consectetur \nadipiscing elit. Nunc \nconsectetur nec dui \neu imperdiet. ",
+            "font": "quintessential",
+            "align": 1,
+            "fontSize": 64,
+            "list": [
+                {
+                    "type": "Displacement",
+                    "id": "a540bfef-5ecc-4edd-a7f8-4b6ff32284e0",
+                    "label": "textDisplacementFx",
+                    "scope": "CLASS",
+                    "x": 0.12,
+                    "y": 0.12,
+                    "texture": {
+                        "key": "displacement-test"
+                    }
+                },
+                {
+                    "type": "Glow",
+                    "id": "e8101045-4416-4487-8399-22ee03191c8e",
+                    "label": "textGlowFx",
+                    "scope": "CLASS"
+                }
+            ]
+        },
+        {
+            "type": "Image",
+            "id": "c4b87c0a-d745-46d4-af1f-bf3759002223",
+            "label": "orb_overlap",
+            "scope": "CLASS",
+            "texture": {
+                "key": "orb-overlap"
+            },
+            "x": 960,
+            "y": 891,
+            "alpha": 0.8,
+            "alphaTopLeft": 0.8,
+            "alphaTopRight": 0.8,
+            "alphaBottomLeft": 0.8,
+            "alphaBottomRight": 0.8
+        },
+        {
+            "type": "Image",
+            "id": "0cf04645-e5ab-4200-bba1-4d1ffcff80bd",
+            "label": "orbInnerMask",
+            "scope": "CLASS",
+            "texture": {
+                "key": "orb-inside-mask"
+            },
+            "x": 960,
+            "y": 891,
+            "scaleX": 0.8931690576196487,
+            "scaleY": 0.8931690576196487,
+            "visible": false
+        },
+        {
+            "type": "Image",
+            "id": "301997d8-e211-4116-88ca-8a9fc42e3ffc",
+            "label": "wisdomImage",
+            "scope": "CLASS",
+            "texture": {
+                "key": "wizard-orb-temp"
+            },
+            "x": 971,
+            "y": 899,
+            "scaleX": 0.46951698552354193,
+            "scaleY": 0.46951698552354193,
+            "visible": false,
+            "list": [
+                {
+                    "type": "Displacement",
+                    "id": "1e17a2bc-d5d3-4bfc-b9f5-3684079874da",
+                    "label": "imageDisplacementFx",
+                    "scope": "CLASS",
+                    "x": 0.12,
+                    "y": 0.12,
+                    "texture": {
+                        "key": "displacement-test"
+                    },
+                    "preFX": true
+                }
+            ]
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor - Scene Editor",
+        "url": "https://phaser.io/editor",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 5
+    }
+}
