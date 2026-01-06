@@ -1,2 +1,3 @@
-# Template
+# Wizard's Wisdom
+
 asdf

@@ -264,10 +264,6 @@ export default class WizardScene extends Phaser.Scene {
   create() {
     this.editorCreate();
 
-    this.sound.play("positive-13");
-
-    // this.sound.play("positive");
-
     fullscreenHandler.adjustCamera(this.cameras.main);
 
     this.debugScene = this.scene.get("debug") as DebugScene;
@@ -283,11 +279,9 @@ export default class WizardScene extends Phaser.Scene {
 
     this.wizardController = new WizardController(
       this,
-      this.wizardSpineObject.animationState,
-      this.wisdom.reaction
+      this.wizardSpineObject.animationState
     );
-    this.wizardController.reaction();
-    this.wizardController.chooseDialogue();
+    this.wizardController.setupAnimation(this.selectedDialogue);
 
     this.wisdomText.setText(this.wisdom.content);
   }

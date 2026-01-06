@@ -67,7 +67,7 @@ export default class Preload extends Phaser.Scene {
     this.sound.pauseOnBlur = false;
 
     // TEMP - hardcode for debugging. Will figure out how to access if user is returning later
-    this.game.registry.set(dataManagerKeys.returningUser, true);
+    this.game.registry.set(dataManagerKeys.returningUser, false);
 
     // camera
     fullscreenHandler.adjustCamera(this.cameras.main);

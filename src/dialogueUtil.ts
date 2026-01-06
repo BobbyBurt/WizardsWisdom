@@ -59,8 +59,6 @@ export function selectDialogue(
     number
   >();
 
-  // to debug dialogue lines, just edit the indexToLoad to be the line to test. That's faster than the "load all" option i was gonna do, plus id have to make a debug menu for that
-
   // randomly select dialogue to load for each non reaction dialogue group
   dialogueGroup.forEach((value) => {
     if (
@@ -71,20 +69,28 @@ export function selectDialogue(
       // skip welcome or welcome-returning based on if returning user or not
 
       let dialougeIndexToLoad;
-      dialougeIndexToLoad = Phaser.Math.RND.between(
-        1,
-        dialoguesPerGroup.get(value)! - 1
-      );
+      // dialougeIndexToLoad = Phaser.Math.RND.between(
+      //   1,
+      //   dialoguesPerGroup.get(value)! - 1
+      // );
+
+      // DEBUG
+      dialougeIndexToLoad = 1;
+
       selectedDialogue.set(value, dialougeIndexToLoad);
     }
   });
 
   let reactionDialougeIndexToLoad;
-  reactionDialougeIndexToLoad = Phaser.Math.RND.between(
-    1,
-    dialoguesPerGroup.get(reactionGroup)! - 1
-  );
+  // reactionDialougeIndexToLoad = Phaser.Math.RND.between(
+  //   1,
+  //   dialoguesPerGroup.get(reactionGroup)! - 1
+  // );
+  reactionDialougeIndexToLoad = 1;
   selectedDialogue.set(reactionGroup, reactionDialougeIndexToLoad);
+
+  // DEBUG - this is simpler than my previous "load all" idea since I dont have a proper debug menu yet
+  selectedDialogue.set("positive", 13);
 
   return selectedDialogue;
 }
