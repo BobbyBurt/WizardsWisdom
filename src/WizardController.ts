@@ -15,14 +15,15 @@ import {
   reactionDialogueGroup,
   selectedDialogue,
 } from "./dialogueUtil";
+import WizardScene from "./scenes/WizardScene";
 
 export default class WizardController {
-  constructor(scene: Phaser.Scene, animationState: AnimationState) {
+  constructor(scene: WizardScene, animationState: AnimationState) {
     this.scene = scene;
     this.animationState = animationState;
   }
 
-  private scene: Phaser.Scene;
+  private scene: WizardScene;
   public animationState: AnimationState;
 
   public setupAnimation(dialogueToPlay: selectedDialogue) {
@@ -31,11 +32,11 @@ export default class WizardController {
     // this needs to be updated to include any new dialogue groups
     let dialogueOrder: Array<dialogueGroup | reactionDialogueGroup> = [
       "welcome",
-      "welcome-returning",
+      // "welcome-returning",
       "moan",
-      "positive",
+      // "positive",
       "negative",
-      "confused",
+      // "confused",
       "bye",
     ];
 
@@ -43,21 +44,23 @@ export default class WizardController {
       if (dialogueToPlay.get(value) != null) {
         this.animationState.addAnimation(
           0,
-          `${value}-${dialogueToPlay.get(value)}`
+          `${value}-${dialogueToPlay.get(value)}`,
         );
       }
     });
-
-    // this.animationState.setAnimation(0, "orb-magic");
 
     this.animationState.addListener({
       start: (entry) => {},
       complete: (entry) => {},
       event: (entry, event) => {
-        try {
-          this.scene.sound.play(`${entry.animation?.name}`);
-        } catch {
-          console.debug(`no sound in cache for animation`);
+        if (event.data.name == "dialogue") {
+          try {
+            this.scene.sound.play(`${entry.animation?.name}`);
+          } catch {
+            console.debug(`no sound in cache for animation`);
+          }
+        } else if (event.data.name == "orb") {
+          this.scene.setOrbCloudEffect();
         }
       },
     });

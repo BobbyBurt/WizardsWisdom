@@ -45,6 +45,29 @@
         },
         {
             "type": "Image",
+            "id": "161bd98a-4a1e-48cf-8b2c-ed5d08a15296",
+            "label": "glowEffect",
+            "scope": "CLASS",
+            "blendMode": 1,
+            "texture": {
+                "key": "point-blur"
+            },
+            "x": 961,
+            "y": 894,
+            "scaleX": 1.7761059502504315,
+            "scaleY": 1.7761059502504315,
+            "alpha": 0.75,
+            "alphaTopLeft": 0.75,
+            "alphaTopRight": 0.75,
+            "alphaBottomLeft": 0.75,
+            "alphaBottomRight": 0.75,
+            "tintTopLeft": "#c285f1",
+            "tintTopRight": "#c285f1",
+            "tintBottomLeft": "#c285f1",
+            "tintBottomRight": "#c285f1"
+        },
+        {
+            "type": "Image",
             "id": "46832bf8-7b69-41c5-962a-59413c4161a9",
             "label": "orbBack",
             "scope": "CLASS",
@@ -59,6 +82,12 @@
             "tintTopRight": "#000000",
             "tintBottomLeft": "#000000",
             "tintBottomRight": "#000000"
+        },
+        {
+            "type": "Container",
+            "id": "26b2197c-2a66-4ad4-856c-1abfafbc7bc0",
+            "label": "shaderContainer",
+            "scope": "CLASS"
         },
         {
             "type": "TileSprite",
@@ -140,7 +169,6 @@
             "x": 993,
             "y": 868,
             "scaleY": 1.264417829224711,
-            "visible": false,
             "alpha": 0.2,
             "alphaTopLeft": 0.2,
             "alphaTopRight": 0.2,
@@ -162,7 +190,6 @@
             "y": 869,
             "scaleY": 1.327039111834162,
             "angle": -8,
-            "visible": false,
             "alpha": 0.2,
             "alphaTopLeft": 0.2,
             "alphaTopRight": 0.2,
@@ -294,6 +321,11 @@
             "scaleX": 0.46951698552354193,
             "scaleY": 0.46951698552354193,
             "visible": false,
+            "alpha": 0.6,
+            "alphaTopLeft": 0.6,
+            "alphaTopRight": 0.6,
+            "alphaBottomLeft": 0.6,
+            "alphaBottomRight": 0.6,
             "list": [
                 {
                     "type": "Displacement",
@@ -306,6 +338,113 @@
                         "key": "displacement-test"
                     },
                     "preFX": true
+                }
+            ]
+        },
+        {
+            "type": "Container",
+            "id": "d14bb61d-43f1-4e1f-826f-f13b2bc72dd8",
+            "label": "orbBlindImages",
+            "scope": "CLASS",
+            "x": 945,
+            "y": 872,
+            "visible": false,
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "4e0de04e-dde1-4b33-b3a1-05b1fd362a49",
+                    "label": "point_blur",
+                    "texture": {
+                        "key": "point-blur"
+                    },
+                    "x": 23,
+                    "y": 13,
+                    "scaleX": 0.8287660998615729,
+                    "scaleY": 0.8287660998615729
+                },
+                {
+                    "type": "Image",
+                    "id": "09837eda-4c40-4898-93a3-149b9cc5c2b0",
+                    "label": "point_blur_1",
+                    "texture": {
+                        "key": "point-blur"
+                    },
+                    "x": 23,
+                    "y": 13,
+                    "scaleX": 0.8287660998615729,
+                    "scaleY": 0.8287660998615729
+                },
+                {
+                    "type": "Image",
+                    "id": "c28e8868-b629-45d6-aa90-69ff11245a5f",
+                    "label": "point_blur_2",
+                    "texture": {
+                        "key": "point-blur"
+                    },
+                    "x": 23,
+                    "y": 13,
+                    "scaleX": 0.8287660998615729,
+                    "scaleY": 0.8287660998615729
+                },
+                {
+                    "type": "Image",
+                    "id": "187f245f-e45b-4cbc-baba-f569e2bd4f2d",
+                    "label": "point_blur_3",
+                    "texture": {
+                        "key": "point-blur"
+                    },
+                    "x": 23,
+                    "y": 13,
+                    "scaleX": 0.8287660998615729,
+                    "scaleY": 0.8287660998615729
+                }
+            ]
+        },
+        {
+            "type": "Container",
+            "id": "7b920d6b-92bf-4536-9386-76c317d2b5df",
+            "label": "orbShineImages",
+            "scope": "CLASS",
+            "x": 945,
+            "y": 872,
+            "visible": false,
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "0e76fc03-a832-4609-ba06-3cbc02ff6298",
+                    "label": "point_blur_4",
+                    "texture": {
+                        "key": "point-blur"
+                    },
+                    "x": 15,
+                    "y": 18,
+                    "scaleX": 0.2971777169320155,
+                    "scaleY": 0.2971777169320155
+                },
+                {
+                    "type": "Image",
+                    "id": "e6ed3bbb-a476-4509-8ebe-1300e70595f6",
+                    "label": "point_blur_5",
+                    "texture": {
+                        "key": "point-blur"
+                    },
+                    "x": 15,
+                    "y": 18,
+                    "scaleX": 0.03572863874145179,
+                    "scaleY": 0.5776038356078905
+                },
+                {
+                    "type": "Image",
+                    "id": "1e43177c-c67e-4546-b815-8811e1b9d0f6",
+                    "label": "point_blur_6",
+                    "texture": {
+                        "key": "point-blur"
+                    },
+                    "x": 15,
+                    "y": 18,
+                    "scaleX": 0.03572863874145179,
+                    "scaleY": 0.5776038356078905,
+                    "angle": 90
                 }
             ]
         }

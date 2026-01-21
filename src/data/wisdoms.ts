@@ -7,8 +7,14 @@ export type wisdom = {
   readonly reaction: reactionDialogueGroup;
 };
 
-// export type reaction = "positive" | "negative" | "confused";
-
+//
+//
+//
+//
+//
+//
+//
+//
 /**  */
 export let wisdoms: Array<wisdom> = [
   { content: "\n\nAlways recycle!", reaction: "positive" },
@@ -21,6 +27,11 @@ export let wisdoms: Array<wisdom> = [
   { content: "Work hard, play hard", reaction: "positive" },
   { content: "Brush and floss every night", reaction: "positive" },
   { content: "Stretch every morning", reaction: "positive" },
+  {
+    content: "assets/images/image-wisdoms/tv-test-screen.png",
+    reaction: "negative",
+    type: "image",
+  },
 ];
 
 /**
@@ -40,8 +51,9 @@ export function getWisdomForDate(date?: Date): wisdom {
     date.getMonth().toString(),
     date.getFullYear().toString(),
   ]);
-  let wisdomIndex = Phaser.Math.RND.between(0, wisdoms.length - 1);
+  // let wisdomIndex = Phaser.Math.RND.between(0, wisdoms.length - 1);
   // first rnd usage returns same thing after setting the same seed
+  let wisdomIndex = 9;
 
   return wisdoms[wisdomIndex];
 }

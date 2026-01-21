@@ -47,7 +47,7 @@ export let dialoguesPerGroup = new Map<
  */
 export function selectDialogue(
   scene: Phaser.Scene,
-  reactionGroup: reactionDialogueGroup
+  reactionGroup: reactionDialogueGroup,
 ): Map<dialogueGroup | reactionDialogueGroup, number> {
   // reset rnd seed
   let date = new Date();
@@ -86,24 +86,24 @@ export function selectDialogue(
   //   1,
   //   dialoguesPerGroup.get(reactionGroup)! - 1
   // );
-  reactionDialougeIndexToLoad = 1;
+  reactionDialougeIndexToLoad = 4;
   selectedDialogue.set(reactionGroup, reactionDialougeIndexToLoad);
 
   // DEBUG - this is simpler than my previous "load all" idea since I dont have a proper debug menu yet
-  selectedDialogue.set("positive", 13);
+  // selectedDialogue.set("positive", 1);
 
   return selectedDialogue;
 }
 
 export function loadDialogue(
   scene: Phaser.Scene,
-  dialogueToLoad: selectedDialogue
+  dialogueToLoad: selectedDialogue,
 ) {
   dialogueToLoad.forEach((value, key) => {
     if (value != undefined) {
       scene.load.audio(
         `${key}-${value}`,
-        `assets/dialogue/${key}/${key}-${value}.wav`
+        `assets/dialogue/${key}/${key}-${value}.wav`,
       );
     }
   });

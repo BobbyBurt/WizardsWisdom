@@ -46,6 +46,11 @@
                 "key": "orb-texture-2"
             },
             {
+                "url": "assets/images/point-blur.png",
+                "type": "image",
+                "key": "point-blur"
+            },
+            {
                 "url": "assets/images/white-pixel.png",
                 "type": "image",
                 "key": "white-pixel"
