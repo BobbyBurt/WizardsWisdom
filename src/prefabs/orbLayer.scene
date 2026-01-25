@@ -19,13 +19,13 @@
             "list": [
                 {
                     "type": "Image",
-                    "id": "5d006e33-8eeb-410a-9e86-f03a3d94d65d",
+                    "id": "1c4b9e9c-3f98-47cd-b9bc-1b0668c1899c",
                     "label": "displacementImage",
                     "texture": {
                         "key": "displacement-test"
                     },
-                    "x": -234.07164001464844,
-                    "y": 1495.907470703125,
+                    "x": -112,
+                    "y": 773,
                     "scaleX": 35.981488078279575,
                     "scaleY": -27.397985958338662,
                     "visible": false,
@@ -37,12 +37,14 @@
                 },
                 {
                     "type": "Image",
-                    "id": "4df83b09-8eb7-41c3-9c28-f66629aee14f",
+                    "id": "fb5ec276-f1dd-47ee-89e7-955d1dfea4ac",
                     "label": "backing",
                     "scope": "CLASS",
                     "texture": {
                         "key": "white-pixel"
                     },
+                    "x": 960,
+                    "y": 870,
                     "scaleX": 535.0364126804407,
                     "scaleY": 498.1917593818383,
                     "tintTopLeft": "#000000",
@@ -52,18 +54,20 @@
                 },
                 {
                     "type": "Container",
-                    "id": "336bcf4d-8387-42b5-a099-c5ab84014864",
+                    "id": "b61ed909-6810-41d2-bed8-ad624a90ad60",
                     "label": "shaderContainer",
                     "scope": "CLASS"
                 },
                 {
                     "type": "Image",
-                    "id": "7a9a64f9-b959-4843-9020-4586544e16e1",
+                    "id": "3d2a79fb-3850-4cc5-91fa-7462069cd63a",
                     "label": "shaderCover",
                     "scope": "CLASS",
                     "texture": {
                         "key": "white-pixel"
                     },
+                    "x": 960,
+                    "y": 870,
                     "scaleX": 535.0364126804407,
                     "scaleY": 498.1917593818383,
                     "alpha": 0.6,
@@ -90,6 +94,8 @@
                     "texture": {
                         "key": "orb-test-3"
                     },
+                    "x": 975,
+                    "y": 859,
                     "scaleX": 1.1425012389526452,
                     "scaleY": 1.1425012389526452,
                     "alpha": 0.4,
@@ -99,7 +105,6 @@
                     "alphaBottomRight": 0.4,
                     "width": 798,
                     "height": 400,
-                    "tilePositionY": 78,
                     "tileScaleX": 2.91,
                     "tileScaleY": 1.26
                 },
@@ -118,6 +123,8 @@
                     "texture": {
                         "key": "orb-test-3"
                     },
+                    "x": 975,
+                    "y": 859,
                     "scaleX": 1.1425012389526452,
                     "scaleY": 1.1425012389526452,
                     "alpha": 0.7,
@@ -143,6 +150,8 @@
                     "texture": {
                         "key": "orb-test-3"
                     },
+                    "x": 975,
+                    "y": 859,
                     "scaleX": 1.1425012389526452,
                     "scaleY": 1.1425012389526452,
                     "alpha": 0.4,
@@ -169,6 +178,8 @@
                     "texture": {
                         "key": "orb-texture-2"
                     },
+                    "x": 975,
+                    "y": 859,
                     "scaleY": 1.264417829224711,
                     "alpha": 0.2,
                     "alphaTopLeft": 0.2,
@@ -192,6 +203,8 @@
                     "texture": {
                         "key": "orb-texture-2"
                     },
+                    "x": 975,
+                    "y": 859,
                     "scaleY": 1.327039111834162,
                     "angle": -8,
                     "alpha": 0.2,
@@ -204,9 +217,11 @@
                 },
                 {
                     "type": "Ellipse",
-                    "id": "dc3292c4-7044-4a0b-9215-962ac7564b66",
+                    "id": "deab0f92-77cf-4065-b893-4a838eed9e28",
                     "label": "circleMask",
                     "scope": "CLASS",
+                    "x": 960,
+                    "y": 890,
                     "scaleX": 3.9851915253699906,
                     "scaleY": 3.9851915253699906,
                     "visible": false,
@@ -216,10 +231,45 @@
                     "height": 128
                 },
                 {
+                    "type": "Image",
+                    "id": "31cac5bc-efd6-4070-b717-5fbc682d9899",
+                    "label": "wisdomImage",
+                    "scope": "CLASS",
+                    "texture": {
+                        "key": "wizard-orb-temp"
+                    },
+                    "x": 971,
+                    "y": 899,
+                    "scaleX": 0.46951698552354193,
+                    "scaleY": 0.46951698552354193,
+                    "visible": false,
+                    "alpha": 0.6,
+                    "alphaTopLeft": 0.6,
+                    "alphaTopRight": 0.6,
+                    "alphaBottomLeft": 0.6,
+                    "alphaBottomRight": 0.6,
+                    "list": [
+                        {
+                            "type": "Displacement",
+                            "id": "b681901e-8a80-403a-bcdd-f8a23497eebb",
+                            "label": "imageDisplacementFx",
+                            "scope": "CLASS",
+                            "x": 0.12,
+                            "y": 0.12,
+                            "texture": {
+                                "key": "displacement-test"
+                            },
+                            "preFX": true
+                        }
+                    ]
+                },
+                {
                     "type": "BitmapText",
-                    "id": "cc2f0c57-97fb-4cfa-ad14-c358256e044a",
+                    "id": "67588ab9-63e6-4e7a-b8a1-98e004251a03",
                     "label": "wisdomText",
                     "scope": "CLASS",
+                    "x": 960,
+                    "y": 863,
                     "originX": 0.5,
                     "originY": 0.5,
                     "alpha": 0,
@@ -234,7 +284,7 @@
                     "list": [
                         {
                             "type": "Displacement",
-                            "id": "b9566ea2-bcd0-46c6-97b8-0a858dafaec3",
+                            "id": "9e434d70-ecc0-4184-9bb8-6a6c3098e232",
                             "label": "textDisplacementFx",
                             "scope": "CLASS",
                             "x": 0.12,
@@ -245,7 +295,7 @@
                         },
                         {
                             "type": "Glow",
-                            "id": "4dc50bfe-b3ff-421b-aebb-02e430935ab0",
+                            "id": "2bb4ef33-df42-4694-8ea3-7e9cdc445765",
                             "label": "textGlowFx",
                             "scope": "CLASS"
                         }
@@ -253,12 +303,14 @@
                 },
                 {
                     "type": "Image",
-                    "id": "5f44496f-4b96-474e-b961-231f3742e7ef",
-                    "label": "glassOverlapImage",
+                    "id": "abbf2eb2-434c-4630-ac26-a235d00d1208",
+                    "label": "glassOverlap",
                     "scope": "CLASS",
                     "texture": {
                         "key": "orb-overlap"
                     },
+                    "x": 960,
+                    "y": 891,
                     "alpha": 0.8,
                     "alphaTopLeft": 0.8,
                     "alphaTopRight": 0.8,
@@ -267,44 +319,144 @@
                 },
                 {
                     "type": "Image",
-                    "id": "7d2b1274-1ecf-4028-af49-b778a813ab28",
-                    "label": "blurMask",
+                    "id": "b09bc4f1-eae5-4af9-85bc-42982ffa09ee",
+                    "label": "wisdomMask",
                     "scope": "CLASS",
                     "texture": {
                         "key": "orb-inside-mask"
                     },
+                    "x": 960,
+                    "y": 891,
                     "scaleX": 0.8931690576196487,
                     "scaleY": 0.8931690576196487,
                     "visible": false
                 },
                 {
-                    "type": "Image",
-                    "id": "9a575594-8e96-48ba-b6c9-195d372e4705",
-                    "label": "wisdomImage",
+                    "type": "Container",
+                    "id": "6995f6e2-d49e-4d8b-b0ce-78dad52ab29a",
+                    "label": "magicGlow",
                     "scope": "CLASS",
-                    "texture": {
-                        "key": "wizard-orb-temp"
-                    },
-                    "scaleX": 0.46951698552354193,
-                    "scaleY": 0.46951698552354193,
-                    "visible": false,
-                    "alpha": 0.6,
-                    "alphaTopLeft": 0.6,
-                    "alphaTopRight": 0.6,
-                    "alphaBottomLeft": 0.6,
-                    "alphaBottomRight": 0.6,
+                    "x": 945,
+                    "y": 872,
+                    "scaleX": 1.189984455542984,
+                    "scaleY": 1.189984455542984,
+                    "alpha": 0,
                     "list": [
                         {
-                            "type": "Displacement",
-                            "id": "082df6e4-459d-413d-9738-2b7ef64dbc32",
-                            "label": "imageDisplacementFx",
-                            "scope": "CLASS",
-                            "x": 0.12,
-                            "y": 0.12,
+                            "type": "Image",
+                            "id": "96a5f68a-2d3f-408a-9451-904dfb696a84",
+                            "label": "point_blur",
                             "texture": {
-                                "key": "displacement-test"
+                                "key": "point-blur"
                             },
-                            "preFX": true
+                            "x": 23,
+                            "y": 13,
+                            "scaleX": 0.8539875620877397,
+                            "scaleY": 0.8539875620877397,
+                            "visible": false
+                        },
+                        {
+                            "type": "Image",
+                            "id": "ad6cccc7-4898-4098-aa11-efc0558aeaa5",
+                            "label": "point_blur_1",
+                            "texture": {
+                                "key": "point-blur"
+                            },
+                            "x": 23,
+                            "y": 13,
+                            "scaleX": 0.6826333077561331,
+                            "scaleY": 0.6826333077561331,
+                            "visible": false
+                        },
+                        {
+                            "type": "Image",
+                            "id": "b19dac3b-71d6-42c6-88ab-b20bac41af94",
+                            "label": "point_blur_2",
+                            "texture": {
+                                "key": "point-blur"
+                            },
+                            "x": 23,
+                            "y": 13,
+                            "scaleX": 0.523314985509712,
+                            "scaleY": 0.523314985509712,
+                            "visible": false
+                        },
+                        {
+                            "type": "Image",
+                            "id": "bbe1d035-7012-4ff5-9a3e-49000e5e8d7d",
+                            "label": "point_blur_3",
+                            "texture": {
+                                "key": "point-blur"
+                            },
+                            "x": 23,
+                            "y": 13,
+                            "scaleX": 0.3375327663048206,
+                            "scaleY": 0.3375327663048206,
+                            "visible": false
+                        },
+                        {
+                            "type": "Image",
+                            "id": "2f1c75a0-8f3c-408c-b4fd-a9c3b6001a01",
+                            "label": "orbInnerMask_1",
+                            "scope": "CLASS",
+                            "texture": {
+                                "key": "orb-inside-mask"
+                            },
+                            "x": 15,
+                            "y": 19,
+                            "scaleX": 0.8931690576196487,
+                            "scaleY": 0.8931690576196487,
+                            "tintFill": true
+                        }
+                    ]
+                },
+                {
+                    "type": "Container",
+                    "id": "5dc7c06c-c109-484d-b833-0a656ae1b64a",
+                    "label": "magicShine",
+                    "scope": "CLASS",
+                    "x": 945,
+                    "y": 872,
+                    "scaleX": 0,
+                    "scaleY": 0,
+                    "alpha": 0,
+                    "list": [
+                        {
+                            "type": "Image",
+                            "id": "4b3a1be0-a604-4b4d-9235-ba84084315bf",
+                            "label": "point_blur_4",
+                            "texture": {
+                                "key": "point-blur"
+                            },
+                            "x": 15,
+                            "y": 18,
+                            "scaleX": 0.2971777169320155,
+                            "scaleY": 0.2971777169320155
+                        },
+                        {
+                            "type": "Image",
+                            "id": "5bf9420b-a612-4101-94b9-aa40affeb2e6",
+                            "label": "point_blur_5",
+                            "texture": {
+                                "key": "point-blur"
+                            },
+                            "x": 15,
+                            "y": 18,
+                            "scaleX": 0.03572863874145179,
+                            "scaleY": 0.5776038356078905
+                        },
+                        {
+                            "type": "Image",
+                            "id": "99a6608d-c54a-44ae-bada-2382747a5fe3",
+                            "label": "point_blur_6",
+                            "texture": {
+                                "key": "point-blur"
+                            },
+                            "x": 15,
+                            "y": 18,
+                            "scaleX": 0.03572863874145179,
+                            "scaleY": 0.5776038356078905,
+                            "angle": 90
                         }
                     ]
                 }
