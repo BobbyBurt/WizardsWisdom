@@ -1,0 +1,321 @@
+{
+    "id": "6bf65824-d837-41a6-b836-d0c6e8e504ac",
+    "sceneType": "PREFAB",
+    "settings": {
+        "exportClass": true,
+        "autoImport": true,
+        "preloadMethodName": "",
+        "preloadPackFiles": [],
+        "createMethodName": "",
+        "compilerOutputLanguage": "TYPE_SCRIPT",
+        "borderWidth": 1080,
+        "borderHeight": 1920
+    },
+    "displayList": [
+        {
+            "type": "Layer",
+            "id": "b17600a6-9d7e-4529-a1a0-5112171bce0a",
+            "label": "orbContainer",
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "5d006e33-8eeb-410a-9e86-f03a3d94d65d",
+                    "label": "displacementImage",
+                    "texture": {
+                        "key": "displacement-test"
+                    },
+                    "x": -234.07164001464844,
+                    "y": 1495.907470703125,
+                    "scaleX": 35.981488078279575,
+                    "scaleY": -27.397985958338662,
+                    "visible": false,
+                    "alpha": 0.2,
+                    "alphaTopLeft": 0.2,
+                    "alphaTopRight": 0.2,
+                    "alphaBottomLeft": 0.2,
+                    "alphaBottomRight": 0.2
+                },
+                {
+                    "type": "Image",
+                    "id": "4df83b09-8eb7-41c3-9c28-f66629aee14f",
+                    "label": "backing",
+                    "scope": "CLASS",
+                    "texture": {
+                        "key": "white-pixel"
+                    },
+                    "scaleX": 535.0364126804407,
+                    "scaleY": 498.1917593818383,
+                    "tintTopLeft": "#000000",
+                    "tintTopRight": "#000000",
+                    "tintBottomLeft": "#000000",
+                    "tintBottomRight": "#000000"
+                },
+                {
+                    "type": "Container",
+                    "id": "336bcf4d-8387-42b5-a099-c5ab84014864",
+                    "label": "shaderContainer",
+                    "scope": "CLASS"
+                },
+                {
+                    "type": "Image",
+                    "id": "7a9a64f9-b959-4843-9020-4586544e16e1",
+                    "label": "shaderCover",
+                    "scope": "CLASS",
+                    "texture": {
+                        "key": "white-pixel"
+                    },
+                    "scaleX": 535.0364126804407,
+                    "scaleY": 498.1917593818383,
+                    "alpha": 0.6,
+                    "alphaTopLeft": 0.6,
+                    "alphaTopRight": 0.6,
+                    "alphaBottomLeft": 0.6,
+                    "alphaBottomRight": 0.6,
+                    "tintTopLeft": "#000000",
+                    "tintTopRight": "#000000",
+                    "tintBottomLeft": "#000000",
+                    "tintBottomRight": "#000000"
+                },
+                {
+                    "type": "TileSprite",
+                    "id": "58599b40-694b-41ff-b30c-2c38bb2bcaf1",
+                    "label": "cloudTile1-3",
+                    "scope": "CLASS",
+                    "components": [
+                        "tileSpriteScroll"
+                    ],
+                    "tileSpriteScroll.Y": 0,
+                    "tileSpriteScroll.duration": 10500,
+                    "blendMode": 1,
+                    "texture": {
+                        "key": "orb-test-3"
+                    },
+                    "scaleX": 1.1425012389526452,
+                    "scaleY": 1.1425012389526452,
+                    "alpha": 0.4,
+                    "alphaTopLeft": 0.4,
+                    "alphaTopRight": 0.4,
+                    "alphaBottomLeft": 0.4,
+                    "alphaBottomRight": 0.4,
+                    "width": 798,
+                    "height": 400,
+                    "tilePositionY": 78,
+                    "tileScaleX": 2.91,
+                    "tileScaleY": 1.26
+                },
+                {
+                    "type": "TileSprite",
+                    "id": "c0990926-b1f4-42c1-9bd6-97adaa3e6cf2",
+                    "label": "cloudTile1-2",
+                    "scope": "CLASS",
+                    "components": [
+                        "tileSpriteScroll"
+                    ],
+                    "tileSpriteScroll.X": -798,
+                    "tileSpriteScroll.Y": 0,
+                    "tileSpriteScroll.duration": 10000,
+                    "blendMode": 1,
+                    "texture": {
+                        "key": "orb-test-3"
+                    },
+                    "scaleX": 1.1425012389526452,
+                    "scaleY": 1.1425012389526452,
+                    "alpha": 0.7,
+                    "alphaTopLeft": 0.7,
+                    "alphaTopRight": 0.7,
+                    "alphaBottomLeft": 0.7,
+                    "alphaBottomRight": 0.7,
+                    "width": 798,
+                    "height": 400,
+                    "tileScaleX": 2.3
+                },
+                {
+                    "type": "TileSprite",
+                    "id": "b433fbdf-ee48-4d7d-b4fd-0af56667a746",
+                    "label": "cloudTile1-1",
+                    "scope": "CLASS",
+                    "components": [
+                        "tileSpriteScroll"
+                    ],
+                    "tileSpriteScroll.Y": 0,
+                    "tileSpriteScroll.duration": 9500,
+                    "blendMode": 1,
+                    "texture": {
+                        "key": "orb-test-3"
+                    },
+                    "scaleX": 1.1425012389526452,
+                    "scaleY": 1.1425012389526452,
+                    "alpha": 0.4,
+                    "alphaTopLeft": 0.4,
+                    "alphaTopRight": 0.4,
+                    "alphaBottomLeft": 0.4,
+                    "alphaBottomRight": 0.4,
+                    "width": 798,
+                    "height": 400,
+                    "tileScaleY": 1.25
+                },
+                {
+                    "type": "TileSprite",
+                    "id": "e951976e-0f15-45c7-a174-31382deac9a3",
+                    "label": "cloudTile2-2",
+                    "scope": "CLASS",
+                    "components": [
+                        "tileSpriteScroll"
+                    ],
+                    "tileSpriteScroll.X": -737,
+                    "tileSpriteScroll.Y": -492,
+                    "tileSpriteScroll.duration": 8000,
+                    "blendMode": 1,
+                    "texture": {
+                        "key": "orb-texture-2"
+                    },
+                    "scaleY": 1.264417829224711,
+                    "alpha": 0.2,
+                    "alphaTopLeft": 0.2,
+                    "alphaTopRight": 0.2,
+                    "alphaBottomLeft": 0.2,
+                    "alphaBottomRight": 0.2,
+                    "width": 737,
+                    "height": 492
+                },
+                {
+                    "type": "TileSprite",
+                    "id": "83d7f8bb-33c4-4e05-ba73-0488262334f0",
+                    "label": "cloudTile2-1",
+                    "scope": "CLASS",
+                    "components": [
+                        "tileSpriteScroll"
+                    ],
+                    "tileSpriteScroll.X": 737,
+                    "tileSpriteScroll.duration": 7000,
+                    "blendMode": 1,
+                    "texture": {
+                        "key": "orb-texture-2"
+                    },
+                    "scaleY": 1.327039111834162,
+                    "angle": -8,
+                    "alpha": 0.2,
+                    "alphaTopLeft": 0.2,
+                    "alphaTopRight": 0.2,
+                    "alphaBottomLeft": 0.2,
+                    "alphaBottomRight": 0.2,
+                    "width": 737,
+                    "height": 492
+                },
+                {
+                    "type": "Ellipse",
+                    "id": "dc3292c4-7044-4a0b-9215-962ac7564b66",
+                    "label": "circleMask",
+                    "scope": "CLASS",
+                    "scaleX": 3.9851915253699906,
+                    "scaleY": 3.9851915253699906,
+                    "visible": false,
+                    "isFilled": true,
+                    "fillAlpha": 0.3,
+                    "width": 128,
+                    "height": 128
+                },
+                {
+                    "type": "BitmapText",
+                    "id": "cc2f0c57-97fb-4cfa-ad14-c358256e044a",
+                    "label": "wisdomText",
+                    "scope": "CLASS",
+                    "originX": 0.5,
+                    "originY": 0.5,
+                    "alpha": 0,
+                    "alphaTopLeft": 0,
+                    "alphaTopRight": 0,
+                    "alphaBottomLeft": 0,
+                    "alphaBottomRight": 0,
+                    "text": "Lorem ipsum dolor \nsit amet, consectetur \nadipiscing elit. Nunc \nconsectetur nec dui \neu imperdiet. ",
+                    "font": "quintessential",
+                    "align": 1,
+                    "fontSize": 64,
+                    "list": [
+                        {
+                            "type": "Displacement",
+                            "id": "b9566ea2-bcd0-46c6-97b8-0a858dafaec3",
+                            "label": "textDisplacementFx",
+                            "scope": "CLASS",
+                            "x": 0.12,
+                            "y": 0.12,
+                            "texture": {
+                                "key": "displacement-test"
+                            }
+                        },
+                        {
+                            "type": "Glow",
+                            "id": "4dc50bfe-b3ff-421b-aebb-02e430935ab0",
+                            "label": "textGlowFx",
+                            "scope": "CLASS"
+                        }
+                    ]
+                },
+                {
+                    "type": "Image",
+                    "id": "5f44496f-4b96-474e-b961-231f3742e7ef",
+                    "label": "glassOverlapImage",
+                    "scope": "CLASS",
+                    "texture": {
+                        "key": "orb-overlap"
+                    },
+                    "alpha": 0.8,
+                    "alphaTopLeft": 0.8,
+                    "alphaTopRight": 0.8,
+                    "alphaBottomLeft": 0.8,
+                    "alphaBottomRight": 0.8
+                },
+                {
+                    "type": "Image",
+                    "id": "7d2b1274-1ecf-4028-af49-b778a813ab28",
+                    "label": "blurMask",
+                    "scope": "CLASS",
+                    "texture": {
+                        "key": "orb-inside-mask"
+                    },
+                    "scaleX": 0.8931690576196487,
+                    "scaleY": 0.8931690576196487,
+                    "visible": false
+                },
+                {
+                    "type": "Image",
+                    "id": "9a575594-8e96-48ba-b6c9-195d372e4705",
+                    "label": "wisdomImage",
+                    "scope": "CLASS",
+                    "texture": {
+                        "key": "wizard-orb-temp"
+                    },
+                    "scaleX": 0.46951698552354193,
+                    "scaleY": 0.46951698552354193,
+                    "visible": false,
+                    "alpha": 0.6,
+                    "alphaTopLeft": 0.6,
+                    "alphaTopRight": 0.6,
+                    "alphaBottomLeft": 0.6,
+                    "alphaBottomRight": 0.6,
+                    "list": [
+                        {
+                            "type": "Displacement",
+                            "id": "082df6e4-459d-413d-9738-2b7ef64dbc32",
+                            "label": "imageDisplacementFx",
+                            "scope": "CLASS",
+                            "x": 0.12,
+                            "y": 0.12,
+                            "texture": {
+                                "key": "displacement-test"
+                            },
+                            "preFX": true
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor - Scene Editor",
+        "url": "https://phaser.io/editor",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 5
+    }
+}

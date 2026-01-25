@@ -31,13 +31,13 @@ export default class WizardController {
 
     // this needs to be updated to include any new dialogue groups
     let dialogueOrder: Array<dialogueGroup | reactionDialogueGroup> = [
-      "welcome",
+      // "welcome",
       // "welcome-returning",
       "moan",
       // "positive",
-      "negative",
+      // "negative",
       // "confused",
-      "bye",
+      // "bye",
     ];
 
     dialogueOrder.forEach((value) => {
@@ -60,7 +60,10 @@ export default class WizardController {
             console.debug(`no sound in cache for animation`);
           }
         } else if (event.data.name == "orb") {
-          this.scene.setOrbCloudEffect();
+          this.scene.startOrbMagic();
+        } else if (event.data.name == "enable-orb-input") {
+          this.scene.enableOrbInput();
+          this.scene.startOrbMagic();
         }
       },
     });

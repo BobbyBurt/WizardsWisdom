@@ -6,6 +6,7 @@
             "objectDisplayFormat": "",
             "baseClass": "UserComponent",
             "gameObjectType": "any",
+            "generateGameObjectField": true,
             "properties": [
                 {
                     "name": "up",
@@ -95,6 +96,7 @@
             "objectDisplayFormat": "",
             "baseClass": "",
             "gameObjectType": "Phaser.GameObjects.Image | Phaser.GameObjects.Rectangle",
+            "generateGameObjectField": true,
             "properties": [
                 {
                     "name": "setAlpha",
@@ -114,6 +116,7 @@
             "objectDisplayFormat": "",
             "baseClass": "",
             "gameObjectType": "Phaser.GameObjects.Container",
+            "generateGameObjectField": true,
             "properties": [
                 {
                     "name": "BGRect",
@@ -145,7 +148,48 @@
             "objectDisplayFormat": "",
             "baseClass": "",
             "gameObjectType": "Phaser.GameObjects.Rectangle",
+            "generateGameObjectField": true,
             "properties": []
+        },
+        {
+            "name": "tileSpriteScroll",
+            "displayName": "",
+            "objectDisplayFormat": "",
+            "baseClass": "",
+            "gameObjectType": "Phaser.GameObjects.TileSprite",
+            "generateGameObjectField": true,
+            "properties": [
+                {
+                    "name": "X",
+                    "label": "X",
+                    "tooltip": "",
+                    "defValue": 798,
+                    "customDefinition": false,
+                    "type": {
+                        "id": "number"
+                    }
+                },
+                {
+                    "name": "Y",
+                    "label": "Y",
+                    "tooltip": "",
+                    "defValue": 492,
+                    "customDefinition": false,
+                    "type": {
+                        "id": "number"
+                    }
+                },
+                {
+                    "name": "duration",
+                    "label": "Duration",
+                    "tooltip": "",
+                    "defValue": 1000,
+                    "customDefinition": false,
+                    "type": {
+                        "id": "number"
+                    }
+                }
+            ]
         }
     ],
     "meta": {

@@ -8,6 +8,7 @@ import fullscreenHandler from "~/FullscreenHandler";
 
 import { SkinsAndAnimationBoundsProvider } from "@esotericsoftware/spine-phaser";
 import { SpineGameObject } from "@esotericsoftware/spine-phaser";
+import orbLayer from "../prefabs/orbLayer";
 /* START-USER-IMPORTS */
 import WizardController from "~/WizardController";
 import { loadDialogue, selectDialogue, selectedDialogue } from "~/dialogueUtil";
@@ -15,283 +16,357 @@ import { loadDialogue, selectDialogue, selectedDialogue } from "~/dialogueUtil";
 /* END-USER-IMPORTS */
 
 export default class WizardScene extends Phaser.Scene {
+  constructor() {
+    super("wizard");
 
-	constructor() {
-		super("wizard");
-
-		/* START-USER-CTR-CODE */
+    /* START-USER-CTR-CODE */
     // Write your code here.
     /* END-USER-CTR-CODE */
-	}
+  }
 
-	editorCreate(): void {
+  editorCreate(): void {
+    // displacement_test
+    const displacement_test = this.add.image(-112, 773, "displacement-test");
+    displacement_test.scaleX = 35.981488078279575;
+    displacement_test.scaleY = -27.397985958338662;
+    displacement_test.visible = false;
+    displacement_test.alpha = 0.2;
+    displacement_test.alphaTopLeft = 0.2;
+    displacement_test.alphaTopRight = 0.2;
+    displacement_test.alphaBottomLeft = 0.2;
+    displacement_test.alphaBottomRight = 0.2;
 
-		// displacement_test
-		const displacement_test = this.add.image(-112, 773, "displacement-test");
-		displacement_test.scaleX = 35.981488078279575;
-		displacement_test.scaleY = -27.397985958338662;
-		displacement_test.visible = false;
-		displacement_test.alpha = 0.2;
-		displacement_test.alphaTopLeft = 0.2;
-		displacement_test.alphaTopRight = 0.2;
-		displacement_test.alphaBottomLeft = 0.2;
-		displacement_test.alphaBottomRight = 0.2;
+    // wizardSpineObject
+    const wizardSpineObject = this.add.spine(
+      966,
+      560,
+      "wizard",
+      "wizard-atlas",
+      new SkinsAndAnimationBoundsProvider(null, ["default"]),
+    );
+    wizardSpineObject.skeleton.setSkinByName("default");
 
-		// wizardSpineObject
-		const wizardSpineObject = this.add.spine(965, 560, "wizard", "wizard-atlas", new SkinsAndAnimationBoundsProvider(null, ["default"]));
-		wizardSpineObject.skeleton.setSkinByName("default");
+    // glowEffect
+    const glowEffect = this.add.image(961, 894, "point-blur");
+    glowEffect.blendMode = Phaser.BlendModes.ADD;
+    glowEffect.scaleX = 1.3;
+    glowEffect.scaleY = 1.3;
+    glowEffect.alpha = 0.75;
+    glowEffect.alphaTopLeft = 0.75;
+    glowEffect.alphaTopRight = 0.75;
+    glowEffect.alphaBottomLeft = 0.75;
+    glowEffect.alphaBottomRight = 0.75;
+    glowEffect.tintTopLeft = 12748273;
+    glowEffect.tintTopRight = 12748273;
+    glowEffect.tintBottomLeft = 12748273;
+    glowEffect.tintBottomRight = 12748273;
 
-		// glowEffect
-		const glowEffect = this.add.image(961, 894, "point-blur");
-		glowEffect.blendMode = Phaser.BlendModes.ADD;
-		glowEffect.scaleX = 1.7761059502504315;
-		glowEffect.scaleY = 1.7761059502504315;
-		glowEffect.alpha = 0.75;
-		glowEffect.alphaTopLeft = 0.75;
-		glowEffect.alphaTopRight = 0.75;
-		glowEffect.alphaBottomLeft = 0.75;
-		glowEffect.alphaBottomRight = 0.75;
-		glowEffect.tintTopLeft = 12748273;
-		glowEffect.tintTopRight = 12748273;
-		glowEffect.tintBottomLeft = 12748273;
-		glowEffect.tintBottomRight = 12748273;
+    // orbBack
+    const orbBack = this.add.image(960, 870, "white-pixel");
+    orbBack.scaleX = 535.0364126804407;
+    orbBack.scaleY = 498.1917593818383;
+    orbBack.tintTopLeft = 0;
+    orbBack.tintTopRight = 0;
+    orbBack.tintBottomLeft = 0;
+    orbBack.tintBottomRight = 0;
 
-		// orbBack
-		const orbBack = this.add.image(960, 870, "white-pixel");
-		orbBack.scaleX = 535.0364126804407;
-		orbBack.scaleY = 498.1917593818383;
-		orbBack.tintTopLeft = 0;
-		orbBack.tintTopRight = 0;
-		orbBack.tintBottomLeft = 0;
-		orbBack.tintBottomRight = 0;
+    // shaderContainer
+    const shaderContainer = this.add.container(0, 0);
 
-		// shaderContainer
-		const shaderContainer = this.add.container(0, 0);
+    // orbBack2
+    const orbBack2 = this.add.image(960, 870, "white-pixel");
+    orbBack2.scaleX = 535.0364126804407;
+    orbBack2.scaleY = 498.1917593818383;
+    orbBack2.alpha = 0.6;
+    orbBack2.alphaTopLeft = 0.6;
+    orbBack2.alphaTopRight = 0.6;
+    orbBack2.alphaBottomLeft = 0.6;
+    orbBack2.alphaBottomRight = 0.6;
+    orbBack2.tintTopLeft = 0;
+    orbBack2.tintTopRight = 0;
+    orbBack2.tintBottomLeft = 0;
+    orbBack2.tintBottomRight = 0;
 
-		// orbEffect1
-		const orbEffect1 = this.add.tileSprite(1045, 857, 798, 400, "orb-test-3");
-		orbEffect1.blendMode = Phaser.BlendModes.ADD;
-		orbEffect1.scaleX = 1.1425012389526452;
-		orbEffect1.scaleY = 1.1425012389526452;
-		orbEffect1.alpha = 0.4;
-		orbEffect1.alphaTopLeft = 0.4;
-		orbEffect1.alphaTopRight = 0.4;
-		orbEffect1.alphaBottomLeft = 0.4;
-		orbEffect1.alphaBottomRight = 0.4;
-		orbEffect1.tilePositionY = 78;
-		orbEffect1.tileScaleX = 2.91;
-		orbEffect1.tileScaleY = 1.26;
+    // orbEffect1
+    const orbEffect1 = this.add.tileSprite(1045, 857, 798, 400, "orb-test-3");
+    orbEffect1.blendMode = Phaser.BlendModes.ADD;
+    orbEffect1.scaleX = 1.1425012389526452;
+    orbEffect1.scaleY = 1.1425012389526452;
+    orbEffect1.alpha = 0.4;
+    orbEffect1.alphaTopLeft = 0.4;
+    orbEffect1.alphaTopRight = 0.4;
+    orbEffect1.alphaBottomLeft = 0.4;
+    orbEffect1.alphaBottomRight = 0.4;
+    orbEffect1.tilePositionY = 78;
+    orbEffect1.tileScaleX = 2.91;
+    orbEffect1.tileScaleY = 1.26;
 
-		// orbEffect2
-		const orbEffect2 = this.add.tileSprite(985, 854, 798, 400, "orb-test-3");
-		orbEffect2.blendMode = Phaser.BlendModes.ADD;
-		orbEffect2.scaleX = 1.1425012389526452;
-		orbEffect2.scaleY = 1.1425012389526452;
-		orbEffect2.alpha = 0.7;
-		orbEffect2.alphaTopLeft = 0.7;
-		orbEffect2.alphaTopRight = 0.7;
-		orbEffect2.alphaBottomLeft = 0.7;
-		orbEffect2.alphaBottomRight = 0.7;
-		orbEffect2.tileScaleX = 2.3;
+    // orbEffect2
+    const orbEffect2 = this.add.tileSprite(985, 854, 798, 400, "orb-test-3");
+    orbEffect2.blendMode = Phaser.BlendModes.ADD;
+    orbEffect2.scaleX = 1.1425012389526452;
+    orbEffect2.scaleY = 1.1425012389526452;
+    orbEffect2.alpha = 0.7;
+    orbEffect2.alphaTopLeft = 0.7;
+    orbEffect2.alphaTopRight = 0.7;
+    orbEffect2.alphaBottomLeft = 0.7;
+    orbEffect2.alphaBottomRight = 0.7;
+    orbEffect2.tileScaleX = 2.3;
 
-		// orbEffect3
-		const orbEffect3 = this.add.tileSprite(979, 859, 798, 400, "orb-test-3");
-		orbEffect3.blendMode = Phaser.BlendModes.ADD;
-		orbEffect3.scaleX = 1.1425012389526452;
-		orbEffect3.scaleY = 1.1425012389526452;
-		orbEffect3.alpha = 0.4;
-		orbEffect3.alphaTopLeft = 0.4;
-		orbEffect3.alphaTopRight = 0.4;
-		orbEffect3.alphaBottomLeft = 0.4;
-		orbEffect3.alphaBottomRight = 0.4;
-		orbEffect3.tileScaleY = 1.25;
+    // orbEffect3
+    const orbEffect3 = this.add.tileSprite(979, 859, 798, 400, "orb-test-3");
+    orbEffect3.blendMode = Phaser.BlendModes.ADD;
+    orbEffect3.scaleX = 1.1425012389526452;
+    orbEffect3.scaleY = 1.1425012389526452;
+    orbEffect3.alpha = 0.4;
+    orbEffect3.alphaTopLeft = 0.4;
+    orbEffect3.alphaTopRight = 0.4;
+    orbEffect3.alphaBottomLeft = 0.4;
+    orbEffect3.alphaBottomRight = 0.4;
+    orbEffect3.tileScaleY = 1.25;
 
-		// orbClouds2
-		const orbClouds2 = this.add.tileSprite(993, 868, 737, 492, "orb-texture-2");
-		orbClouds2.blendMode = Phaser.BlendModes.ADD;
-		orbClouds2.scaleY = 1.264417829224711;
-		orbClouds2.alpha = 0.2;
-		orbClouds2.alphaTopLeft = 0.2;
-		orbClouds2.alphaTopRight = 0.2;
-		orbClouds2.alphaBottomLeft = 0.2;
-		orbClouds2.alphaBottomRight = 0.2;
+    // orbClouds2
+    const orbClouds2 = this.add.tileSprite(993, 868, 737, 492, "orb-texture-2");
+    orbClouds2.blendMode = Phaser.BlendModes.ADD;
+    orbClouds2.scaleY = 1.264417829224711;
+    orbClouds2.alpha = 0.2;
+    orbClouds2.alphaTopLeft = 0.2;
+    orbClouds2.alphaTopRight = 0.2;
+    orbClouds2.alphaBottomLeft = 0.2;
+    orbClouds2.alphaBottomRight = 0.2;
 
-		// orbClouds1
-		const orbClouds1 = this.add.tileSprite(989, 869, 737, 492, "orb-texture-2");
-		orbClouds1.blendMode = Phaser.BlendModes.ADD;
-		orbClouds1.scaleY = 1.327039111834162;
-		orbClouds1.angle = -8;
-		orbClouds1.alpha = 0.2;
-		orbClouds1.alphaTopLeft = 0.2;
-		orbClouds1.alphaTopRight = 0.2;
-		orbClouds1.alphaBottomLeft = 0.2;
-		orbClouds1.alphaBottomRight = 0.2;
+    // orbClouds1
+    const orbClouds1 = this.add.tileSprite(989, 869, 737, 492, "orb-texture-2");
+    orbClouds1.blendMode = Phaser.BlendModes.ADD;
+    orbClouds1.scaleY = 1.327039111834162;
+    orbClouds1.angle = -8;
+    orbClouds1.alpha = 0.2;
+    orbClouds1.alphaTopLeft = 0.2;
+    orbClouds1.alphaTopRight = 0.2;
+    orbClouds1.alphaBottomLeft = 0.2;
+    orbClouds1.alphaBottomRight = 0.2;
 
-		// orbEffectMask
-		const orbEffectMask = this.add.ellipse(960, 890, 128, 128);
-		orbEffectMask.scaleX = 3.9851915253699906;
-		orbEffectMask.scaleY = 3.9851915253699906;
-		orbEffectMask.visible = false;
-		orbEffectMask.isFilled = true;
-		orbEffectMask.fillAlpha = 0.3;
+    // orbEffectMask
+    const orbEffectMask = this.add.ellipse(960, 890, 128, 128);
+    orbEffectMask.scaleX = 3.9851915253699906;
+    orbEffectMask.scaleY = 3.9851915253699906;
+    orbEffectMask.visible = false;
+    orbEffectMask.isFilled = true;
+    orbEffectMask.fillAlpha = 0.3;
 
-		// fullscreenButtonBack
-		const fullscreenButtonBack = this.add.image(22, 25, "white-pixel");
-		fullscreenButtonBack.scaleX = 169.4188682791527;
-		fullscreenButtonBack.scaleY = 54.95243253147957;
-		fullscreenButtonBack.setOrigin(0, 0);
+    // fullscreenButtonBack
+    const fullscreenButtonBack = this.add.image(22, 25, "white-pixel");
+    fullscreenButtonBack.scaleX = 169.4188682791527;
+    fullscreenButtonBack.scaleY = 54.95243253147957;
+    fullscreenButtonBack.setOrigin(0, 0);
 
-		// fullscreenButtonText
-		const fullscreenButtonText = this.add.bitmapText(99, 37, "monogram-italic", "Fullscreen");
-		fullscreenButtonText.setOrigin(0.5, 0);
-		fullscreenButtonText.tintTopLeft = 0;
-		fullscreenButtonText.tintTopRight = 0;
-		fullscreenButtonText.tintBottomLeft = 0;
-		fullscreenButtonText.tintBottomRight = 0;
-		fullscreenButtonText.text = "Fullscreen";
-		fullscreenButtonText.fontSize = 24;
-		fullscreenButtonText.align = 1;
+    // fullscreenButtonText
+    const fullscreenButtonText = this.add.bitmapText(
+      99,
+      37,
+      "monogram-italic",
+      "Fullscreen",
+    );
+    fullscreenButtonText.setOrigin(0.5, 0);
+    fullscreenButtonText.tintTopLeft = 0;
+    fullscreenButtonText.tintTopRight = 0;
+    fullscreenButtonText.tintBottomLeft = 0;
+    fullscreenButtonText.tintBottomRight = 0;
+    fullscreenButtonText.text = "Fullscreen";
+    fullscreenButtonText.fontSize = 24;
+    fullscreenButtonText.align = 1;
 
-		// wisdomText
-		const wisdomText = this.add.bitmapText(960, 863, "quintessential", "Lorem ipsum dolor \nsit amet, consectetur \nadipiscing elit. Nunc \nconsectetur nec dui \neu imperdiet. ");
-		wisdomText.setOrigin(0.5, 0.5);
-		wisdomText.text = "Lorem ipsum dolor \nsit amet, consectetur \nadipiscing elit. Nunc \nconsectetur nec dui \neu imperdiet. ";
-		wisdomText.fontSize = 64;
-		wisdomText.align = 1;
+    // wisdomText
+    const wisdomText = this.add.bitmapText(
+      960,
+      863,
+      "quintessential",
+      "Lorem ipsum dolor \nsit amet, consectetur \nadipiscing elit. Nunc \nconsectetur nec dui \neu imperdiet. ",
+    );
+    wisdomText.setOrigin(0.5, 0.5);
+    wisdomText.alpha = 0;
+    wisdomText.alphaTopLeft = 0;
+    wisdomText.alphaTopRight = 0;
+    wisdomText.alphaBottomLeft = 0;
+    wisdomText.alphaBottomRight = 0;
+    wisdomText.text =
+      "Lorem ipsum dolor \nsit amet, consectetur \nadipiscing elit. Nunc \nconsectetur nec dui \neu imperdiet. ";
+    wisdomText.fontSize = 64;
+    wisdomText.align = 1;
 
-		// textDisplacementFx
-		const textDisplacementFx = wisdomText.postFX!.addDisplacement("displacement-test", 0.12, 0.12);
+    // textDisplacementFx
+    const textDisplacementFx = wisdomText.postFX!.addDisplacement(
+      "displacement-test",
+      0.12,
+      0.12,
+    );
 
-		// textGlowFx
-		const textGlowFx = wisdomText.postFX!.addGlow(16777215, 4, 0, false, 0.1, 10);
+    // textGlowFx
+    const textGlowFx = wisdomText.postFX!.addGlow(
+      16777215,
+      4,
+      0,
+      false,
+      0.1,
+      10,
+    );
 
-		// orb_overlap
-		const orb_overlap = this.add.image(960, 891, "orb-overlap");
-		orb_overlap.alpha = 0.8;
-		orb_overlap.alphaTopLeft = 0.8;
-		orb_overlap.alphaTopRight = 0.8;
-		orb_overlap.alphaBottomLeft = 0.8;
-		orb_overlap.alphaBottomRight = 0.8;
+    // orb_overlap
+    const orb_overlap = this.add.image(960, 891, "orb-overlap");
+    orb_overlap.alpha = 0.8;
+    orb_overlap.alphaTopLeft = 0.8;
+    orb_overlap.alphaTopRight = 0.8;
+    orb_overlap.alphaBottomLeft = 0.8;
+    orb_overlap.alphaBottomRight = 0.8;
 
-		// orbInnerMask
-		const orbInnerMask = this.add.image(960, 891, "orb-inside-mask");
-		orbInnerMask.scaleX = 0.8931690576196487;
-		orbInnerMask.scaleY = 0.8931690576196487;
-		orbInnerMask.visible = false;
+    // orbInnerMask
+    const orbInnerMask = this.add.image(960, 891, "orb-inside-mask");
+    orbInnerMask.scaleX = 0.8931690576196487;
+    orbInnerMask.scaleY = 0.8931690576196487;
+    orbInnerMask.visible = false;
 
-		// wisdomImage
-		const wisdomImage = this.add.image(971, 899, "wizard-orb-temp");
-		wisdomImage.scaleX = 0.46951698552354193;
-		wisdomImage.scaleY = 0.46951698552354193;
-		wisdomImage.visible = false;
-		wisdomImage.alpha = 0.6;
-		wisdomImage.alphaTopLeft = 0.6;
-		wisdomImage.alphaTopRight = 0.6;
-		wisdomImage.alphaBottomLeft = 0.6;
-		wisdomImage.alphaBottomRight = 0.6;
+    // wisdomImage
+    const wisdomImage = this.add.image(971, 899, "wizard-orb-temp");
+    wisdomImage.scaleX = 0.46951698552354193;
+    wisdomImage.scaleY = 0.46951698552354193;
+    wisdomImage.visible = false;
+    wisdomImage.alpha = 0.6;
+    wisdomImage.alphaTopLeft = 0.6;
+    wisdomImage.alphaTopRight = 0.6;
+    wisdomImage.alphaBottomLeft = 0.6;
+    wisdomImage.alphaBottomRight = 0.6;
 
-		// imageDisplacementFx
-		const imageDisplacementFx = wisdomImage.preFX!.addDisplacement("displacement-test", 0.12, 0.12);
+    // imageDisplacementFx
+    const imageDisplacementFx = wisdomImage.preFX!.addDisplacement(
+      "displacement-test",
+      0.12,
+      0.12,
+    );
 
-		// orbBlindImages
-		const orbBlindImages = this.add.container(945, 872);
-		orbBlindImages.visible = false;
+    // orbBlindImages
+    const orbBlindImages = this.add.container(945, 872);
+    orbBlindImages.scaleX = 1.189984455542984;
+    orbBlindImages.scaleY = 1.189984455542984;
+    orbBlindImages.alpha = 0;
 
-		// point_blur
-		const point_blur = this.add.image(23, 13, "point-blur");
-		point_blur.scaleX = 0.8287660998615729;
-		point_blur.scaleY = 0.8287660998615729;
-		orbBlindImages.add(point_blur);
+    // point_blur
+    const point_blur = this.add.image(23, 13, "point-blur");
+    point_blur.scaleX = 0.8539875620877397;
+    point_blur.scaleY = 0.8539875620877397;
+    point_blur.visible = false;
+    orbBlindImages.add(point_blur);
 
-		// point_blur_1
-		const point_blur_1 = this.add.image(23, 13, "point-blur");
-		point_blur_1.scaleX = 0.8287660998615729;
-		point_blur_1.scaleY = 0.8287660998615729;
-		orbBlindImages.add(point_blur_1);
+    // point_blur_1
+    const point_blur_1 = this.add.image(23, 13, "point-blur");
+    point_blur_1.scaleX = 0.6826333077561331;
+    point_blur_1.scaleY = 0.6826333077561331;
+    point_blur_1.visible = false;
+    orbBlindImages.add(point_blur_1);
 
-		// point_blur_2
-		const point_blur_2 = this.add.image(23, 13, "point-blur");
-		point_blur_2.scaleX = 0.8287660998615729;
-		point_blur_2.scaleY = 0.8287660998615729;
-		orbBlindImages.add(point_blur_2);
+    // point_blur_2
+    const point_blur_2 = this.add.image(23, 13, "point-blur");
+    point_blur_2.scaleX = 0.523314985509712;
+    point_blur_2.scaleY = 0.523314985509712;
+    point_blur_2.visible = false;
+    orbBlindImages.add(point_blur_2);
 
-		// point_blur_3
-		const point_blur_3 = this.add.image(23, 13, "point-blur");
-		point_blur_3.scaleX = 0.8287660998615729;
-		point_blur_3.scaleY = 0.8287660998615729;
-		orbBlindImages.add(point_blur_3);
+    // point_blur_3
+    const point_blur_3 = this.add.image(23, 13, "point-blur");
+    point_blur_3.scaleX = 0.3375327663048206;
+    point_blur_3.scaleY = 0.3375327663048206;
+    point_blur_3.visible = false;
+    orbBlindImages.add(point_blur_3);
 
-		// orbShineImages
-		const orbShineImages = this.add.container(945, 872);
-		orbShineImages.visible = false;
+    // orbInnerMask_1
+    const orbInnerMask_1 = this.add.image(15, 19, "orb-inside-mask");
+    orbInnerMask_1.scaleX = 0.8931690576196487;
+    orbInnerMask_1.scaleY = 0.8931690576196487;
+    orbInnerMask_1.tintFill = true;
+    orbBlindImages.add(orbInnerMask_1);
 
-		// point_blur_4
-		const point_blur_4 = this.add.image(15, 18, "point-blur");
-		point_blur_4.scaleX = 0.2971777169320155;
-		point_blur_4.scaleY = 0.2971777169320155;
-		orbShineImages.add(point_blur_4);
+    // orbShineImages
+    const orbShineImages = this.add.container(945, 872);
+    orbShineImages.scaleX = 0;
+    orbShineImages.scaleY = 0;
+    orbShineImages.alpha = 0;
 
-		// point_blur_5
-		const point_blur_5 = this.add.image(15, 18, "point-blur");
-		point_blur_5.scaleX = 0.03572863874145179;
-		point_blur_5.scaleY = 0.5776038356078905;
-		orbShineImages.add(point_blur_5);
+    // point_blur_4
+    const point_blur_4 = this.add.image(15, 18, "point-blur");
+    point_blur_4.scaleX = 0.2971777169320155;
+    point_blur_4.scaleY = 0.2971777169320155;
+    orbShineImages.add(point_blur_4);
 
-		// point_blur_6
-		const point_blur_6 = this.add.image(15, 18, "point-blur");
-		point_blur_6.scaleX = 0.03572863874145179;
-		point_blur_6.scaleY = 0.5776038356078905;
-		point_blur_6.angle = 90;
-		orbShineImages.add(point_blur_6);
+    // point_blur_5
+    const point_blur_5 = this.add.image(15, 18, "point-blur");
+    point_blur_5.scaleX = 0.03572863874145179;
+    point_blur_5.scaleY = 0.5776038356078905;
+    orbShineImages.add(point_blur_5);
 
-		this.wizardSpineObject = wizardSpineObject;
-		this.glowEffect = glowEffect;
-		this.orbBack = orbBack;
-		this.shaderContainer = shaderContainer;
-		this.orbEffect1 = orbEffect1;
-		this.orbEffect2 = orbEffect2;
-		this.orbEffect3 = orbEffect3;
-		this.orbClouds2 = orbClouds2;
-		this.orbClouds1 = orbClouds1;
-		this.orbEffectMask = orbEffectMask;
-		this.fullscreenButtonBack = fullscreenButtonBack;
-		this.fullscreenButtonText = fullscreenButtonText;
-		this.textDisplacementFx = textDisplacementFx;
-		this.textGlowFx = textGlowFx;
-		this.wisdomText = wisdomText;
-		this.orb_overlap = orb_overlap;
-		this.orbInnerMask = orbInnerMask;
-		this.imageDisplacementFx = imageDisplacementFx;
-		this.wisdomImage = wisdomImage;
-		this.orbBlindImages = orbBlindImages;
-		this.orbShineImages = orbShineImages;
+    // point_blur_6
+    const point_blur_6 = this.add.image(15, 18, "point-blur");
+    point_blur_6.scaleX = 0.03572863874145179;
+    point_blur_6.scaleY = 0.5776038356078905;
+    point_blur_6.angle = 90;
+    orbShineImages.add(point_blur_6);
 
-		this.events.emit("scene-awake");
-	}
+    // orb
+    const orb = new orbLayer(this);
+    this.add.existing(orb);
 
-	private wizardSpineObject!: SpineGameObject;
-	private glowEffect!: Phaser.GameObjects.Image;
-	private orbBack!: Phaser.GameObjects.Image;
-	private shaderContainer!: Phaser.GameObjects.Container;
-	private orbEffect1!: Phaser.GameObjects.TileSprite;
-	private orbEffect2!: Phaser.GameObjects.TileSprite;
-	private orbEffect3!: Phaser.GameObjects.TileSprite;
-	private orbClouds2!: Phaser.GameObjects.TileSprite;
-	private orbClouds1!: Phaser.GameObjects.TileSprite;
-	private orbEffectMask!: Phaser.GameObjects.Ellipse;
-	private fullscreenButtonBack!: Phaser.GameObjects.Image;
-	private fullscreenButtonText!: Phaser.GameObjects.BitmapText;
-	private textDisplacementFx!: Phaser.FX.Displacement;
-	private textGlowFx!: Phaser.FX.Glow;
-	private wisdomText!: Phaser.GameObjects.BitmapText;
-	private orb_overlap!: Phaser.GameObjects.Image;
-	private orbInnerMask!: Phaser.GameObjects.Image;
-	private imageDisplacementFx!: Phaser.FX.Displacement;
-	private wisdomImage!: Phaser.GameObjects.Image;
-	private orbBlindImages!: Phaser.GameObjects.Container;
-	private orbShineImages!: Phaser.GameObjects.Container;
+    this.wizardSpineObject = wizardSpineObject;
+    this.glowEffect = glowEffect;
+    this.orbBack = orbBack;
+    this.shaderContainer = shaderContainer;
+    this.orbBack2 = orbBack2;
+    this.orbEffect1 = orbEffect1;
+    this.orbEffect2 = orbEffect2;
+    this.orbEffect3 = orbEffect3;
+    this.orbClouds2 = orbClouds2;
+    this.orbClouds1 = orbClouds1;
+    this.orbEffectMask = orbEffectMask;
+    this.fullscreenButtonBack = fullscreenButtonBack;
+    this.fullscreenButtonText = fullscreenButtonText;
+    this.textDisplacementFx = textDisplacementFx;
+    this.textGlowFx = textGlowFx;
+    this.wisdomText = wisdomText;
+    this.orb_overlap = orb_overlap;
+    this.orbInnerMask = orbInnerMask;
+    this.imageDisplacementFx = imageDisplacementFx;
+    this.wisdomImage = wisdomImage;
+    this.orbInnerMask_1 = orbInnerMask_1;
+    this.orbBlindImages = orbBlindImages;
+    this.orbShineImages = orbShineImages;
+    this.orb = orb;
 
-	/* START-USER-CODE */
+    this.events.emit("scene-awake");
+  }
+
+  private wizardSpineObject!: SpineGameObject;
+  private glowEffect!: Phaser.GameObjects.Image;
+  private orbBack!: Phaser.GameObjects.Image;
+  private shaderContainer!: Phaser.GameObjects.Container;
+  private orbBack2!: Phaser.GameObjects.Image;
+  private orbEffect1!: Phaser.GameObjects.TileSprite;
+  private orbEffect2!: Phaser.GameObjects.TileSprite;
+  private orbEffect3!: Phaser.GameObjects.TileSprite;
+  private orbClouds2!: Phaser.GameObjects.TileSprite;
+  private orbClouds1!: Phaser.GameObjects.TileSprite;
+  private orbEffectMask!: Phaser.GameObjects.Ellipse;
+  private fullscreenButtonBack!: Phaser.GameObjects.Image;
+  private fullscreenButtonText!: Phaser.GameObjects.BitmapText;
+  private textDisplacementFx!: Phaser.FX.Displacement;
+  private textGlowFx!: Phaser.FX.Glow;
+  private wisdomText!: Phaser.GameObjects.BitmapText;
+  private orb_overlap!: Phaser.GameObjects.Image;
+  private orbInnerMask!: Phaser.GameObjects.Image;
+  private imageDisplacementFx!: Phaser.FX.Displacement;
+  private wisdomImage!: Phaser.GameObjects.Image;
+  private orbInnerMask_1!: Phaser.GameObjects.Image;
+  private orbBlindImages!: Phaser.GameObjects.Container;
+  private orbShineImages!: Phaser.GameObjects.Container;
+  private orb!: orbLayer;
+
+  /* START-USER-CODE */
 
   private debugScene: DebugScene;
 
@@ -301,6 +376,7 @@ export default class WizardScene extends Phaser.Scene {
   private wisdomTextGlowTween: Phaser.Tweens.Tween;
   private displacementFXTween: Phaser.Tweens.Tween;
   private glowTween: Phaser.Tweens.Tween;
+  private glowTween2: Phaser.Tweens.Tween;
 
   private wizardController: WizardController;
   private wisdom: wisdom;
@@ -308,7 +384,15 @@ export default class WizardScene extends Phaser.Scene {
 
   private shader: Phaser.GameObjects.Shader;
 
-  private orbRubAmount = 30000;
+  private orbRubAmount = 7000;
+  private orbRubCycle = 4;
+  private orbRubCycleSettings = [
+    { blindScale: 1, shaderScale: 500 },
+    { blindScale: 0.8, shaderScale: 400 },
+    { blindScale: 0.6, shaderScale: 300 },
+    { blindScale: 0.4, shaderScale: 200 },
+  ];
+  private orbInputEnabled = false;
 
   /** should be a type that doesn't allow modification after being set in create(). Too lazy to do it now */
   private cloudEffectEditorAlpha: number;
@@ -333,6 +417,8 @@ export default class WizardScene extends Phaser.Scene {
     this.editorCreate();
     this.cloudEffectEditorAlpha = this.orbClouds1.alpha;
 
+    this.orb.create();
+
     fullscreenHandler.adjustCamera(this.cameras.main);
 
     this.debugScene = this.scene.get("debug") as DebugScene;
@@ -340,8 +426,6 @@ export default class WizardScene extends Phaser.Scene {
     this.setupOrbVisuals();
 
     this.setupFullscreenButton();
-
-    this.setupWisdomTextAppear();
 
     this.orbEffectMask.setVisible(false);
     // just in case i left it visible in the editor
@@ -353,27 +437,12 @@ export default class WizardScene extends Phaser.Scene {
     this.wizardController.setupAnimation(this.selectedDialogue);
 
     this.setWisdomVisual();
-    ``;
 
-    this.shader = this.add.shader("shader", 960, 890, 400, 400);
-    this.shaderContainer.add(this.shader);
+    // this.sound.play("music");
   }
 
   update(time: number, delta: number) {
-    let line = new Phaser.Geom.Line(
-      this.input.activePointer.worldX,
-      this.input.activePointer.worldY,
-      this.orb_overlap.x,
-      this.orb_overlap.y,
-    );
-    if (
-      this.input.activePointer.isDown &&
-      Phaser.Geom.Line.Length(line) < 250 &&
-      this.orbRubAmount > 0
-    ) {
-      this.orbRubAmount -= this.input.activePointer.distance;
-    }
-    this.debugScene.DisplayVar("rub", this.orbRubAmount);
+    this.checkOrbInput();
   }
 
   /**
@@ -393,76 +462,71 @@ export default class WizardScene extends Phaser.Scene {
   }
 
   setupOrbVisuals() {
-    let tween1 = this.tweens.add({
-      targets: this.orbEffect1,
-      tilePositionX: 798,
-      ease: Phaser.Math.Easing.Linear,
-      duration: 9500,
-      repeat: -1,
-    });
-    let tween2 = this.tweens.add({
-      targets: this.orbEffect2,
-      tilePositionX: -798,
-      ease: Phaser.Math.Easing.Linear,
-      duration: 10000,
-      repeat: -1,
-    });
-
-    let tween3 = this.tweens.add({
-      targets: this.orbEffect3,
-      tilePositionX: 798,
-      ease: Phaser.Math.Easing.Linear,
-      duration: 10500,
-      repeat: -1,
-    });
-
-    let cloudTween1 = this.tweens.add({
-      targets: this.orbClouds1,
-      tilePositionX: 737,
-      tilePositionY: 492,
-      ease: Phaser.Math.Easing.Linear,
-      duration: 7000,
-      repeat: -1,
-    });
-
-    let cloudTween2 = this.tweens.add({
-      targets: this.orbClouds2,
-      tilePositionX: -737,
-      tilePositionY: -492,
-      ease: Phaser.Math.Easing.Linear,
-      duration: 8000,
-      repeat: -1,
-    });
-
-    let innerOrbMask = this.orbInnerMask.createBitmapMask();
-    this.wisdomText.setMask(innerOrbMask);
-    this.wisdomImage.setMask(innerOrbMask);
-
-    let orbMask = this.orbEffectMask.createGeometryMask();
-    this.orbEffect1.setMask(orbMask);
-    ``;
-    this.orbEffect2.setMask(orbMask);
-    this.orbEffect3.setMask(orbMask);
-    this.orb_overlap.setMask(orbMask);
-    this.orbBack.setMask(orbMask);
-    this.orbClouds1.setMask(orbMask);
-    this.orbClouds2.setMask(orbMask);
-
+    // DELETE ME
+    // let tween1 = this.tweens.add({
+    //   targets: this.orbEffect1,
+    //   tilePositionX: 798,
+    //   ease: Phaser.Math.Easing.Linear,
+    //   duration: 9500,
+    //   repeat: -1,
+    // });
+    // let tween2 = this.tweens.add({
+    //   targets: this.orbEffect2,
+    //   tilePositionX: -798,
+    //   ease: Phaser.Math.Easing.Linear,
+    //   duration: 10000,
+    //   repeat: -1,
+    // });
+    // let tween3 = this.tweens.add({
+    //   targets: this.orbEffect3,
+    //   tilePositionX: 798,
+    //   ease: Phaser.Math.Easing.Linear,
+    //   duration: 10500,
+    //   repeat: -1,
+    // });
+    // let cloudTween1 = this.tweens.add({
+    //   targets: this.orbClouds1,
+    //   tilePositionX: 737,
+    //   tilePositionY: 492,
+    //   ease: Phaser.Math.Easing.Linear,
+    //   duration: 7000,
+    //   repeat: -1,
+    // });
+    // let cloudTween2 = this.tweens.add({
+    //   targets: this.orbClouds2,
+    //   tilePositionX: -737,
+    //   tilePositionY: -492,
+    //   ease: Phaser.Math.Easing.Linear,
+    //   duration: 8000,
+    //   repeat: -1,
+    // });
+    // let innerOrbMask = this.orbInnerMask.createBitmapMask();
+    // this.wisdomText.setMask(innerOrbMask);
+    // this.wisdomImage.setMask(innerOrbMask);
+    // let orbMask = this.orbEffectMask.createGeometryMask();
+    // this.orbEffect1.setMask(orbMask);
+    // ``;
+    // this.orbEffect2.setMask(orbMask);
+    // this.orbEffect3.setMask(orbMask);
+    // this.orb_overlap.setMask(orbMask);
+    // this.orbBack.setMask(orbMask);
+    // this.orbBack2.setMask(orbMask);
+    // this.orbClouds1.setMask(orbMask);
+    // this.orbClouds2.setMask(orbMask);
     // let fx = this.orbEffect1.preFX?.addColorMatrix() as Phaser.FX.ColorMatrix;
     // fx.hue(200);
     // let fx2 = this.orbEffect2.preFX?.addColorMatrix() as Phaser.FX.ColorMatrix;
     // fx2.hue(200);
     // let fx3 = this.orbEffect3.preFX?.addColorMatrix() as Phaser.FX.ColorMatrix;
     // fx3.hue(200);
-
-    this.glowTween = this.tweens.add({
-      targets: this.glowEffect,
-      alpha: 0.4,
-      ease: Phaser.Math.Easing.Cubic.InOut,
-      yoyo: true,
-      loop: -1,
-      duration: 500,
-    });
+    // this.glowTween = this.tweens.add({
+    //   targets: this.glowEffect,
+    //   alpha: 0.4,
+    //   ease: Phaser.Math.Easing.Cubic.InOut,
+    //   yoyo: true,
+    //   loop: -1,
+    //   duration: 500,
+    // });
   }
 
   /**
@@ -516,6 +580,155 @@ export default class WizardScene extends Phaser.Scene {
     });
     // this.wisdomTextScaleTween.play();
     // this.displacementFXTween.play();
+  }
+
+  /**
+   * delete me
+   */
+  public startOrbMagic() {
+    // this.orbShineImages.setVisible(true);
+    // this.glowEffect.setScale(2.0, 2.0);
+
+    // this.time.delayedCall(60, () => {
+    //   this.orbShineImages.setVisible(false);
+    //   this.orbBlindImages.setVisible(true);
+    //   this.glowEffect.setScale(2.3, 2.3);
+    // });
+    // this.time.delayedCall(120, () => {
+    //   this.orbBlindImages.setVisible(false);
+    //   this.glowEffect.setScale(1.7, 1.7);
+    //   this.shader = this.add.shader("shader", 960, 890, 500, 500);
+    //   this.shaderContainer.add(this.shader);
+    // });
+    this.time.delayedCall(500, () => {
+      this.shader = this.add.shader("shader", 960, 890, 200, 200);
+      this.shaderContainer.add(this.shader);
+      this.orbBlindImages.setScale(0.4);
+      this.orbBlindImages.setAlpha(0.2);
+      this.glowTween = this.tweens.add({
+        targets: this.orbBlindImages,
+        scale: 0,
+        duration: 100,
+        ease: Phaser.Math.Easing.Quadratic.In,
+      });
+      this.glowEffect.setScale(1.5);
+    });
+    this.time.delayedCall(1000, () => {
+      this.shader.destroy();
+      this.shader = this.add.shader("shader", 960, 890, 300, 300);
+      this.shaderContainer.add(this.shader);
+      this.orbBack2.setAlpha(0.4);
+      this.orbBlindImages.setScale(0.6);
+      this.orbBlindImages.setAlpha(0.2);
+      this.glowTween = this.tweens.add({
+        targets: this.orbBlindImages,
+        scale: 0,
+        duration: 100,
+        ease: Phaser.Math.Easing.Quadratic.In,
+      });
+      this.glowEffect.setScale(1.7);
+    });
+    this.time.delayedCall(1500, () => {
+      this.shader.destroy();
+      this.shader = this.add.shader("shader", 960, 890, 400, 400);
+      this.shaderContainer.add(this.shader);
+      this.orbBack2.setAlpha(0.2);
+      this.orbBlindImages.setScale(0.8);
+      this.orbBlindImages.setAlpha(0.2);
+      this.glowTween = this.tweens.add({
+        targets: this.orbBlindImages,
+        scale: 0,
+        duration: 100,
+        ease: Phaser.Math.Easing.Quadratic.In,
+      });
+      this.glowEffect.setScale(1.9);
+    });
+    this.time.delayedCall(2000, () => {
+      this.shader.destroy();
+      this.shader = this.add.shader("shader", 960, 890, 500, 500);
+      this.shaderContainer.add(this.shader);
+      this.orbBack2.setAlpha(0);
+      this.orbBlindImages.setScale(1);
+      this.orbBlindImages.setAlpha(0.2);
+      this.glowTween = this.tweens.add({
+        targets: this.orbBlindImages,
+        scale: 0,
+        duration: 100,
+        ease: Phaser.Math.Easing.Quadratic.In,
+      });
+      this.glowEffect.setScale(2.1);
+    });
+    this.time.delayedCall(4000, () => {
+      this.shader.destroy();
+      this.orbBlindImages.setScale(1);
+      this.orbBlindImages.setAlpha(1);
+      this.glowTween = this.tweens.add({
+        targets: this.orbBlindImages,
+        scale: 0,
+        alpha: 0,
+        duration: 100,
+        ease: Phaser.Math.Easing.Quadratic.In,
+      });
+      this.glowTween = this.tweens.add({
+        targets: this.orbShineImages,
+        scale: 0.5,
+        alpha: 1,
+        delay: 120,
+        duration: 50,
+        ease: Phaser.Math.Easing.Quadratic.Out,
+        yoyo: true,
+      });
+      this.setupWisdomTextAppear();
+    });
+  }
+
+  /**
+   * Triggered by animation callback
+   */
+  public enableOrbInput() {
+    this.orbInputEnabled = true;
+
+    // change orb visual
+  }
+
+  /**
+   * Called each frame
+   */
+  checkOrbInput() {
+    if (!this.orbInputEnabled) return;
+
+    let line = new Phaser.Geom.Line(
+      this.input.activePointer.worldX,
+      this.input.activePointer.worldY,
+      this.orb_overlap.x,
+      this.orb_overlap.y,
+    );
+    if (
+      this.input.activePointer.isDown &&
+      Phaser.Geom.Line.Length(line) < 250 &&
+      this.orbRubAmount > 0
+    ) {
+      this.orbRubAmount -= this.input.activePointer.distance;
+    }
+    if (this.orbRubAmount <= 0) {
+      this.orbRubCycle--;
+      this.orbRubAmount = 7000;
+    }
+    this.debugScene.DisplayVar("rub", this.orbRubAmount);
+  }
+
+  private orbCycle() {
+    this.shader = this.add.shader("shader", 960, 890, 200, 200);
+    this.shaderContainer.add(this.shader);
+    this.orbBlindImages.setScale(0.4);
+    this.orbBlindImages.setAlpha(0.2);
+    this.glowTween = this.tweens.add({
+      targets: this.orbBlindImages,
+      scale: 0,
+      duration: 100,
+      ease: Phaser.Math.Easing.Quadratic.In,
+    });
+    this.glowEffect.setScale(1.5);
   }
 
   // decouple me please

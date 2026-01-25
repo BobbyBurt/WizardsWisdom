@@ -2,13 +2,6 @@
     "section1": {
         "files": [
             {
-                "url": [
-                    "assets/dialogue/bye/bye-2.wav"
-                ],
-                "type": "audio",
-                "key": "bye-2"
-            },
-            {
                 "url": "assets/images/displacement-test.png",
                 "type": "image",
                 "key": "displacement-test"
@@ -18,6 +11,13 @@
                 "fontDataURL": "assets/fonts/monogram-italic.xml",
                 "type": "bitmapFont",
                 "key": "monogram-italic"
+            },
+            {
+                "url": [
+                    "assets/music/music-TEMP.mp3"
+                ],
+                "type": "audio",
+                "key": "music"
             },
             {
                 "textureURL": "assets/fonts/nokia.png",
@@ -49,6 +49,13 @@
                 "url": "assets/images/point-blur.png",
                 "type": "image",
                 "key": "point-blur"
+            },
+            {
+                "url": [
+                    "assets/music/transport-music-TEMP.mp3"
+                ],
+                "type": "audio",
+                "key": "transport-music"
             },
             {
                 "url": "assets/images/white-pixel.png",

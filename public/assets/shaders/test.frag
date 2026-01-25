@@ -47,6 +47,7 @@ void mainImage( out vec4 fragColor, in vec2 texCoord )
     float fAngle = time * 0.4;
     // Calculate angle (h) and length (x) in the corrected uv space
     float h = atan(uv.y, uv.x); // Use atan(y,x) for angle in [-PI, PI]
+    // float x = length(uv) * (sin(time) + 2.0);
     float x = length(uv) * 1.3;
 
     // Apply swirl distortion to angle
