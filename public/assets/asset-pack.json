@@ -7,6 +7,11 @@
                 "key": "displacement-test"
             },
             {
+                "url": "assets/images/flare.png",
+                "type": "image",
+                "key": "flare"
+            },
+            {
                 "textureURL": "assets/fonts/monogram-italic.png",
                 "fontDataURL": "assets/fonts/monogram-italic.xml",
                 "type": "bitmapFont",
@@ -34,6 +39,13 @@
                 "url": "assets/images/orb-overlap.png",
                 "type": "image",
                 "key": "orb-overlap"
+            },
+            {
+                "url": [
+                    "assets/sounds/orb-rub-magic-TEMP.mp3"
+                ],
+                "type": "audio",
+                "key": "orb-rub-magic"
             },
             {
                 "url": "assets/images/orb-test-3.png",

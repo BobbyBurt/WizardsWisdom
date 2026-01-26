@@ -23,7 +23,7 @@ export default class fullscreenHandler {
   private setFullscreen() {
     this.game.scale.setGameSize(
       fullscreenHandler.fullscreenRes.width,
-      fullscreenHandler.fullscreenRes.height
+      fullscreenHandler.fullscreenRes.height,
     );
     this.adjustAllCameras(true);
   }
@@ -36,12 +36,12 @@ export default class fullscreenHandler {
     if (this.game.scale.isPortrait) {
       this.game.scale.setGameSize(
         fullscreenHandler.mobilePortraitRes.width,
-        fullscreenHandler.mobilePortraitRes.height
+        fullscreenHandler.mobilePortraitRes.height,
       );
     } else {
       this.game.scale.setGameSize(
         fullscreenHandler.windowedRes.width,
-        fullscreenHandler.windowedRes.height
+        fullscreenHandler.windowedRes.height,
       );
     }
     this.adjustAllCameras(false);
@@ -63,13 +63,13 @@ export default class fullscreenHandler {
    */
   static adjustCamera(
     camera: Phaser.Cameras.Scene2D.BaseCamera,
-    fullscreen?: boolean
+    fullscreen?: boolean,
   ) {
     if (fullscreen == undefined) {
       fullscreen = camera.scene.scale.isFullscreen;
     }
     camera.scene.cameras.main.setZoom(
-      fullscreen ? this.fullscreenRes.zoom : this.windowedRes.zoom
+      fullscreen ? this.fullscreenRes.zoom : this.windowedRes.zoom,
     );
     camera.scene.cameras.main.centerOn(960, 540);
     camera.scene.cameras.main.transparent = true;

@@ -103,11 +103,11 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
     );
     cloudTile2_2.blendMode = Phaser.BlendModes.ADD;
     cloudTile2_2.scaleY = 1.264417829224711;
-    cloudTile2_2.alpha = 0.2;
-    cloudTile2_2.alphaTopLeft = 0.2;
-    cloudTile2_2.alphaTopRight = 0.2;
-    cloudTile2_2.alphaBottomLeft = 0.2;
-    cloudTile2_2.alphaBottomRight = 0.2;
+    cloudTile2_2.alpha = 0;
+    cloudTile2_2.alphaTopLeft = 0;
+    cloudTile2_2.alphaTopRight = 0;
+    cloudTile2_2.alphaBottomLeft = 0;
+    cloudTile2_2.alphaBottomRight = 0;
     this.add(cloudTile2_2);
 
     // cloudTile2-1
@@ -121,11 +121,11 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
     cloudTile2_1.blendMode = Phaser.BlendModes.ADD;
     cloudTile2_1.scaleY = 1.327039111834162;
     cloudTile2_1.angle = -8;
-    cloudTile2_1.alpha = 0.2;
-    cloudTile2_1.alphaTopLeft = 0.2;
-    cloudTile2_1.alphaTopRight = 0.2;
-    cloudTile2_1.alphaBottomLeft = 0.2;
-    cloudTile2_1.alphaBottomRight = 0.2;
+    cloudTile2_1.alpha = 0;
+    cloudTile2_1.alphaTopLeft = 0;
+    cloudTile2_1.alphaTopRight = 0;
+    cloudTile2_1.alphaBottomLeft = 0;
+    cloudTile2_1.alphaBottomRight = 0;
     this.add(cloudTile2_1);
 
     // circleMask
@@ -352,10 +352,15 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
 
   private shader: Phaser.GameObjects.Shader;
 
-  public create() {
-    this.setupMasks();
+  private cloudDisappearTween: Phaser.Tweens.Tween;
+  private cloudAppearTween: Phaser.Tweens.Tween;
 
-    this.wisdomAppearAnimation();
+  public rubParticles: Phaser.GameObjects.Particles.ParticleEmitter;
+
+  public create() {
+    this.rubParticleSetup();
+
+    this.setupMasks();
 
     // in case i left it visible in editor
     this.circleMask.setVisible(false);
@@ -375,6 +380,7 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
       this.cloudTile2_2,
       this.backing,
       this.shaderCover,
+      this.rubParticles,
     ];
     objectsWithCircleMask.forEach((value) => {
       value.setMask(cloudMask);
@@ -401,6 +407,32 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
 
     this.wisdomImage.setVisible(wisdom.type == "image");
     this.wisdomText.setVisible(wisdom.type == undefined);
+  }
+
+  /**
+   * TODO: this is broken
+   * @param showCloud1 or 2
+   */
+  public switchCouldAnimation(showCloud1: boolean) {
+    let cloud1 = [this.cloudTile1_1, this.cloudTile1_2, this.cloudTile1_3];
+    let cloud2 = [this.cloudTile2_1, this.cloudTile2_2];
+    let toShow = showCloud1 ? [cloud1] : cloud2;
+    let toHide = showCloud1 ? cloud2 : cloud1;
+
+    if (this.cloudDisappearTween) (this.cloudDisappearTween, stop());
+    this.cloudDisappearTween = this.scene.tweens.add({
+      targets: toHide,
+      alpha: 0,
+      duration: 3000,
+      ease: Phaser.Math.Easing.Cubic.In,
+    });
+    if (this.cloudAppearTween) this.cloudAppearTween.stop();
+    this.cloudAppearTween = this.scene.tweens.add({
+      targets: toShow,
+      alpha: showCloud1 ? 0.6 : 0.1,
+      duration: 4000,
+      ease: Phaser.Math.Easing.Cubic.In,
+    });
   }
 
   public wisdomAppearAnimation() {
@@ -445,11 +477,14 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
    * @param glowAlpha
    * @param glowScale
    */
-  public magicPulseAnimation(size: number, glowScale: number) {
+  public magicPulseAnimation(
+    size: number,
+    glowScale: number,
+    shaderCoverAlpha: number,
+  ) {
     if (this.shader) {
       this.shader.destroy();
     }
-
     this.shader = this.scene.add.shader("shader", 960, 890, size, size);
     this.shaderContainer.add(this.shader);
     this.magicGlow.setScale(0.4);
@@ -460,6 +495,8 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
       duration: 100,
       ease: Phaser.Math.Easing.Quadratic.In,
     });
+
+    this.shaderCover.setAlpha(shaderCoverAlpha);
   }
 
   magicEndAnimation() {
@@ -483,6 +520,18 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
       duration: 50,
       ease: Phaser.Math.Easing.Quadratic.Out,
       yoyo: true,
+    });
+  }
+
+  public rubParticleSetup() {
+    this.rubParticles = this.scene.add.particles(500, 500, "point-blur", {
+      blendMode: "ADD",
+      lifespan: 500,
+      quantity: 0,
+      x: 0,
+      y: 0,
+      scale: 0.2,
+      alpha: { start: 0.1, end: 0 },
     });
   }
 

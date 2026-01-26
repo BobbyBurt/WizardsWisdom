@@ -109,15 +109,37 @@ export default class WizardScene extends Phaser.Scene {
 
   private shader: Phaser.GameObjects.Shader;
 
-  private orbRubAmount = 7000;
+  private orbRubAmount = 4000;
   private orbRubCycle = 4;
   private orbRubCycleSettings = [
-    { blindScale: 1, shaderScale: 500 },
-    { blindScale: 0.8, shaderScale: 400 },
-    { blindScale: 0.6, shaderScale: 300 },
-    { blindScale: 0.4, shaderScale: 200 },
+    {
+      blindScale: 1,
+      shaderScale: 500,
+      shaderCoverAlpha: 0.0,
+      soundDetune: 300,
+    },
+    {
+      blindScale: 0.8,
+      shaderScale: 400,
+      shaderCoverAlpha: 0.2,
+      soundDetune: 200,
+    },
+    {
+      blindScale: 0.6,
+      shaderScale: 300,
+      shaderCoverAlpha: 0.4,
+      soundDetune: 100,
+    },
+    {
+      blindScale: 0.4,
+      shaderScale: 200,
+      shaderCoverAlpha: 0.6,
+      soundDetune: 0,
+    },
   ];
   private orbInputEnabled = false;
+
+  private pointerPosition: Phaser.Math.Vector2;
 
   preload() {
     // let testDate = new Date(2025, 11, 17, 2, 30);
@@ -147,20 +169,43 @@ export default class WizardScene extends Phaser.Scene {
 
     this.fullscreenButtonSetup();
 
-    // this.orbEffectMask.setVisible(false);
-    // just in case i left it visible in the editor
-
     this.wizardController = new WizardController(
       this,
       this.wizardSpineObject.animationState,
     );
     this.wizardController.setupAnimation(this.selectedDialogue);
 
-    this.sound.play("music", { volume: 0.3 });
+    if (!__DEV__) this.sound.play("music", { volume: 0.3 });
   }
 
   update(time: number, delta: number) {
+    this.updatePointerPosition();
+
     this.orbInputCheck();
+
+    this.debugScene.DisplayVar("pointerPos", this.pointerPosition);
+
+    this.updateRubParticlePosition();
+  }
+
+  updateRubParticlePosition() {
+    if (this.orb.rubParticles) {
+      this.orb.rubParticles.updateConfig({
+        x: this.pointerPosition.x - 500,
+        y: this.pointerPosition.y - 500,
+      });
+    }
+  }
+
+  updatePointerPosition() {
+    this.pointerPosition = this.cameras.main.getWorldPoint(
+      this.input.activePointer.x,
+      this.input.activePointer.y,
+    );
+    // this.pointerPosition.set(
+    //   this.pointerPosition.x - 500,
+    //   this.pointerPosition.y - 500,
+    // );
   }
 
   /**
@@ -168,19 +213,21 @@ export default class WizardScene extends Phaser.Scene {
    */
   public enableOrbInput() {
     this.orbInputEnabled = true;
-
-    // change orb visual
+    this.orb.switchCouldAnimation(false);
   }
 
   orbInputCheck() {
     if (!this.orbInputEnabled) return;
 
+    this.enableRubParticlesIfPointerDown();
+
     let line = new Phaser.Geom.Line(
-      this.input.activePointer.worldX,
-      this.input.activePointer.worldY,
+      this.pointerPosition.x,
+      this.pointerPosition.y,
       960,
       890,
     );
+    this.debugScene.DisplayVar("length", Phaser.Geom.Line.Length(line));
     if (
       this.input.activePointer.isDown &&
       Phaser.Geom.Line.Length(line) < 250 &&
@@ -188,11 +235,45 @@ export default class WizardScene extends Phaser.Scene {
     ) {
       this.orbRubAmount -= this.input.activePointer.distance;
     }
-    if (this.orbRubAmount <= 0) {
-      this.orbRubCycle--;
-      this.orbRubAmount = 7000;
+    if (this.orbRubAmount < 0) {
+      if (this.orbRubCycle !== 0) {
+        this.orbInputCycle();
+      } else {
+        this.orb.magicEndAnimation();
+        this.orb.switchCouldAnimation(true);
+        this.orb.wisdomAppearAnimation();
+        this.sound.play("orb-rub-magic", {
+          volume: 0.2,
+          detune: 500,
+        });
+        this.orbInputEnabled = false;
+        this.orb.rubParticles.updateConfig({ quantity: 0 });
+        console.debug("asdf");
+      }
     }
-    this.debugScene.DisplayVar("rub", this.orbRubAmount);
+  }
+
+  private enableRubParticlesIfPointerDown() {
+    if (this.input.activePointer.isDown) {
+      this.orb.rubParticles.updateConfig({ quantity: 1 });
+    } else {
+      this.orb.rubParticles.updateConfig({ quantity: 0 });
+    }
+  }
+
+  orbInputCycle() {
+    this.orbRubCycle--;
+    this.orbRubAmount = 4000;
+    this.orb.magicPulseAnimation(
+      this.orbRubCycleSettings[this.orbRubCycle].shaderScale,
+      this.orbRubCycleSettings[this.orbRubCycle].blindScale,
+      this.orbRubCycleSettings[this.orbRubCycle].shaderCoverAlpha,
+    );
+    this.sound.play("orb-rub-magic", {
+      volume: 0.2,
+      detune: this.orbRubCycleSettings[this.orbRubCycle].soundDetune,
+    });
+    // this.debugScene.DisplayVar("cycle", this.orbRubCycle);
   }
 
   // decouple me please
