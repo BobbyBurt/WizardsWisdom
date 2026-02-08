@@ -26,19 +26,21 @@ export default class WizardController {
   private scene: WizardScene;
   public animationState: AnimationState;
 
-  public setupAnimation(dialogueToPlay: selectedDialogue) {
+  public setupAnimation(
+    dialogueToPlay: selectedDialogue,
+    phase: "preWisdom" | "postWisdom",
+  ) {
     this.animationState.data.defaultMix = 0;
 
-    // this needs to be updated to include any new dialogue groups
-    let dialogueOrder: Array<dialogueGroup | reactionDialogueGroup> = [
-      // "welcome",
-      // "welcome-returning",
-      "moan",
-      // "positive",
-      // "negative",
-      // "confused",
-      // "bye",
-    ];
+    let dialogueOrder = new Array<dialogueGroup | reactionDialogueGroup>();
+    if (phase === "preWisdom") dialogueOrder = ["welcome", "moan"];
+    else if (phase === "postWisdom") {
+      // this needs to be updated to include any new dialogue groups
+      if (dialogueToPlay.has("positive")) dialogueOrder.push("positive");
+      else if (dialogueToPlay.has("negative")) dialogueOrder.push("negative");
+      else if (dialogueToPlay.has("confused")) dialogueOrder.push("confused");
+      dialogueOrder.push("bye");
+    }
 
     dialogueOrder.forEach((value) => {
       if (dialogueToPlay.get(value) != null) {

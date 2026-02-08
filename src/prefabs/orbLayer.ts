@@ -159,38 +159,16 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
     // wisdomText
     const wisdomText = scene.add.bitmapText(
       960,
-      863,
+      872,
       "quintessential",
       "Lorem ipsum dolor \nsit amet, consectetur \nadipiscing elit. Nunc \nconsectetur nec dui \neu imperdiet. ",
     );
     wisdomText.setOrigin(0.5, 0.5);
-    wisdomText.alpha = 0;
-    wisdomText.alphaTopLeft = 0;
-    wisdomText.alphaTopRight = 0;
-    wisdomText.alphaBottomLeft = 0;
-    wisdomText.alphaBottomRight = 0;
     wisdomText.text =
       "Lorem ipsum dolor \nsit amet, consectetur \nadipiscing elit. Nunc \nconsectetur nec dui \neu imperdiet. ";
     wisdomText.fontSize = 64;
     wisdomText.align = 1;
     this.add(wisdomText);
-
-    // textDisplacementFx
-    const textDisplacementFx = wisdomText.postFX!.addDisplacement(
-      "displacement-test",
-      0.12,
-      0.12,
-    );
-
-    // textGlowFx
-    const textGlowFx = wisdomText.postFX!.addGlow(
-      16777215,
-      4,
-      0,
-      false,
-      0.1,
-      10,
-    );
 
     // glassOverlap
     const glassOverlap = scene.add.image(960, 891, "orb-overlap");
@@ -314,8 +292,6 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
     this.circleMask = circleMask;
     this.imageDisplacementFx = imageDisplacementFx;
     this.wisdomImage = wisdomImage;
-    this.textDisplacementFx = textDisplacementFx;
-    this.textGlowFx = textGlowFx;
     this.wisdomText = wisdomText;
     this.glassOverlap = glassOverlap;
     this.wisdomMask = wisdomMask;
@@ -334,13 +310,11 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
   private cloudTile1_3: Phaser.GameObjects.TileSprite;
   private cloudTile1_2: Phaser.GameObjects.TileSprite;
   private cloudTile1_1: Phaser.GameObjects.TileSprite;
-  private cloudTile2_2: Phaser.GameObjects.TileSprite;
-  private cloudTile2_1: Phaser.GameObjects.TileSprite;
+  public cloudTile2_2: Phaser.GameObjects.TileSprite;
+  public cloudTile2_1: Phaser.GameObjects.TileSprite;
   private circleMask: Phaser.GameObjects.Ellipse;
   private imageDisplacementFx: Phaser.FX.Displacement;
   private wisdomImage: Phaser.GameObjects.Image;
-  private textDisplacementFx: Phaser.FX.Displacement;
-  private textGlowFx: Phaser.FX.Glow;
   private wisdomText: Phaser.GameObjects.BitmapText;
   private glassOverlap: Phaser.GameObjects.Image;
   private wisdomMask: Phaser.GameObjects.Image;
@@ -403,6 +377,10 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
       // todo
     } else {
       this.wisdomText.setText(wisdom.content);
+      if (wisdom.content.length < 30) this.wisdomText.fontSize = 84;
+      else if (wisdom.content.length < 60) this.wisdomText.fontSize = 68;
+      else this.wisdomText.fontSize = 58;
+      console.debug(wisdom.content.length);
     }
 
     this.wisdomImage.setVisible(wisdom.type == "image");
@@ -415,7 +393,8 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
    */
   public switchCouldAnimation(showCloud1: boolean) {
     let cloud1 = [this.cloudTile1_1, this.cloudTile1_2, this.cloudTile1_3];
-    let cloud2 = [this.cloudTile2_1, this.cloudTile2_2];
+    // let cloud2 = [this.cloudTile2_1, this.cloudTile2_2];
+    let cloud2 = [undefined];
     let toShow = showCloud1 ? [cloud1] : cloud2;
     let toHide = showCloud1 ? cloud2 : cloud1;
 
@@ -440,7 +419,7 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
     this.wisdomText.setAlpha(0);
     this.wisdomImage.setScale(4);
     this.wisdomImage.setAlpha(0);
-    this.textGlowFx.outerStrength = 0;
+    // this.textGlowFx.outerStrength = 0;
     let scaleTween = this.scene.tweens.add({
       targets: [this.wisdomText, this.wisdomImage],
       scale: 1,
@@ -454,19 +433,20 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
       duration: 3000,
     });
     let displacementTween = this.scene.tweens.add({
-      targets: [this.textDisplacementFx, this.imageDisplacementFx],
+      //   targets: [this.textDisplacementFx, this.imageDisplacementFx],
+      targets: [this.imageDisplacementFx],
       x: 0,
       y: 0,
       ease: Phaser.Math.Easing.Cubic.Out,
       duration: 3000,
     });
-    let glowTween = this.scene.tweens.add({
-      targets: this.textGlowFx,
-      outerStrength: 1,
-      ease: Phaser.Math.Easing.Cubic.Out,
-      duration: 3000,
-      delay: 1000,
-    });
+    // let glowTween = this.scene.tweens.add({
+    //   targets: this.textGlowFx,
+    //   outerStrength: 1,
+    //   ease: Phaser.Math.Easing.Cubic.Out,
+    //   duration: 3000,
+    //   delay: 1000,
+    // });
     // this.wisdomTextScaleTween.play();
     // this.displacementFXTween.play();
   }
@@ -487,8 +467,8 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
     }
     this.shader = this.scene.add.shader("shader", 960, 890, size, size);
     this.shaderContainer.add(this.shader);
-    this.magicGlow.setScale(0.4);
-    this.magicGlow.setAlpha(0.2);
+    this.magicGlow.setScale(glowScale);
+    this.magicGlow.setAlpha(0.4);
     let glowTween = this.scene.tweens.add({
       targets: this.magicGlow,
       scale: 0,
@@ -526,7 +506,7 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
   public rubParticleSetup() {
     this.rubParticles = this.scene.add.particles(500, 500, "point-blur", {
       blendMode: "ADD",
-      lifespan: 500,
+      lifespan: 400,
       quantity: 0,
       x: 0,
       y: 0,

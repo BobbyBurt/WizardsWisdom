@@ -167,7 +167,7 @@
                     "type": "TileSprite",
                     "id": "e951976e-0f15-45c7-a174-31382deac9a3",
                     "label": "cloudTile2-2",
-                    "scope": "CLASS",
+                    "scope": "PUBLIC",
                     "components": [
                         "tileSpriteScroll"
                     ],
@@ -193,7 +193,7 @@
                     "type": "TileSprite",
                     "id": "83d7f8bb-33c4-4e05-ba73-0488262334f0",
                     "label": "cloudTile2-1",
-                    "scope": "CLASS",
+                    "scope": "PUBLIC",
                     "components": [
                         "tileSpriteScroll"
                     ],
@@ -269,37 +269,13 @@
                     "label": "wisdomText",
                     "scope": "CLASS",
                     "x": 960,
-                    "y": 863,
+                    "y": 872,
                     "originX": 0.5,
                     "originY": 0.5,
-                    "alpha": 0,
-                    "alphaTopLeft": 0,
-                    "alphaTopRight": 0,
-                    "alphaBottomLeft": 0,
-                    "alphaBottomRight": 0,
                     "text": "Lorem ipsum dolor \nsit amet, consectetur \nadipiscing elit. Nunc \nconsectetur nec dui \neu imperdiet. ",
                     "font": "quintessential",
                     "align": 1,
-                    "fontSize": 64,
-                    "list": [
-                        {
-                            "type": "Displacement",
-                            "id": "9e434d70-ecc0-4184-9bb8-6a6c3098e232",
-                            "label": "textDisplacementFx",
-                            "scope": "CLASS",
-                            "x": 0.12,
-                            "y": 0.12,
-                            "texture": {
-                                "key": "displacement-test"
-                            }
-                        },
-                        {
-                            "type": "Glow",
-                            "id": "2bb4ef33-df42-4694-8ea3-7e9cdc445765",
-                            "label": "textGlowFx",
-                            "scope": "CLASS"
-                        }
-                    ]
+                    "fontSize": 64
                 },
                 {
                     "type": "Image",

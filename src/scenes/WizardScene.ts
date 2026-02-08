@@ -1,6 +1,11 @@
 // You can write more code here
 
-import { getWisdomForDate, wisdom, wisdoms } from "~/data/wisdoms";
+import {
+  getWisdomByIndex,
+  getWisdomForDate,
+  wisdom,
+  wisdoms,
+} from "~/data/wisdoms";
 import DebugScene from "./DebugScene";
 import fullscreenHandler from "~/FullscreenHandler";
 
@@ -109,7 +114,7 @@ export default class WizardScene extends Phaser.Scene {
 
   private shader: Phaser.GameObjects.Shader;
 
-  private orbRubAmount = 4000;
+  private orbRubAmount = 6000;
   private orbRubCycle = 4;
   private orbRubCycleSettings = [
     {
@@ -117,29 +122,35 @@ export default class WizardScene extends Phaser.Scene {
       shaderScale: 500,
       shaderCoverAlpha: 0.0,
       soundDetune: 300,
+      glowScale: 2.1,
     },
     {
       blindScale: 0.8,
       shaderScale: 400,
-      shaderCoverAlpha: 0.2,
+      shaderCoverAlpha: 0.1,
       soundDetune: 200,
+      glowScale: 1.9,
     },
     {
       blindScale: 0.6,
       shaderScale: 300,
-      shaderCoverAlpha: 0.4,
+      shaderCoverAlpha: 0.2,
       soundDetune: 100,
+      glowScale: 1.7,
     },
     {
       blindScale: 0.4,
       shaderScale: 200,
-      shaderCoverAlpha: 0.6,
+      shaderCoverAlpha: 0.3,
       soundDetune: 0,
+      glowScale: 1.5,
     },
   ];
   private orbInputEnabled = false;
 
   private pointerPosition: Phaser.Math.Vector2;
+
+  private debugWisdomIndex = 0;
 
   preload() {
     // let testDate = new Date(2025, 11, 17, 2, 30);
@@ -150,7 +161,8 @@ export default class WizardScene extends Phaser.Scene {
       this.load.image("wisdom-image", this.wisdom.content);
     }
 
-    this.selectedDialogue = selectDialogue(this, "negative");
+    // this.selectedDialogue = selectDialogue(this, "negative");
+    this.selectedDialogue = selectDialogue(this, this.wisdom.reaction);
     loadDialogue(this, this.selectedDialogue);
 
     // shadertest
@@ -173,9 +185,19 @@ export default class WizardScene extends Phaser.Scene {
       this,
       this.wizardSpineObject.animationState,
     );
-    this.wizardController.setupAnimation(this.selectedDialogue);
+    this.wizardController.setupAnimation(this.selectedDialogue, "preWisdom");
+
+    this.orb.wisdomAppearAnimation();
 
     if (!__DEV__) this.sound.play("music", { volume: 0.3 });
+
+    this.input.keyboard!.on("keyup", () => {
+      this.wisdom = getWisdomByIndex(this.debugWisdomIndex);
+      this.debugWisdomIndex++;
+      this.orb.setWisdom(this.wisdom);
+      console.debug(this.wisdom);
+      // this.orb.wisdomAppearAnimation();
+    });
   }
 
   update(time: number, delta: number) {
@@ -219,7 +241,7 @@ export default class WizardScene extends Phaser.Scene {
   orbInputCheck() {
     if (!this.orbInputEnabled) return;
 
-    this.enableRubParticlesIfPointerDown();
+    this.setPointerRubParticles();
 
     let line = new Phaser.Geom.Line(
       this.pointerPosition.x,
@@ -234,6 +256,8 @@ export default class WizardScene extends Phaser.Scene {
       this.orbRubAmount > 0
     ) {
       this.orbRubAmount -= this.input.activePointer.distance;
+      this.orb.cloudTile2_1.setAlpha(this.orb.cloudTile2_1.alpha + 0.002);
+      this.orb.cloudTile2_2.setAlpha(this.orb.cloudTile2_2.alpha + 0.002);
     }
     if (this.orbRubAmount < 0) {
       if (this.orbRubCycle !== 0) {
@@ -242,28 +266,38 @@ export default class WizardScene extends Phaser.Scene {
         this.orb.magicEndAnimation();
         this.orb.switchCouldAnimation(true);
         this.orb.wisdomAppearAnimation();
+        this.orb.cloudTile2_1.setAlpha(0);
+        this.orb.cloudTile2_2.setAlpha(0);
         this.sound.play("orb-rub-magic", {
           volume: 0.2,
           detune: 500,
         });
         this.orbInputEnabled = false;
         this.orb.rubParticles.updateConfig({ quantity: 0 });
-        console.debug("asdf");
+        this.orbGlow.setScale(1.3);
+        this.wizardController.setupAnimation(
+          this.selectedDialogue,
+          "postWisdom",
+        );
       }
     }
   }
 
-  private enableRubParticlesIfPointerDown() {
+  private setPointerRubParticles() {
     if (this.input.activePointer.isDown) {
       this.orb.rubParticles.updateConfig({ quantity: 1 });
+      this.orb.rubParticles.updateConfig({ alpha: { start: 0.05, end: 0 } });
     } else {
-      this.orb.rubParticles.updateConfig({ quantity: 0 });
+      this.orb.rubParticles.updateConfig({ alpha: { start: 0.01, end: 0 } });
+      this.orb.rubParticles.updateConfig({ quantity: 1 });
     }
   }
 
   orbInputCycle() {
     this.orbRubCycle--;
-    this.orbRubAmount = 4000;
+    this.orbRubAmount = 6000;
+    this.orb.cloudTile2_1.setAlpha(0);
+    this.orb.cloudTile2_2.setAlpha(0);
     this.orb.magicPulseAnimation(
       this.orbRubCycleSettings[this.orbRubCycle].shaderScale,
       this.orbRubCycleSettings[this.orbRubCycle].blindScale,
@@ -273,6 +307,12 @@ export default class WizardScene extends Phaser.Scene {
       volume: 0.2,
       detune: this.orbRubCycleSettings[this.orbRubCycle].soundDetune,
     });
+    this.wizardController.animationState.setAnimation(
+      0,
+      "orb-magic-cycle",
+      false,
+    );
+    this.orbGlow.setScale(this.orbRubCycleSettings[this.orbRubCycle].glowScale);
     // this.debugScene.DisplayVar("cycle", this.orbRubCycle);
   }
 

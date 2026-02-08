@@ -86,7 +86,7 @@ export function selectDialogue(
   //   1,
   //   dialoguesPerGroup.get(reactionGroup)! - 1
   // );
-  reactionDialougeIndexToLoad = 4;
+  reactionDialougeIndexToLoad = 1;
   selectedDialogue.set(reactionGroup, reactionDialougeIndexToLoad);
 
   // DEBUG - this is simpler than my previous "load all" idea since I dont have a proper debug menu yet
