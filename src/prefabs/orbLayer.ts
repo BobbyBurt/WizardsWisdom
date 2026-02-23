@@ -170,6 +170,23 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
     wisdomText.align = 1;
     this.add(wisdomText);
 
+    // textGlowFx
+    const textGlowFx = wisdomText.postFX!.addGlow(
+      16777215,
+      4,
+      0,
+      false,
+      0.1,
+      10,
+    );
+
+    // textDisplacementFx
+    const textDisplacementFx = wisdomText.postFX!.addDisplacement(
+      "displacement-test",
+      0.005,
+      0.005,
+    );
+
     // glassOverlap
     const glassOverlap = scene.add.image(960, 891, "orb-overlap");
     glassOverlap.alpha = 0.8;
@@ -292,6 +309,8 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
     this.circleMask = circleMask;
     this.imageDisplacementFx = imageDisplacementFx;
     this.wisdomImage = wisdomImage;
+    this.textGlowFx = textGlowFx;
+    this.textDisplacementFx = textDisplacementFx;
     this.wisdomText = wisdomText;
     this.glassOverlap = glassOverlap;
     this.wisdomMask = wisdomMask;
@@ -315,6 +334,8 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
   private circleMask: Phaser.GameObjects.Ellipse;
   private imageDisplacementFx: Phaser.FX.Displacement;
   private wisdomImage: Phaser.GameObjects.Image;
+  private textGlowFx: Phaser.FX.Glow;
+  private textDisplacementFx: Phaser.FX.Displacement;
   private wisdomText: Phaser.GameObjects.BitmapText;
   private glassOverlap: Phaser.GameObjects.Image;
   private wisdomMask: Phaser.GameObjects.Image;
@@ -419,7 +440,7 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
     this.wisdomText.setAlpha(0);
     this.wisdomImage.setScale(4);
     this.wisdomImage.setAlpha(0);
-    // this.textGlowFx.outerStrength = 0;
+    this.textGlowFx.outerStrength = 0;
     let scaleTween = this.scene.tweens.add({
       targets: [this.wisdomText, this.wisdomImage],
       scale: 1,
@@ -433,20 +454,19 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
       duration: 3000,
     });
     let displacementTween = this.scene.tweens.add({
-      //   targets: [this.textDisplacementFx, this.imageDisplacementFx],
-      targets: [this.imageDisplacementFx],
+      targets: [this.textDisplacementFx, this.imageDisplacementFx],
       x: 0,
       y: 0,
       ease: Phaser.Math.Easing.Cubic.Out,
       duration: 3000,
     });
-    // let glowTween = this.scene.tweens.add({
-    //   targets: this.textGlowFx,
-    //   outerStrength: 1,
-    //   ease: Phaser.Math.Easing.Cubic.Out,
-    //   duration: 3000,
-    //   delay: 1000,
-    // });
+    let glowTween = this.scene.tweens.add({
+      targets: this.textGlowFx,
+      outerStrength: 1,
+      ease: Phaser.Math.Easing.Cubic.Out,
+      duration: 3000,
+      delay: 1000,
+    });
     // this.wisdomTextScaleTween.play();
     // this.displacementFXTween.play();
   }

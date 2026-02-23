@@ -275,7 +275,24 @@
                     "text": "Lorem ipsum dolor \nsit amet, consectetur \nadipiscing elit. Nunc \nconsectetur nec dui \neu imperdiet. ",
                     "font": "quintessential",
                     "align": 1,
-                    "fontSize": 64
+                    "fontSize": 64,
+                    "list": [
+                        {
+                            "type": "Glow",
+                            "id": "b877ed10-01fe-4a91-80bd-4e02baa1474f",
+                            "label": "textGlowFx",
+                            "scope": "CLASS"
+                        },
+                        {
+                            "type": "Displacement",
+                            "id": "a79a476b-8dce-4cef-9c47-281d7ad862bc",
+                            "label": "textDisplacementFx",
+                            "scope": "CLASS",
+                            "texture": {
+                                "key": "displacement-test"
+                            }
+                        }
+                    ]
                 },
                 {
                     "type": "Image",

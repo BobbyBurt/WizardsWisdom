@@ -153,16 +153,14 @@ export default class WizardScene extends Phaser.Scene {
   private debugWisdomIndex = 0;
 
   preload() {
-    // let testDate = new Date(2025, 11, 17, 2, 30);
-    // let wisdom = getWisdomForDate(testDate);
     this.wisdom = getWisdomForDate();
 
     if (this.wisdom.type == "image") {
       this.load.image("wisdom-image", this.wisdom.content);
     }
 
-    // this.selectedDialogue = selectDialogue(this, "negative");
     this.selectedDialogue = selectDialogue(this, this.wisdom.reaction);
+    // this.selectedDialogue = selectDialogue(this, "positive");
     loadDialogue(this, this.selectedDialogue);
 
     // shadertest
@@ -187,11 +185,12 @@ export default class WizardScene extends Phaser.Scene {
     );
     this.wizardController.setupAnimation(this.selectedDialogue, "preWisdom");
 
-    this.orb.wisdomAppearAnimation();
+    // this.orb.wisdomAppearAnimation();
 
     if (!__DEV__) this.sound.play("music", { volume: 0.3 });
 
     this.input.keyboard!.on("keyup", () => {
+      return;
       this.wisdom = getWisdomByIndex(this.debugWisdomIndex);
       this.debugWisdomIndex++;
       this.orb.setWisdom(this.wisdom);
@@ -275,6 +274,11 @@ export default class WizardScene extends Phaser.Scene {
         this.orbInputEnabled = false;
         this.orb.rubParticles.updateConfig({ quantity: 0 });
         this.orbGlow.setScale(1.3);
+        this.wizardController.animationState.setAnimation(
+          0,
+          "orb-magic-end",
+          false,
+        );
         this.wizardController.setupAnimation(
           this.selectedDialogue,
           "postWisdom",

@@ -17,23 +17,32 @@ export type wisdom = {
 //
 /**  */
 export let wisdoms: Array<wisdom> = [
-  { content: "Always recycle!", reaction: "positive" },
+  { content: "Always\nrecycle!", reaction: "positive" },
   { content: "Believe\nin yourself!", reaction: "positive" },
   { content: "Don't play\non the road!", reaction: "positive" },
   { content: "Piracy is not\na victimless crime!", reaction: "positive" },
-  { content: "Live, laugh, love", reaction: "negative" },
-  { content: "Don't do drugs!", reaction: "positive" },
+  { content: "Live,\nlaugh, love", reaction: "negative" },
+  { content: "Don't do\ndrugs!", reaction: "positive" },
   { content: "Smoking's\nfor suckers!", reaction: "positive" },
   { content: "Work hard,\nplay hard", reaction: "positive" },
   { content: "Brush and floss\nevery night", reaction: "positive" },
   { content: "Stretch\nevery morning", reaction: "positive" },
   {
     content:
+      "\n\n\nThe Krabby Patty\nSecret Formula is\nsea cheese, sea lettuce, sea tomatoes,\npickles, ketchup, mustard,\nmayonnaise, sea onion, one cup",
+    reaction: "confused",
+  },
+  {
+    content:
       "Lorem ipsum dolor\nsit amet, consectetur\nadipiscing elit. Nunc\nconsectetur nec dui\neu imperdiet",
     reaction: "negative",
   },
   {
-    content: "Watch Reboot",
+    content: "Invest in Nvidia\n5 years ago",
+    reaction: "negative",
+  },
+  {
+    content: "Watch\nReboot",
     reaction: "confused",
   },
   {
@@ -45,11 +54,11 @@ export let wisdoms: Array<wisdom> = [
     reaction: "confused",
   },
   {
-    content: `Esther is 5'5"`,
+    content: `Esther\nis 5'5"`,
     reaction: "confused",
   },
   {
-    content: "Share with others",
+    content: "Share\nwith others",
     reaction: "positive",
   },
   {
@@ -76,7 +85,7 @@ export let wisdoms: Array<wisdom> = [
   },
   {
     content:
-      "The water\nswirls in the \nway in the Southern\n hemisphere; it's Coriolis\neffect",
+      "The water\nswirls in the \nway in the Southern\nhemisphere; it's\nCoriolis effect",
     reaction: "confused",
   },
   {
@@ -89,7 +98,7 @@ export let wisdoms: Array<wisdom> = [
   },
   {
     content:
-      "A wizard is\nnever early, he\narrives precisely five\nminutes late",
+      "A wizard is\nnever early, he\narrives precisely\nfive minutes late",
     reaction: "negative",
   },
   {
@@ -140,7 +149,7 @@ export let wisdoms: Array<wisdom> = [
   },
   {
     content:
-      "A lack \nplanning on your\npart doesn't constitute\nan emergency on\nmy part",
+      "A lack\nof planning on your\npart doesn't constitute\nan emergency on\nmy part",
     reaction: "positive",
   },
   {
@@ -148,7 +157,7 @@ export let wisdoms: Array<wisdom> = [
     reaction: "positive",
   },
   {
-    content: "Don't let\nyour dreams be\ndreams, just do it",
+    content: "Don't let\nyour dreams be\ndreams,\njust do it",
     reaction: "positive",
   },
   {
@@ -160,7 +169,7 @@ export let wisdoms: Array<wisdom> = [
     reaction: "negative",
   },
   {
-    content: "Stretch daily",
+    content: "Stretch\ndaily",
     reaction: "positive",
   },
   {
@@ -168,7 +177,7 @@ export let wisdoms: Array<wisdom> = [
     reaction: "positive",
   },
   {
-    content: "You can do a\nlot more for \nthan you can do\nfor yourself",
+    content: "You can do a\nlot more for others\nthan you can do\nfor yourself",
     reaction: "positive",
   },
   {
@@ -203,253 +212,253 @@ export let wisdoms: Array<wisdom> = [
     reaction: "positive",
   },
   {
-    content: "One person's dumb\njoke could be another person's disaster!",
+    content: "One person's dumb\njoke could be another\nperson's disaster!",
     reaction: "positive",
   },
   {
-    content: "All you gotta do is ask your mom",
+    content: "All you gotta do\nis ask your mom",
     reaction: "confused",
   },
   {
-    content: "People who are lonely can be old at 33",
+    content: "People who are lonely\ncan be old at 33",
     reaction: "positive",
   },
   {
     content:
-      "You can't call home if you don't know your area code and phone number by heart",
+      "You can't call home\nif you don't know your\narea code and phone\nnumber by heart",
     reaction: "confused",
   },
   {
-    content: "Ctrl + shift + V pastes without formatting",
+    content: "Ctrl + shift + V\npastes without\nformatting",
     reaction: "confused",
   },
   {
     content:
-      "always tell your parents where you're going and when you're going to be back",
+      "Always tell your\nparents where you're\ngoing and when\nyou're going to\nbe back",
     reaction: "positive",
   },
   {
-    content: "Be aware of your surroundings",
+    content: "Be aware\nof your\nsurroundings",
     reaction: "positive",
   },
   {
-    content: "Never trust a fart",
+    content: "Never trust\na fart",
     reaction: "positive",
   },
   {
-    content: "Books can take you to far-away lands and exotic places",
+    content: "Books can take you\nto far-away lands\nand exotic places",
     reaction: "positive",
   },
   {
-    content: "You need 'Premium Fuel' to run your best",
+    content: "You need\n'Premium Fuel'\nto run your best",
     reaction: "positive",
   },
   {
-    content: "Stupid remember, smart write it down",
-    reaction: "positive",
-  },
-  {
-    content:
-      "Old people can be very wise, and they often know the right direction to take in life",
+    content: "Stupid remember,\nsmart write it down",
     reaction: "positive",
   },
   {
     content:
-      "Don't ever threaten to leave, unless you already have your bags packed",
-    reaction: "positive",
-  },
-  {
-    content: "It's not always about what you say, but how you say it",
-    reaction: "positive",
-  },
-  {
-    content: "Ships are safest in harbor, but that isn't why we build ships",
+      "Old people can be\nvery wise, and they\noften know the right\ndirection to take\nin life",
     reaction: "positive",
   },
   {
     content:
-      "Say thank you when you have to say thank you, say sorry when you have to say sorry",
+      "Don't ever threaten\nto leave, unless you\nalready have your\nbags packed",
+    reaction: "positive",
+  },
+  {
+    content: "It's not always\nabout what you\nsay, but\nhow you say it",
+    reaction: "positive",
+  },
+  {
+    content: "Ships are safest\nin harbor, but that\nisn't why we build\nships",
     reaction: "positive",
   },
   {
     content:
-      "There is no such thing as right person wrong time. The right people are timeless",
-    reaction: "positive",
-  },
-  {
-    content: "Make work part of your life, not the other way around",
+      "Say thank you\nwhen you have to say\nthank you,\nsay sorry when you\nhave to say sorry",
     reaction: "positive",
   },
   {
     content:
-      "Graffiti is art. However, graffiti as an act of vandalism is a crime",
+      "There is no such\nthing as right person\nwrong time.\nThe right people\nare timeless",
+    reaction: "positive",
+  },
+  {
+    content: "Make work part of\nyour life, not the\nother way around",
+    reaction: "positive",
+  },
+  {
+    content:
+      "Graffiti is art.\nHowever, graffiti as an\nact of vandalism\nis a crime",
     reaction: "confused",
   },
   {
-    content: "Graffiti would be hella boring if it was legal",
+    content: "Graffiti would be\nhella boring if\nit was legal",
     reaction: "negative",
   },
   {
-    content: "Brothers don't keep score",
+    content: "Brothers don't\nkeep score",
     reaction: "confused",
   },
   {
-    content: "Nobody beats Kurt Wylde",
+    content: "Nobody beats\nKurt Wylde",
     reaction: "confused",
   },
   {
-    content: "One could be a genius and still be insane",
+    content: "One could be\na genius\nand still be insane",
     reaction: "confused",
   },
   {
     content:
-      "This is the greatest danger, to see only what you want to see and not what is true",
+      "This is the greatest\ndanger, to see only\nwhat you want to see\nand not what is true",
     reaction: "positive",
   },
   {
     content:
-      "The right man in the wrong place can make all the difference in the world",
+      "The right man in the\nwrong place can make\nall the difference\nin the world",
     reaction: "confused",
   },
   {
-    content: "You will die in 12 seconds",
+    content: "You will die\nin 12 seconds",
     reaction: "negative",
   },
   {
-    content: "Winning lottery numbers are 04 12 13 18 21 33 40 + 49",
+    content: "Winning lottery\nnumbers are\n04 12 13 18\n21 33 40 + 49",
     reaction: "negative",
   },
   {
-    content: "Change your profile picture to clippy",
+    content: "Change your profile\npicture to clippy",
     reaction: "confused",
   },
   {
-    content: "Turn off your device right now",
+    content: "Turn off your\ndevice right now",
     reaction: "confused",
   },
   {
-    content: "Order white mocha at Starbucks. It's good",
+    content: "Order white mocha\nat Starbucks.\nIt's good",
     reaction: "confused",
   },
   {
-    content: "I need scissors! 61",
+    content: "I need\nscissors! 61",
     reaction: "confused",
   },
   {
     content:
-      "The most important thing in your life... the single wisdom that'll save you someday... is that when offered candy from strangers, always say no",
+      "\n\nThe most important\nthing in your life... the\nsingle wisdom that'll\nsave you someday...\nwhen offered candy from\nstrangers, always say no",
     reaction: "negative",
   },
   {
-    content: "An Anemone or Clematis plant's juice can cause a rash.",
+    content: "An Anemone or\nClematis plant's juice\ncan cause a rash.",
     reaction: "positive",
   },
   {
-    content: "Visit the Strong Museum of Play in Rochester, NY",
+    content: "Visit the Strong\nMuseum of Play in\nRochester, NY",
     reaction: "confused",
   },
   {
     content:
-      "Nought's had, all's spent, Where our desire is got without content",
+      "Nought's had,\nall's spent,\nWhere our desire is got\nwithout content",
     reaction: "confused",
   },
   {
-    content: "Progress, not perfection",
+    content: "Progress,\nnot perfection",
     reaction: "positive",
   },
   {
-    content: "Done is better than perfect",
+    content: "Done is better\nthan perfect",
     reaction: "positive",
   },
   {
-    content: "Take your time always",
+    content: "Take your time\nalways",
     reaction: "positive",
   },
   {
-    content: "You miss 100% of the shots you don't take",
+    content: "You miss 100%\nof the shots\nyou don't take",
     reaction: "positive",
   },
   {
-    content: "Wholeness quiets infinite phenomena",
+    content: "Wholeness quiets\ninfinite phenomena",
     reaction: "confused",
   },
   {
-    content: "Hidden meaning transforms unparalleled abstract beauty",
+    content: "Hidden meaning\ntransforms\nunparalleled\nabstract beauty",
     reaction: "confused",
   },
   {
-    content: "Good health imparts reality to subtle creativity",
+    content: "Good health imparts\nreality to subtle\ncreativity",
     reaction: "confused",
   },
   {
-    content: "The future explains irrational facts",
+    content: "The future explains\nirrational facts",
     reaction: "confused",
   },
   {
-    content: "Imagination is inside exponential space time events",
+    content: "Imagination is\ninside exponential\nspace time\nevents",
     reaction: "confused",
   },
   {
-    content: "Consciousness is the growth of coherence, and of us",
+    content: "Consciousness is the\ngrowth of coherence,\nand of us",
     reaction: "confused",
   },
   {
-    content: "Today, science tells us that the essence of nature is joy",
+    content: "Today, science tells\nus that the essence of\nnature is joy",
     reaction: "confused",
   },
   {
-    content: "Your teacher can open the door, but you must enter it yourself",
+    content: "Your teacher can open\nthe door, but you must\nenter it yourself",
     reaction: "positive",
   },
   {
-    content: "The creative adult is the child who survived",
+    content: "The creative adult\nis the child who\nsurvived",
     reaction: "positive",
   },
   {
     content:
-      "There are no stupid questions, but there is always at least one exception",
+      "There are no stupid\nquestions, but there is\nalways at least one\nexception",
     reaction: "positive",
   },
   {
     content:
-      "A river cuts through a rock, not because of its power but its persistence",
+      "A river cuts through\na rock, not \nof its power\nbut its persistence",
     reaction: "positive",
   },
   {
     content:
-      "All endings are also beginnings. We just don't know it at the time",
+      "All endings are also\nbeginnings. We just\ndon't know it\nat the time",
     reaction: "positive",
   },
   {
-    content: "Art and love are the same thing",
+    content: "Art and love are\nthe same thing",
     reaction: "positive",
   },
   {
-    content: "A wet person does not fear the rain",
+    content: "A wet person does\nnot fear the rain",
     reaction: "positive",
   },
   {
-    content: "Forgiveness means letting go of the hope for a better past",
-    reaction: "positive",
-  },
-  {
-    content:
-      "Only those who will risk going too far can possibly find out how far one can go",
+    content: "Forgiveness means\nletting go of the\nhope for a better\npast",
     reaction: "positive",
   },
   {
     content:
-      "I wonder how many people I've looked at all my life and never seen",
+      "Only those who will\nrisk going too far\ncan possibly find\nout how far one\ncan go",
     reaction: "positive",
   },
   {
     content:
-      "Moisture is the essence of wetness. And wetness is the essence of beauty",
+      "I wonder how many\npeople I've looked\nat all my life\nand never seen",
+    reaction: "positive",
+  },
+  {
+    content:
+      "Moisture is the essence\nof wetness. And wetness\nis the essence of beauty",
     reaction: "negative",
   },
   {
     content:
-      "Man who run in front of car get tired. Man who run behind car get exhausted",
+      "Man who run in front\nof car get tired.\nMan who run behind\ncar get exhausted",
     reaction: "negative",
   },
   {
@@ -476,6 +485,10 @@ export function getWisdomForDate(date?: Date): wisdom {
     date.getMonth().toString(),
     date.getFullYear().toString(),
   ]);
+
+  // DEBUG
+  // Phaser.Math.RND.sow(["asasdfdf"]);
+
   let wisdomIndex = Phaser.Math.RND.between(0, wisdoms.length - 1);
   // first rnd usage returns same thing after setting the same seed
   // let wisdomIndex = 9;

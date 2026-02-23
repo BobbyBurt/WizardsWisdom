@@ -40,6 +40,7 @@ export default class WizardController {
       else if (dialogueToPlay.has("negative")) dialogueOrder.push("negative");
       else if (dialogueToPlay.has("confused")) dialogueOrder.push("confused");
       dialogueOrder.push("bye");
+      dialogueOrder.push("idle");
     }
 
     dialogueOrder.forEach((value) => {
@@ -47,6 +48,7 @@ export default class WizardController {
         this.animationState.addAnimation(
           0,
           `${value}-${dialogueToPlay.get(value)}`,
+          value === "idle",
         );
       }
     });

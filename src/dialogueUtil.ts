@@ -5,6 +5,7 @@ export const dialogueGroup = [
   "welcome-returning",
   "moan",
   "bye",
+  "idle",
 ] as const;
 
 export const reactionDialogueGroup = [
@@ -29,13 +30,14 @@ export let dialoguesPerGroup = new Map<
   dialogueGroup | reactionDialogueGroup,
   number
 >([
-  ["bye", 5],
-  ["confused", 8],
-  ["positive", 19],
-  ["negative", 18],
-  ["moan", 9],
-  ["welcome", 7],
+  ["bye", 2],
+  ["confused", 1],
+  ["positive", 2],
+  ["negative", 1],
+  ["moan", 1],
+  ["welcome", 2],
   ["welcome-returning", 3],
+  ["idle", 1],
 ]);
 
 /**
@@ -69,24 +71,24 @@ export function selectDialogue(
       // skip welcome or welcome-returning based on if returning user or not
 
       let dialougeIndexToLoad;
-      // dialougeIndexToLoad = Phaser.Math.RND.between(
-      //   1,
-      //   dialoguesPerGroup.get(value)! - 1
-      // );
+      dialougeIndexToLoad = Phaser.Math.RND.between(
+        1,
+        dialoguesPerGroup.get(value)!,
+      );
 
       // DEBUG
-      dialougeIndexToLoad = 1;
+      // dialougeIndexToLoad = 2;
 
       selectedDialogue.set(value, dialougeIndexToLoad);
     }
   });
 
   let reactionDialougeIndexToLoad;
-  // reactionDialougeIndexToLoad = Phaser.Math.RND.between(
-  //   1,
-  //   dialoguesPerGroup.get(reactionGroup)! - 1
-  // );
-  reactionDialougeIndexToLoad = 1;
+  reactionDialougeIndexToLoad = Phaser.Math.RND.between(
+    1,
+    dialoguesPerGroup.get(reactionGroup)!,
+  );
+  // reactionDialougeIndexToLoad = 2;
   selectedDialogue.set(reactionGroup, reactionDialougeIndexToLoad);
 
   // DEBUG - this is simpler than my previous "load all" idea since I dont have a proper debug menu yet
@@ -103,7 +105,7 @@ export function loadDialogue(
     if (value != undefined) {
       scene.load.audio(
         `${key}-${value}`,
-        `assets/dialogue/${key}/${key}-${value}.wav`,
+        `assets/dialogue/${key}/${key}-${value}.mp3`,
       );
     }
   });
