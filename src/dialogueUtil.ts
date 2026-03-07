@@ -76,6 +76,10 @@ export function selectDialogue(
         dialoguesPerGroup.get(value)!,
       );
 
+      if (value === "bye" && reactionGroup === "negative")
+        dialougeIndexToLoad = 2;
+      // bye-1 is odd after negative-1
+
       // DEBUG
       // dialougeIndexToLoad = 2;
 
@@ -109,4 +113,13 @@ export function loadDialogue(
       );
     }
   });
+}
+
+export function loadFarting(scene: Phaser.Scene) {
+  // load moan dialogue
+  for (let i = 1; i < 10; i++) {
+    scene.load.audio(`moan-${i}`, `assets/dialogue/moan/moan-${i}.mp3`);
+  }
+
+  // load other sfx
 }

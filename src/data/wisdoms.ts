@@ -493,6 +493,13 @@ export function getWisdomForDate(date?: Date): wisdom {
   // first rnd usage returns same thing after setting the same seed
   // let wisdomIndex = 9;
 
+  let params = new URLSearchParams(document.location.search);
+  let projectVars = params.get("projectVars");
+  if (projectVars !== "nothing" && projectVars !== null) {
+    // return { content: projectVars!, reaction: }
+    // TODO
+  }
+
   return wisdoms[wisdomIndex];
 }
 

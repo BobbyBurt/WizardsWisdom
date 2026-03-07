@@ -61,12 +61,13 @@ class Boot extends Phaser.Scene {
   preload() {
     this.load.pack("pack", "assets/preload-asset-pack.json");
     this.load.on(Phaser.Loader.Events.COMPLETE, () =>
-      this.scene.start("preload")
+      this.scene.start("preload"),
     );
   }
 
   create() {
     // NG.io event callbacks
+    return;
     this.game.events.once(Phaser.Core.Events.STEP, () => {
       this.ngWrap = new newgroundsIOWrapper();
       this.ngWrap.start();

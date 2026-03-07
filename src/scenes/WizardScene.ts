@@ -16,7 +16,12 @@ import { SpineGameObject } from "@esotericsoftware/spine-phaser";
 import orbLayer from "../prefabs/orbLayer";
 /* START-USER-IMPORTS */
 import WizardController from "~/WizardController";
-import { loadDialogue, selectDialogue, selectedDialogue } from "~/dialogueUtil";
+import {
+  loadDialogue,
+  loadFarting,
+  selectDialogue,
+  selectedDialogue,
+} from "~/dialogueUtil";
 
 /* END-USER-IMPORTS */
 
@@ -114,7 +119,7 @@ export default class WizardScene extends Phaser.Scene {
 
   private shader: Phaser.GameObjects.Shader;
 
-  private orbRubAmount = 6000;
+  private orbRubAmount = 5000;
   private orbRubCycle = 4;
   private orbRubCycleSettings = [
     {
@@ -152,7 +157,14 @@ export default class WizardScene extends Phaser.Scene {
 
   private debugWisdomIndex = 0;
 
+  private farting = false;
+
   preload() {
+    if (this.gonnaDoFarting()) {
+      this.farting = true;
+      loadFarting(this);
+    }
+
     this.wisdom = getWisdomForDate();
 
     if (this.wisdom.type == "image") {
@@ -175,6 +187,10 @@ export default class WizardScene extends Phaser.Scene {
 
     fullscreenHandler.adjustCamera(this.cameras.main);
 
+    this.orb.setOtherOrbText(true);
+
+    this.cameras.main.setBackgroundColor("0x222222");
+
     this.debugScene = this.scene.get("debug") as DebugScene;
 
     this.fullscreenButtonSetup();
@@ -183,7 +199,12 @@ export default class WizardScene extends Phaser.Scene {
       this,
       this.wizardSpineObject.animationState,
     );
-    this.wizardController.setupAnimation(this.selectedDialogue, "preWisdom");
+
+    if (this.farting) {
+      this.wizardController.soundChain("moan", 9);
+    } else {
+      this.wizardController.setupAnimation(this.selectedDialogue, "preWisdom");
+    }
 
     // this.orb.wisdomAppearAnimation();
 
@@ -207,6 +228,17 @@ export default class WizardScene extends Phaser.Scene {
     this.debugScene.DisplayVar("pointerPos", this.pointerPosition);
 
     this.updateRubParticlePosition();
+  }
+
+  gonnaDoFarting(): boolean {
+    // debug: force
+    return true;
+
+    if (Phaser.Math.RND.integerInRange(0, 100) === 1) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   updateRubParticlePosition() {
@@ -290,16 +322,16 @@ export default class WizardScene extends Phaser.Scene {
   private setPointerRubParticles() {
     if (this.input.activePointer.isDown) {
       this.orb.rubParticles.updateConfig({ quantity: 1 });
-      this.orb.rubParticles.updateConfig({ alpha: { start: 0.05, end: 0 } });
+      this.orb.rubParticles.updateConfig({ alpha: { start: 0.06, end: 0 } });
     } else {
-      this.orb.rubParticles.updateConfig({ alpha: { start: 0.01, end: 0 } });
+      this.orb.rubParticles.updateConfig({ alpha: { start: 0.02, end: 0 } });
       this.orb.rubParticles.updateConfig({ quantity: 1 });
     }
   }
 
   orbInputCycle() {
     this.orbRubCycle--;
-    this.orbRubAmount = 6000;
+    this.orbRubAmount = 5000;
     this.orb.cloudTile2_1.setAlpha(0);
     this.orb.cloudTile2_2.setAlpha(0);
     this.orb.magicPulseAnimation(

@@ -70,6 +70,24 @@ export default class WizardController {
     });
   }
 
+  /**
+   * after random delay, plays random sound with key & index up to sounds param. Calls itself upon sound completion
+   * @param key
+   * @param sounds
+   */
+  public soundChain(key: string, sounds: number) {
+    this.scene.time.delayedCall(Phaser.Math.RND.between(0, 3000), () => {
+      let fartSound = this.scene.sound.add(
+        `moan-${Phaser.Math.RND.between(1, sounds)}`,
+      );
+      console.debug(fartSound.key);
+      fartSound.on("complete", () => {
+        this.soundChain(key, sounds);
+      });
+      fartSound.play();
+    });
+  }
+
   // private audioCallbacktest() {
   //   let reacion = this.scene.sound.add("reaction-positive-1");
   //   reacion.on("complete", () => {

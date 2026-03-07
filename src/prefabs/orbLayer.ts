@@ -164,6 +164,11 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
       "Lorem ipsum dolor \nsit amet, consectetur \nadipiscing elit. Nunc \nconsectetur nec dui \neu imperdiet. ",
     );
     wisdomText.setOrigin(0.5, 0.5);
+    wisdomText.alpha = 0;
+    wisdomText.alphaTopLeft = 0;
+    wisdomText.alphaTopRight = 0;
+    wisdomText.alphaBottomLeft = 0;
+    wisdomText.alphaBottomRight = 0;
     wisdomText.text =
       "Lorem ipsum dolor \nsit amet, consectetur \nadipiscing elit. Nunc \nconsectetur nec dui \neu imperdiet. ";
     wisdomText.fontSize = 64;
@@ -186,6 +191,24 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
       0.005,
       0.005,
     );
+
+    // otherText
+    const otherText = scene.add.bitmapText(
+      960,
+      872,
+      "quintessential",
+      "Rub me!asdfasdf",
+    );
+    otherText.setOrigin(0.5, 0.5);
+    otherText.alpha = 0;
+    otherText.alphaTopLeft = 0;
+    otherText.alphaTopRight = 0;
+    otherText.alphaBottomLeft = 0;
+    otherText.alphaBottomRight = 0;
+    otherText.text = "Rub me!asdfasdf";
+    otherText.fontSize = 64;
+    otherText.align = 1;
+    this.add(otherText);
 
     // glassOverlap
     const glassOverlap = scene.add.image(960, 891, "orb-overlap");
@@ -312,6 +335,7 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
     this.textGlowFx = textGlowFx;
     this.textDisplacementFx = textDisplacementFx;
     this.wisdomText = wisdomText;
+    this.otherText = otherText;
     this.glassOverlap = glassOverlap;
     this.wisdomMask = wisdomMask;
     this.orbInnerMask_1 = orbInnerMask_1;
@@ -337,6 +361,7 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
   private textGlowFx: Phaser.FX.Glow;
   private textDisplacementFx: Phaser.FX.Displacement;
   private wisdomText: Phaser.GameObjects.BitmapText;
+  private otherText: Phaser.GameObjects.BitmapText;
   private glassOverlap: Phaser.GameObjects.Image;
   private wisdomMask: Phaser.GameObjects.Image;
   private orbInnerMask_1: Phaser.GameObjects.Image;
@@ -401,7 +426,7 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
       if (wisdom.content.length < 30) this.wisdomText.fontSize = 84;
       else if (wisdom.content.length < 60) this.wisdomText.fontSize = 68;
       else this.wisdomText.fontSize = 58;
-      console.debug(wisdom.content.length);
+      // console.debug(wisdom.content.length);
     }
 
     this.wisdomImage.setVisible(wisdom.type == "image");
@@ -497,6 +522,21 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
     });
 
     this.shaderCover.setAlpha(shaderCoverAlpha);
+  }
+
+  public setOtherOrbText(appear: boolean) {
+    let textTween = this.scene.tweens.add({
+      targets: this.otherText,
+      alpha: appear ? 1 : 0,
+      duration: 1000,
+      //   ease: Phaser.Math.Easing.Quadratic.In
+    });
+    if (appear) {
+      let date = new Date();
+      this.otherText.setText(
+        `${date.getDate().toString()}\n${date.getMonth().toString()}`,
+      );
+    }
   }
 
   magicEndAnimation() {

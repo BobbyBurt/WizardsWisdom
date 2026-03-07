@@ -272,6 +272,11 @@
                     "y": 872,
                     "originX": 0.5,
                     "originY": 0.5,
+                    "alpha": 0,
+                    "alphaTopLeft": 0,
+                    "alphaTopRight": 0,
+                    "alphaBottomLeft": 0,
+                    "alphaBottomRight": 0,
                     "text": "Lorem ipsum dolor \nsit amet, consectetur \nadipiscing elit. Nunc \nconsectetur nec dui \neu imperdiet. ",
                     "font": "quintessential",
                     "align": 1,
@@ -293,6 +298,25 @@
                             }
                         }
                     ]
+                },
+                {
+                    "type": "BitmapText",
+                    "id": "7a68e01d-0a66-4e71-92f5-26fc9fb8a177",
+                    "label": "otherText",
+                    "scope": "CLASS",
+                    "x": 960,
+                    "y": 872,
+                    "originX": 0.5,
+                    "originY": 0.5,
+                    "alpha": 0,
+                    "alphaTopLeft": 0,
+                    "alphaTopRight": 0,
+                    "alphaBottomLeft": 0,
+                    "alphaBottomRight": 0,
+                    "text": "Rub me!asdfasdf",
+                    "font": "quintessential",
+                    "align": 1,
+                    "fontSize": 64
                 },
                 {
                     "type": "Image",
