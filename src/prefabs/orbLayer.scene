@@ -216,21 +216,6 @@
                     "height": 492
                 },
                 {
-                    "type": "Ellipse",
-                    "id": "deab0f92-77cf-4065-b893-4a838eed9e28",
-                    "label": "circleMask",
-                    "scope": "CLASS",
-                    "x": 960,
-                    "y": 890,
-                    "scaleX": 3.9851915253699906,
-                    "scaleY": 3.9851915253699906,
-                    "visible": false,
-                    "isFilled": true,
-                    "fillAlpha": 0.3,
-                    "width": 128,
-                    "height": 128
-                },
-                {
                     "type": "Image",
                     "id": "31cac5bc-efd6-4070-b717-5fbc682d9899",
                     "label": "wisdomImage",
@@ -270,34 +255,38 @@
                     "scope": "CLASS",
                     "x": 960,
                     "y": 872,
-                    "originX": 0.5,
-                    "originY": 0.5,
-                    "alpha": 0,
-                    "alphaTopLeft": 0,
-                    "alphaTopRight": 0,
-                    "alphaBottomLeft": 0,
-                    "alphaBottomRight": 0,
-                    "text": "Lorem ipsum dolor \nsit amet, consectetur \nadipiscing elit. Nunc \nconsectetur nec dui \neu imperdiet. ",
                     "font": "quintessential",
-                    "align": 1,
-                    "fontSize": 64,
+                    "fontSize": 320,
                     "list": [
                         {
                             "type": "Glow",
-                            "id": "b877ed10-01fe-4a91-80bd-4e02baa1474f",
+                            "id": "b8713751-32a4-4e72-bbfe-8ea92cd64798",
                             "label": "textGlowFx",
                             "scope": "CLASS"
                         },
                         {
                             "type": "Displacement",
-                            "id": "a79a476b-8dce-4cef-9c47-281d7ad862bc",
+                            "id": "aee9eeff-369b-4f8e-9a40-1175cb6108e9",
                             "label": "textDisplacementFx",
                             "scope": "CLASS",
-                            "texture": {
-                                "key": "displacement-test"
-                            }
+                            "texture": {}
                         }
                     ]
+                },
+                {
+                    "type": "Ellipse",
+                    "id": "deab0f92-77cf-4065-b893-4a838eed9e28",
+                    "label": "circleMask",
+                    "scope": "CLASS",
+                    "x": 960,
+                    "y": 890,
+                    "scaleX": 3.9851915253699906,
+                    "scaleY": 3.9851915253699906,
+                    "visible": false,
+                    "isFilled": true,
+                    "fillAlpha": 0.3,
+                    "width": 128,
+                    "height": 128
                 },
                 {
                     "type": "BitmapText",

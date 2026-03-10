@@ -4,6 +4,7 @@
 
 import tileSpriteScroll from "../components/tileSpriteScroll";
 /* START-USER-IMPORTS */
+import { tweenConfigs } from "~/tweens/tweenConfigs";
 
 import { wisdom } from "~/data/wisdoms";
 /* END-USER-IMPORTS */
@@ -128,15 +129,6 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
     cloudTile2_1.alphaBottomRight = 0;
     this.add(cloudTile2_1);
 
-    // circleMask
-    const circleMask = scene.add.ellipse(960, 890, 128, 128);
-    circleMask.scaleX = 3.9851915253699906;
-    circleMask.scaleY = 3.9851915253699906;
-    circleMask.visible = false;
-    circleMask.isFilled = true;
-    circleMask.fillAlpha = 0.3;
-    this.add(circleMask);
-
     // wisdomImage
     const wisdomImage = scene.add.image(971, 899, "wizard-orb-temp");
     wisdomImage.scaleX = 0.46951698552354193;
@@ -157,22 +149,8 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
     );
 
     // wisdomText
-    const wisdomText = scene.add.bitmapText(
-      960,
-      872,
-      "quintessential",
-      "Lorem ipsum dolor \nsit amet, consectetur \nadipiscing elit. Nunc \nconsectetur nec dui \neu imperdiet. ",
-    );
-    wisdomText.setOrigin(0.5, 0.5);
-    wisdomText.alpha = 0;
-    wisdomText.alphaTopLeft = 0;
-    wisdomText.alphaTopRight = 0;
-    wisdomText.alphaBottomLeft = 0;
-    wisdomText.alphaBottomRight = 0;
-    wisdomText.text =
-      "Lorem ipsum dolor \nsit amet, consectetur \nadipiscing elit. Nunc \nconsectetur nec dui \neu imperdiet. ";
-    wisdomText.fontSize = 64;
-    wisdomText.align = 1;
+    const wisdomText = scene.add.bitmapText(960, 872, "quintessential", "");
+    wisdomText.fontSize = 320;
     this.add(wisdomText);
 
     // textGlowFx
@@ -187,10 +165,19 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
 
     // textDisplacementFx
     const textDisplacementFx = wisdomText.postFX!.addDisplacement(
-      "displacement-test",
+      "__WHITE",
       0.005,
       0.005,
     );
+
+    // circleMask
+    const circleMask = scene.add.ellipse(960, 890, 128, 128);
+    circleMask.scaleX = 3.9851915253699906;
+    circleMask.scaleY = 3.9851915253699906;
+    circleMask.visible = false;
+    circleMask.isFilled = true;
+    circleMask.fillAlpha = 0.3;
+    this.add(circleMask);
 
     // otherText
     const otherText = scene.add.bitmapText(
@@ -329,12 +316,12 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
     this.cloudTile1_1 = cloudTile1_1;
     this.cloudTile2_2 = cloudTile2_2;
     this.cloudTile2_1 = cloudTile2_1;
-    this.circleMask = circleMask;
     this.imageDisplacementFx = imageDisplacementFx;
     this.wisdomImage = wisdomImage;
     this.textGlowFx = textGlowFx;
     this.textDisplacementFx = textDisplacementFx;
     this.wisdomText = wisdomText;
+    this.circleMask = circleMask;
     this.otherText = otherText;
     this.glassOverlap = glassOverlap;
     this.wisdomMask = wisdomMask;
@@ -355,12 +342,12 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
   private cloudTile1_1: Phaser.GameObjects.TileSprite;
   public cloudTile2_2: Phaser.GameObjects.TileSprite;
   public cloudTile2_1: Phaser.GameObjects.TileSprite;
-  private circleMask: Phaser.GameObjects.Ellipse;
   private imageDisplacementFx: Phaser.FX.Displacement;
   private wisdomImage: Phaser.GameObjects.Image;
   private textGlowFx: Phaser.FX.Glow;
   private textDisplacementFx: Phaser.FX.Displacement;
   private wisdomText: Phaser.GameObjects.BitmapText;
+  private circleMask: Phaser.GameObjects.Ellipse;
   private otherText: Phaser.GameObjects.BitmapText;
   private glassOverlap: Phaser.GameObjects.Image;
   private wisdomMask: Phaser.GameObjects.Image;
@@ -384,6 +371,8 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
 
     // in case i left it visible in editor
     this.circleMask.setVisible(false);
+
+    // this.wisdomText.setVisible(false);
   }
 
   private setupMasks() {
@@ -461,36 +450,28 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
   }
 
   public wisdomAppearAnimation() {
+    // LEFTOFF: decoupled tween configs, now brainstorm a tween manager class so tween properties can be class scoped but not clog up scene
+
     this.wisdomText.setScale(4);
     this.wisdomText.setAlpha(0);
     this.wisdomImage.setScale(4);
     this.wisdomImage.setAlpha(0);
-    this.textGlowFx.outerStrength = 0;
+    // this.textGlowFx.outerStrength = 0;
     let scaleTween = this.scene.tweens.add({
+      ...tweenConfigs.wisdom.appear.scale,
       targets: [this.wisdomText, this.wisdomImage],
-      scale: 1,
-      ease: Phaser.Math.Easing.Cubic.Out,
-      duration: 2000,
     });
     let alphaTween = this.scene.tweens.add({
+      ...tweenConfigs.wisdom.appear.alpha,
       targets: [this.wisdomText, this.wisdomImage],
-      alpha: 0.8,
-      ease: Phaser.Math.Easing.Sine.InOut,
-      duration: 3000,
     });
     let displacementTween = this.scene.tweens.add({
+      ...tweenConfigs.wisdom.appear.displacement,
       targets: [this.textDisplacementFx, this.imageDisplacementFx],
-      x: 0,
-      y: 0,
-      ease: Phaser.Math.Easing.Cubic.Out,
-      duration: 3000,
     });
     let glowTween = this.scene.tweens.add({
+      ...tweenConfigs.wisdom.appear.glow,
       targets: this.textGlowFx,
-      outerStrength: 1,
-      ease: Phaser.Math.Easing.Cubic.Out,
-      duration: 3000,
-      delay: 1000,
     });
     // this.wisdomTextScaleTween.play();
     // this.displacementFXTween.play();

@@ -187,8 +187,6 @@ export default class WizardScene extends Phaser.Scene {
 
     fullscreenHandler.adjustCamera(this.cameras.main);
 
-    this.orb.setOtherOrbText(true);
-
     this.cameras.main.setBackgroundColor("0x222222");
 
     this.debugScene = this.scene.get("debug") as DebugScene;
@@ -206,7 +204,13 @@ export default class WizardScene extends Phaser.Scene {
       this.wizardController.setupAnimation(this.selectedDialogue, "preWisdom");
     }
 
-    // this.orb.wisdomAppearAnimation();
+    // this.orb.setOtherOrbText(true);
+    this.orb.wisdomAppearAnimation();
+
+    this.input.keyboard?.on("keydown", () => {
+      console.debug("asdf");
+      this.orb.wisdomAppearAnimation();
+    });
 
     if (!__DEV__) this.sound.play("music", { volume: 0.3 });
 
@@ -232,7 +236,7 @@ export default class WizardScene extends Phaser.Scene {
 
   gonnaDoFarting(): boolean {
     // debug: force
-    return true;
+    return false;
 
     if (Phaser.Math.RND.integerInRange(0, 100) === 1) {
       return true;
