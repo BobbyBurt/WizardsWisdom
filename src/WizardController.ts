@@ -39,7 +39,8 @@ export default class WizardController {
       if (dialogueToPlay.has("positive")) dialogueOrder.push("positive");
       else if (dialogueToPlay.has("negative")) dialogueOrder.push("negative");
       else if (dialogueToPlay.has("confused")) dialogueOrder.push("confused");
-      dialogueOrder.push("bye");
+      // this could be a loop
+dialogueOrder.push("bye");
       dialogueOrder.push("idle");
     }
 
@@ -87,6 +88,7 @@ export default class WizardController {
       fartSound.play();
     });
   }
+// should this be in this class?
 
   // private audioCallbacktest() {
   //   let reacion = this.scene.sound.add("reaction-positive-1");
