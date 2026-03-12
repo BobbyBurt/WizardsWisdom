@@ -10,7 +10,13 @@ export type wisdom = {
 //
 //
 //
+// hey.
 //
+// If you're reading these wisdoms on github instead of through the magic of the orb, be warned!
+//
+// Wisdom like this is so potent, it can only be taken once a day
+//
+// Reading through these back to back like this can can result in overwhelming influx of wisdom which can be fatal!
 //
 //
 //
@@ -461,42 +467,43 @@ export let wisdoms: Array<wisdom> = [
       "Man who run in front\nof car get tired.\nMan who run behind\ncar get exhausted",
     reaction: "negative",
   },
-  {
-    content: "assets/images/image-wisdoms/tv-test-screen.png",
-    reaction: "negative",
-    type: "image",
-  },
+  // {
+  //   content: "assets/images/image-wisdoms/tv-test-screen.png",
+  //   reaction: "negative",
+  //   type: "image",
+  // },
 ];
 
 function getWisdomForDate(date?: Date): wisdom {
+  // I forget why this is here
   if (date == null) {
     date = new Date();
   }
 
+  // DEBUG - disable this for different rnd seed per reload
   Phaser.Math.RND.sow([
     date.getDate().toString(),
     date.getMonth().toString(),
     date.getFullYear().toString(),
   ]);
 
-  // preventing same wisdom appearing twice in a month
-  // choose between multiples of 31 + current day
+  // TEST - wisdom based on date
+  // for (let i = 1; i < 32; i++) {
+  //   let day = i - 1;
+  //   let numberOfOptions = Math.ceil((wisdoms.length - day) / 31);
+  //   let option = Phaser.Math.RND.between(0, numberOfOptions - 1);
+  //   let index = day + option * 31;
+  //   console.debug(day, index, wisdoms[index].content);
+  // }
+
+  // wisdom based on date - preventing same wisdom appearing twice in a month
   let day = date.getDate() - 1;
   let numberOfOptions = Math.ceil((wisdoms.length - day) / 31);
-  // LEFT OFF - tryna understand this first line that chatgpt gave me. Im an idiot
   let option = Phaser.Math.RND.between(0, numberOfOptions - 1);
-  let index = date.getDate() + option * 31;
+  let index = day + option * 31;
 
+  // DEBUG - for pure rnd, not based on date
   // let wisdomIndex = Phaser.Math.RND.between(0, wisdoms.length - 1);
-  // for pure rnd
-  // first rnd usage returns same thing after setting the same seed
-
-  let params = new URLSearchParams(document.location.search);
-  let projectVars = params.get("projectVars");
-  if (projectVars !== "nothing" && projectVars !== null) {
-    // return { content: projectVars!, reaction: }
-    // TODO
-  }
 
   return wisdoms[index];
 }
@@ -512,7 +519,21 @@ function getWisdomForDate(date?: Date): wisdom {
  * @returns
  */
 export function getWisdom(date?: Date): wisdom {
+  let urlWisdom = getWisdomFromURL();
+  if (urlWisdom) {
+    return urlWisdom;
+  }
+
   return getWisdomForDate(date);
+}
+
+function getWisdomFromURL(): wisdom | null {
+  let params = new URLSearchParams(document.location.search);
+  let projectVars = params.get("projectVars");
+  if (projectVars !== "nothing" && projectVars !== null) {
+    // return { content: projectVars!, reaction: }
+    // TODO
+  }
 }
 
 export function getWisdomByIndex(index: number): wisdom {
