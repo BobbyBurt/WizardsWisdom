@@ -1,11 +1,6 @@
 // You can write more code here
 
-import {
-  getWisdomByIndex,
-  getWisdomForDate,
-  wisdom,
-  wisdoms,
-} from "~/data/wisdoms";
+import { getWisdomByIndex, getWisdom, wisdom, wisdoms } from "~/data/wisdoms";
 import DebugScene from "./DebugScene";
 import fullscreenHandler from "~/FullscreenHandler";
 
@@ -165,7 +160,7 @@ export default class WizardScene extends Phaser.Scene {
       loadFarting(this);
     }
 
-    this.wisdom = getWisdomForDate();
+    this.wisdom = getWisdom();
 
     if (this.wisdom.type == "image") {
       this.load.image("wisdom-image", this.wisdom.content);
@@ -207,9 +202,12 @@ export default class WizardScene extends Phaser.Scene {
     // this.orb.setOtherOrbText(true);
     this.orb.wisdomAppearAnimation();
 
-    this.input.keyboard?.on("keydown", () => {
-      console.debug("asdf");
-      this.orb.wisdomAppearAnimation();
+    // DEBUG
+    this.input.keyboard?.on("keydown-N", () => {
+      this.orb.setClouds(false);
+    });
+    this.input.keyboard?.on("keydown-M", () => {
+      this.orb.setClouds(true);
     });
 
     if (!__DEV__) this.sound.play("music", { volume: 0.3 });
@@ -270,7 +268,7 @@ export default class WizardScene extends Phaser.Scene {
    */
   public enableOrbInput() {
     this.orbInputEnabled = true;
-    this.orb.switchCouldAnimation(false);
+    this.orb.setClouds(false);
   }
 
   orbInputCheck() {
@@ -299,7 +297,7 @@ export default class WizardScene extends Phaser.Scene {
         this.orbInputCycle();
       } else {
         this.orb.magicEndAnimation();
-        this.orb.switchCouldAnimation(true);
+        this.orb.setClouds(true);
         this.orb.wisdomAppearAnimation();
         this.orb.cloudTile2_1.setAlpha(0);
         this.orb.cloudTile2_2.setAlpha(0);

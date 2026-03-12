@@ -468,14 +468,7 @@ export let wisdoms: Array<wisdom> = [
   },
 ];
 
-/**
- * Returns wisdom random wisdom using date as rnd seed
- * @param date For testing - if null, today's date will be used
- * @returns
- */
-export function getWisdomForDate(date?: Date): wisdom {
-  // Maybe there are 31 groups of wisdoms, the day of the week determines which todays' is pulled from. The currrent month & year create the seed used in the RND to pick which wisdom from the group. This way users def won't see the same wisdom at least for a month
-
+function getWisdomForDate(date?: Date): wisdom {
   if (date == null) {
     date = new Date();
   }
@@ -486,12 +479,17 @@ export function getWisdomForDate(date?: Date): wisdom {
     date.getFullYear().toString(),
   ]);
 
-  // DEBUG
-  // Phaser.Math.RND.sow(["asasdfdf"]);
+  // preventing same wisdom appearing twice in a month
+  // choose between multiples of 31 + current day
+  let day = date.getDate() - 1;
+  let numberOfOptions = Math.ceil((wisdoms.length - day) / 31);
+  // LEFT OFF - tryna understand this first line that chatgpt gave me. Im an idiot
+  let option = Phaser.Math.RND.between(0, numberOfOptions - 1);
+  let index = date.getDate() + option * 31;
 
-  let wisdomIndex = Phaser.Math.RND.between(0, wisdoms.length - 1);
+  // let wisdomIndex = Phaser.Math.RND.between(0, wisdoms.length - 1);
+  // for pure rnd
   // first rnd usage returns same thing after setting the same seed
-  // let wisdomIndex = 9;
 
   let params = new URLSearchParams(document.location.search);
   let projectVars = params.get("projectVars");
@@ -500,7 +498,21 @@ export function getWisdomForDate(date?: Date): wisdom {
     // TODO
   }
 
-  return wisdoms[wisdomIndex];
+  return wisdoms[index];
+}
+
+/**
+ * Returns wisdom random wisdom using date as rnd seed
+ *
+ * overridden by projectvars wisdom if it's date matches today
+ *
+ * overridden by url wisdom if present
+ *
+ * @param date For testing - if null, today's date will be used
+ * @returns
+ */
+export function getWisdom(date?: Date): wisdom {
+  return getWisdomForDate(date);
 }
 
 export function getWisdomByIndex(index: number): wisdom {

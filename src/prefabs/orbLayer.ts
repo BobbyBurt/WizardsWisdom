@@ -59,11 +59,11 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
     cloudTile1_3.blendMode = Phaser.BlendModes.ADD;
     cloudTile1_3.scaleX = 1.1425012389526452;
     cloudTile1_3.scaleY = 1.1425012389526452;
-    cloudTile1_3.alpha = 0.4;
-    cloudTile1_3.alphaTopLeft = 0.4;
-    cloudTile1_3.alphaTopRight = 0.4;
-    cloudTile1_3.alphaBottomLeft = 0.4;
-    cloudTile1_3.alphaBottomRight = 0.4;
+    cloudTile1_3.alpha = 0.6;
+    cloudTile1_3.alphaTopLeft = 0.6;
+    cloudTile1_3.alphaTopRight = 0.6;
+    cloudTile1_3.alphaBottomLeft = 0.6;
+    cloudTile1_3.alphaBottomRight = 0.6;
     cloudTile1_3.tileScaleX = 2.91;
     cloudTile1_3.tileScaleY = 1.26;
     this.add(cloudTile1_3);
@@ -73,11 +73,11 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
     cloudTile1_2.blendMode = Phaser.BlendModes.ADD;
     cloudTile1_2.scaleX = 1.1425012389526452;
     cloudTile1_2.scaleY = 1.1425012389526452;
-    cloudTile1_2.alpha = 0.7;
-    cloudTile1_2.alphaTopLeft = 0.7;
-    cloudTile1_2.alphaTopRight = 0.7;
-    cloudTile1_2.alphaBottomLeft = 0.7;
-    cloudTile1_2.alphaBottomRight = 0.7;
+    cloudTile1_2.alpha = 0.6;
+    cloudTile1_2.alphaTopLeft = 0.6;
+    cloudTile1_2.alphaTopRight = 0.6;
+    cloudTile1_2.alphaBottomLeft = 0.6;
+    cloudTile1_2.alphaBottomRight = 0.6;
     cloudTile1_2.tileScaleX = 2.3;
     this.add(cloudTile1_2);
 
@@ -86,11 +86,11 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
     cloudTile1_1.blendMode = Phaser.BlendModes.ADD;
     cloudTile1_1.scaleX = 1.1425012389526452;
     cloudTile1_1.scaleY = 1.1425012389526452;
-    cloudTile1_1.alpha = 0.4;
-    cloudTile1_1.alphaTopLeft = 0.4;
-    cloudTile1_1.alphaTopRight = 0.4;
-    cloudTile1_1.alphaBottomLeft = 0.4;
-    cloudTile1_1.alphaBottomRight = 0.4;
+    cloudTile1_1.alpha = 0.6;
+    cloudTile1_1.alphaTopLeft = 0.6;
+    cloudTile1_1.alphaTopRight = 0.6;
+    cloudTile1_1.alphaBottomLeft = 0.6;
+    cloudTile1_1.alphaBottomRight = 0.6;
     cloudTile1_1.tileScaleY = 1.25;
     this.add(cloudTile1_1);
 
@@ -396,14 +396,14 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
     });
   }
 
-  private colourChangeTest() {
-    // let fx = this.orbEffect1.preFX?.addColorMatrix() as Phaser.FX.ColorMatrix;
-    // fx.hue(200);
-    // let fx2 = this.orbEffect2.preFX?.addColorMatrix() as Phaser.FX.ColorMatrix;
-    // fx2.hue(200);
-    // let fx3 = this.orbEffect3.preFX?.addColorMatrix() as Phaser.FX.ColorMatrix;
-    // fx3.hue(200);
-  }
+  // private colourChangeTest() {
+  // let fx = this.orbEffect1.preFX?.addColorMatrix() as Phaser.FX.ColorMatrix;
+  // fx.hue(200);
+  // let fx2 = this.orbEffect2.preFX?.addColorMatrix() as Phaser.FX.ColorMatrix;
+  // fx2.hue(200);
+  // let fx3 = this.orbEffect3.preFX?.addColorMatrix() as Phaser.FX.ColorMatrix;
+  // fx3.hue(200);
+  // }
 
   setWisdom(wisdom: wisdom) {
     if (wisdom.type == "image") {
@@ -423,40 +423,21 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
   }
 
   /**
-   * TODO: this is broken
+   * Fade in or out cloudTile1 objects
    * @param showCloud1 or 2
    */
-  public switchCouldAnimation(showCloud1: boolean) {
-    let cloud1 = [this.cloudTile1_1, this.cloudTile1_2, this.cloudTile1_3];
-    // let cloud2 = [this.cloudTile2_1, this.cloudTile2_2];
-    let cloud2 = [undefined];
-    let toShow = showCloud1 ? [cloud1] : cloud2;
-    let toHide = showCloud1 ? cloud2 : cloud1;
+  public setClouds(visible: boolean) {
+    let clouds = [this.cloudTile1_1, this.cloudTile1_2, this.cloudTile1_3];
 
-    if (this.cloudDisappearTween) (this.cloudDisappearTween, stop());
-    this.cloudDisappearTween = this.scene.tweens.add({
-      targets: toHide,
-      alpha: 0,
-      duration: 3000,
-      ease: Phaser.Math.Easing.Cubic.In,
-    });
-    if (this.cloudAppearTween) this.cloudAppearTween.stop();
-    this.cloudAppearTween = this.scene.tweens.add({
-      targets: toShow,
-      alpha: showCloud1 ? 0.6 : 0.1,
-      duration: 4000,
-      ease: Phaser.Math.Easing.Cubic.In,
+    let cloudDisappearTween = this.scene.tweens.add({
+      ...(visible
+        ? tweenConfigs.orb.cloud.appear
+        : tweenConfigs.orb.cloud.disappear),
+      targets: clouds,
     });
   }
 
   public wisdomAppearAnimation() {
-    // LEFTOFF: decoupled tween configs, now brainstorm a tween manager class so tween properties can be class scoped but not clog up scene
-
-    this.wisdomText.setScale(4);
-    this.wisdomText.setAlpha(0);
-    this.wisdomImage.setScale(4);
-    this.wisdomImage.setAlpha(0);
-    // this.textGlowFx.outerStrength = 0;
     let scaleTween = this.scene.tweens.add({
       ...tweenConfigs.wisdom.appear.scale,
       targets: [this.wisdomText, this.wisdomImage],
@@ -473,8 +454,6 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
       ...tweenConfigs.wisdom.appear.glow,
       targets: this.textGlowFx,
     });
-    // this.wisdomTextScaleTween.play();
-    // this.displacementFXTween.play();
   }
 
   /**
@@ -496,51 +475,24 @@ export default class orbLayer extends Phaser.GameObjects.Layer {
     this.magicGlow.setScale(glowScale);
     this.magicGlow.setAlpha(0.4);
     let glowTween = this.scene.tweens.add({
+      ...tweenConfigs.magic.pulse,
       targets: this.magicGlow,
-      scale: 0,
-      duration: 100,
-      ease: Phaser.Math.Easing.Quadratic.In,
     });
 
     this.shaderCover.setAlpha(shaderCoverAlpha);
-  }
-
-  public setOtherOrbText(appear: boolean) {
-    let textTween = this.scene.tweens.add({
-      targets: this.otherText,
-      alpha: appear ? 1 : 0,
-      duration: 1000,
-      //   ease: Phaser.Math.Easing.Quadratic.In
-    });
-    if (appear) {
-      let date = new Date();
-      this.otherText.setText(
-        `${date.getDate().toString()}\n${date.getMonth().toString()}`,
-      );
-    }
   }
 
   magicEndAnimation() {
     if (this.shader) {
       this.shader.destroy();
     }
-    this.magicGlow.setScale(1);
-    this.magicGlow.setAlpha(1);
     let glowTween = this.scene.tweens.add({
+      ...tweenConfigs.magic.end.glow,
       targets: this.magicGlow,
-      scale: 0,
-      alpha: 0,
-      duration: 100,
-      ease: Phaser.Math.Easing.Quadratic.In,
     });
     let shineTween = this.scene.tweens.add({
+      ...tweenConfigs.magic.end.shine,
       targets: this.magicShine,
-      scale: 0.5,
-      alpha: 1,
-      delay: 120,
-      duration: 50,
-      ease: Phaser.Math.Easing.Quadratic.Out,
-      yoyo: true,
     });
   }
 

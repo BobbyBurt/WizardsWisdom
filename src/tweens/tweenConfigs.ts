@@ -2,14 +2,48 @@
 
 import Phaser from "phaser";
 
-/**
- * All tween configs decoupled here. Targets are null and have to be set.
- */
 export const tweenConfigs = {
+  magic: {
+    pulse: {
+      scale: 0,
+      duration: 100,
+      ease: Phaser.Math.Easing.Quadratic.In,
+    },
+    end: {
+      glow: {
+        scale: { from: 1, to: 0 },
+        alpha: { from: 1, to: 0 },
+        duration: 100,
+        ease: Phaser.Math.Easing.Quadratic.In,
+      },
+      shine: {
+        scale: 0.5,
+        alpha: 1,
+        delay: 120,
+        duration: 50,
+        ease: Phaser.Math.Easing.Quadratic.Out,
+        yoyo: true,
+      },
+    },
+  },
+  orb: {
+    cloud: {
+      appear: {
+        alpha: 0.6,
+        duration: 4000,
+        ease: Phaser.Math.Easing.Cubic.In,
+      },
+      disappear: {
+        alpha: 0,
+        duration: 3000,
+        ease: Phaser.Math.Easing.Cubic.In,
+      },
+    },
+  },
   wisdom: {
     appear: {
       scale: {
-        scale: 1,
+        scale: { from: 0, to: 1 },
         ease: Phaser.Math.Easing.Cubic.Out,
         duration: 2000,
       },
@@ -25,7 +59,7 @@ export const tweenConfigs = {
         duration: 3000,
       },
       glow: {
-        outerStrength: 1,
+        outerStrength: { from: 0, to: 1 },
         ease: Phaser.Math.Easing.Cubic.Out,
         duration: 3000,
         delay: 1000,
