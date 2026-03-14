@@ -4,6 +4,7 @@ export type wisdom = {
   readonly content: string;
   /** if null, defaults to "text" */
   readonly type?: "text" | "image" | "video";
+  readonly date?: { day: number; month: number };
   readonly reaction: reactionDialogueGroup;
 };
 
@@ -467,6 +468,13 @@ export let wisdoms: Array<wisdom> = [
       "Man who run in front\nof car get tired.\nMan who run behind\ncar get exhausted",
     reaction: "negative",
   },
+  /*
+  {
+    "content": "Esther cool",
+    "reaction": "negative",
+    "date": { "month": 2, "day": 13 }
+  }
+  */
   // {
   //   content: "assets/images/image-wisdoms/tv-test-screen.png",
   //   reaction: "negative",
@@ -527,13 +535,30 @@ export function getWisdom(date?: Date): wisdom {
   return getWisdomForDate(date);
 }
 
-function getWisdomFromURL(): wisdom | null {
+function getWisdomFromProjectVars(): wisdom | null {
   let params = new URLSearchParams(document.location.search);
   let projectVars = params.get("projectVars");
   if (projectVars !== "nothing" && projectVars !== null) {
     // return { content: projectVars!, reaction: }
     // TODO
   }
+}
+
+function getWisdomFromURL(): wisdom | null {
+  // get hash property from url if there
+  let dataHash = location.hash;
+  if (!dataHash) return null;
+
+  // data starts with # char and has url encoding, fix that
+  let dataDecoded = decodeURIComponent(dataHash.substring(1));
+  return stringToWisdom(dataDecoded);
+}
+
+function stringToWisdom(string: string): wisdom | null {
+  let json = JSON.parse(string);
+  return json as wisdom;
+
+  // TODO: handle parse errors
 }
 
 export function getWisdomByIndex(index: number): wisdom {
