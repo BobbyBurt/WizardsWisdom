@@ -472,7 +472,7 @@ export let wisdoms: Array<wisdom> = [
   {
     "content": "Esther cool",
     "reaction": "negative",
-    "date": { "month": 2, "day": 13 }
+    "date": { "month": 3, "day": 17 }
   }
   */
   // {
@@ -482,12 +482,7 @@ export let wisdoms: Array<wisdom> = [
   // },
 ];
 
-function getWisdomForDate(date?: Date): wisdom {
-  // I forget why this is here
-  if (date == null) {
-    date = new Date();
-  }
-
+function getWisdomForDate(date: Date): wisdom {
   // DEBUG - disable this for different rnd seed per reload
   Phaser.Math.RND.sow([
     date.getDate().toString(),
@@ -527,21 +522,54 @@ function getWisdomForDate(date?: Date): wisdom {
  * @returns
  */
 export function getWisdom(date?: Date): wisdom {
-  let urlWisdom = getWisdomFromURL();
-  if (urlWisdom) {
-    return urlWisdom;
+  // date param is only passed for debugging specfic dates. Otherwise make object for current date
+  if (date == null) {
+    date = new Date();
   }
 
-  return getWisdomForDate(date);
+  let wisdom = getWisdomFromURL();
+  if (isWisdomForDate(wisdom, date)) {
+    return wisdom!;
+  }
+
+  wisdom = getWisdomFromProjectVars();
+  if (isWisdomForDate(wisdom, date)) {
+    return wisdom!;
+  }
+
+  wisdom = getWisdomForDate(date);
+  return wisdom;
+}
+
+/**
+ * @param wisdom
+ * @param date
+ * @returns true if wisdom isn't null and has date property that matches provided date (not counting years)
+ */
+function isWisdomForDate(wisdom: wisdom | null, date: Date): boolean {
+  if (wisdom) {
+    if (wisdom.date) {
+      if (
+        wisdom.date.month == date.getMonth() + 1 &&
+        wisdom.date.day == date.getDate()
+      ) {
+        return true;
+      }
+    }
+  }
+  return false;
 }
 
 function getWisdomFromProjectVars(): wisdom | null {
   let params = new URLSearchParams(document.location.search);
   let projectVars = params.get("projectVars");
-  if (projectVars !== "nothing" && projectVars !== null) {
-    // return { content: projectVars!, reaction: }
-    // TODO
+  if (projectVars !== "" && projectVars !== "" && projectVars !== null) {
+    return stringToWisdom(projectVars);
+  } else {
+    return null;
   }
+
+  // TODO: test this once I upload to NG
 }
 
 function getWisdomFromURL(): wisdom | null {
@@ -555,8 +583,15 @@ function getWisdomFromURL(): wisdom | null {
 }
 
 function stringToWisdom(string: string): wisdom | null {
-  let json = JSON.parse(string);
+  let json;
+  try {
+    json = JSON.parse(string);
+  } catch (any) {
+    return null;
+  }
   return json as wisdom;
+
+  // remember that property names need to be surrounded by " " unlike in .ts context
 
   // TODO: handle parse errors
 }
