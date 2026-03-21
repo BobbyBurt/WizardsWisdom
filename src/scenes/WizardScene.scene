@@ -56,8 +56,8 @@
             "texture": {
                 "key": "white-pixel"
             },
-            "x": 22,
-            "y": 25,
+            "x": 659,
+            "y": 384,
             "scaleX": 169.4188682791527,
             "scaleY": 54.95243253147957,
             "originX": 0,
@@ -68,8 +68,8 @@
             "id": "4c1824df-0d81-4f54-9850-44312125fd4f",
             "label": "fullscreenButtonText",
             "scope": "CLASS",
-            "x": 99,
-            "y": 37,
+            "x": 736,
+            "y": 396,
             "originX": 0.5,
             "tintTopLeft": "#000000",
             "tintTopRight": "#000000",

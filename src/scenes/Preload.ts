@@ -5,8 +5,8 @@
 /* START OF COMPILED CODE */
 
 /* START-USER-IMPORTS */
+import { setupAdaptiveCamera } from "~/AdaptiveRes";
 import dataManagerKeys from "~/data/dataManagerKeys";
-import fullscreenHandler from "~/FullscreenHandler";
 /* END-USER-IMPORTS */
 
 export default class Preload extends Phaser.Scene {
@@ -32,10 +32,10 @@ export default class Preload extends Phaser.Scene {
 
     // bitmaptext
     const bitmaptext = this.add.bitmapText(
-      960,
-      540,
+      0,
+      0,
       "quintessential",
-      "loading..."
+      "loading...",
     );
     bitmaptext.setOrigin(0.5, 0.5);
     bitmaptext.text = "loading...";
@@ -56,25 +56,12 @@ export default class Preload extends Phaser.Scene {
     this.editorCreate();
 
     this.scale.autoRound = true;
-    let _fullscreenHandler = new fullscreenHandler(this.game);
-    if (this.scale.isPortrait) {
-      this.game.scale.setGameSize(
-        fullscreenHandler.mobilePortraitRes.width,
-        fullscreenHandler.mobilePortraitRes.height
-      );
-    }
+    // I forget why this is here
 
     this.sound.pauseOnBlur = false;
 
     // TEMP - hardcode for debugging. Will figure out how to access if user is returning later
     this.game.registry.set(dataManagerKeys.returningUser, false);
-
-    // camera
-    fullscreenHandler.adjustCamera(this.cameras.main);
-    // this.cameras.main.setOrigin(0, 0);
-    // this.cameras.main.setViewport(0, 0, this.scale.width, this.scale.height);
-    // this.cameras.main.setBackgroundColor(0x242424);
-    this.cameras.main.transparent = true;
 
     // start input
     window.addEventListener("touchstart", this.onPointer);
@@ -86,6 +73,13 @@ export default class Preload extends Phaser.Scene {
   }
 
   create() {
+    // camera & scale
+    setupAdaptiveCamera(this.cameras.main, this.scale);
+    this.cameras.main.transparent = true;
+    window.addEventListener("resize", this.adaptToRes.bind(this));
+    // This would be a problem if we closed this scene. Would adding an event through Phaser's event system solve that? Need to figure it out for future projects
+    this.adaptToRes();
+
     this.load.pack("asset-pack", "assets/asset-pack.json");
     this.load.start();
 
@@ -140,6 +134,14 @@ export default class Preload extends Phaser.Scene {
     window.removeEventListener("click", this.onPointer);
 
     this.scene.start("wizard");
+  }
+
+  /**
+   * Called on create and on resize
+   */
+  adaptToRes() {
+    this.cameras.main.centerOn(0, 0);
+    this.cameras.main.preRender();
   }
 
   /* END-USER-CODE */

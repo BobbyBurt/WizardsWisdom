@@ -2,7 +2,6 @@
 
 import { getWisdomByIndex, getWisdom, wisdom, wisdoms } from "~/data/wisdoms";
 import DebugScene from "./DebugScene";
-import fullscreenHandler from "~/FullscreenHandler";
 
 /* START OF COMPILED CODE */
 
@@ -17,6 +16,7 @@ import {
   selectDialogue,
   selectedDialogue,
 } from "~/dialogueUtil";
+import { setupAdaptiveCamera } from "~/AdaptiveRes";
 
 /* END-USER-IMPORTS */
 
@@ -56,15 +56,15 @@ export default class WizardScene extends Phaser.Scene {
     orbGlow.tintBottomRight = 12748273;
 
     // fullscreenButtonBack
-    const fullscreenButtonBack = this.add.image(22, 25, "white-pixel");
+    const fullscreenButtonBack = this.add.image(659, 384, "white-pixel");
     fullscreenButtonBack.scaleX = 169.4188682791527;
     fullscreenButtonBack.scaleY = 54.95243253147957;
     fullscreenButtonBack.setOrigin(0, 0);
 
     // fullscreenButtonText
     const fullscreenButtonText = this.add.bitmapText(
-      99,
-      37,
+      736,
+      396,
       "monogram-italic",
       "Fullscreen",
     );
@@ -180,7 +180,10 @@ export default class WizardScene extends Phaser.Scene {
     this.orb.create();
     this.orb.setWisdom(this.wisdom);
 
-    fullscreenHandler.adjustCamera(this.cameras.main);
+    setupAdaptiveCamera(this.cameras.main, this.scale);
+    window.addEventListener("resize", this.adaptToRes.bind(this));
+    // This would be a problem if we closed this scene. Would adding an event through Phaser's event system solve that? Need to figure it out for future projects
+    this.adaptToRes();
 
     this.cameras.main.setBackgroundColor("0x222222");
 
@@ -360,6 +363,22 @@ export default class WizardScene extends Phaser.Scene {
     this.fullscreenButtonBack.on("pointerdown", () => {
       this.scale.startFullscreen();
     });
+  }
+
+  /**
+   * Called on create and on resize
+   */
+  adaptToRes() {
+    this.cameras.main.centerOn(966, 560);
+
+    // orientation check
+    if (this.registry.get("mobile") && this.scale.height > this.scale.width) {
+    }
+    // registry mobile flag isn't set, so this wont work
+
+    this.cameras.main.preRender();
+
+    // align UI objects to screen edges
   }
 
   /* END-USER-CODE */

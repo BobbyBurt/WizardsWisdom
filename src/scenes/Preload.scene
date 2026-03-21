@@ -37,8 +37,6 @@
             "id": "53d1bf00-a9a5-421a-ae0f-2e542681fac3",
             "label": "bitmaptext",
             "scope": "CLASS",
-            "x": 960,
-            "y": 540,
             "originX": 0.5,
             "originY": 0.5,
             "text": "loading...",

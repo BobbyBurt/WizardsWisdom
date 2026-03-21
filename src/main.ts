@@ -3,7 +3,6 @@
 import cloudSaves from "./API/SavesData";
 import medalScene from "./API/medalScene";
 import { newgroundsIOWrapper } from "./API/newgroundsIOWrapper";
-import fullscreenHandler from "./FullscreenHandler";
 import DebugScene from "./scenes/DebugScene";
 import Preload from "./scenes/Preload";
 import { SpinePlugin } from "@esotericsoftware/spine-phaser";
@@ -24,14 +23,10 @@ window.addEventListener("load", function () {
     backgroundColor: "#333333",
     // pixelArt: true,
     scale: {
-      mode: Phaser.Scale.ScaleModes.FIT,
-      autoCenter: Phaser.Scale.CENTER_BOTH,
-      height: fullscreenHandler.windowedRes.height,
-      width: fullscreenHandler.windowedRes.width,
-      // height: fullscreenHandler.mobilePortraitRes.height,
-      // width: fullscreenHandler.mobilePortraitRes.width,
-      // width: 1920,
-      // height: 1080,
+      mode: Phaser.Scale.NONE,
+      width: window.innerWidth * window.devicePixelRatio,
+      height: window.innerHeight * window.devicePixelRatio,
+      zoom: 1 / window.devicePixelRatio,
     },
     transparent: true,
     plugins: {
@@ -59,6 +54,8 @@ class Boot extends Phaser.Scene {
    * load preload assets, then the scene
    */
   preload() {
+    window.addEventListener("resize", this.resize.bind(this));
+
     this.load.pack("pack", "assets/preload-asset-pack.json");
     this.load.on(Phaser.Loader.Events.COMPLETE, () =>
       this.scene.start("preload"),
@@ -91,5 +88,21 @@ class Boot extends Phaser.Scene {
     dataKeys.push("keys-for-data-that-should-be-saved");
 
     cloudSaves.setDataKeys(dataKeys);
+  }
+
+  resize() {
+    let w = window.innerWidth * window.devicePixelRatio;
+    let h = window.innerHeight * window.devicePixelRatio;
+
+    // manually resize the game with the Phaser 3.16 scalemanager
+    this.scale.resize(w, h);
+
+    for (let scene of this.scene.manager.scenes) {
+      if (scene.scene.settings.active) {
+        // Scale the camera
+        scene.cameras.main.setViewport(0, 0, w, h);
+      }
+    }
+    this.game.events.emit("resize");
   }
 }
