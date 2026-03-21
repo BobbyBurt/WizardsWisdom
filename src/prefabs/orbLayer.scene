@@ -254,9 +254,13 @@
                     "label": "wisdomText",
                     "scope": "CLASS",
                     "x": 960,
-                    "y": 872,
+                    "y": 890,
+                    "originX": 0.5,
+                    "originY": 0.5,
+                    "text": "asdf",
                     "font": "quintessential",
-                    "fontSize": 320,
+                    "align": 1,
+                    "fontSize": 100,
                     "list": [
                         {
                             "type": "Glow",
@@ -269,7 +273,11 @@
                             "id": "aee9eeff-369b-4f8e-9a40-1175cb6108e9",
                             "label": "textDisplacementFx",
                             "scope": "CLASS",
-                            "texture": {}
+                            "x": 0.1,
+                            "y": 0.3,
+                            "texture": {
+                                "key": "orb-texture-2"
+                            }
                         }
                     ]
                 },

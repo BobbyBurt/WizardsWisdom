@@ -60,9 +60,10 @@ export const tweenConfigs = {
       },
       glow: {
         outerStrength: { from: 0, to: 1 },
-        ease: Phaser.Math.Easing.Cubic.Out,
+        // ease: Phaser.Math.Easing.Cubic.Out,
+        ease: Phaser.Math.Easing.Back.Out,
         duration: 3000,
-        delay: 1000,
+        // delay: 1000,
       },
     },
   },

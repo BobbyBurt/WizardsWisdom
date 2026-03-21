@@ -528,8 +528,8 @@ export function getWisdom(date?: Date): wisdom {
   }
 
   let wisdom = getWisdomFromURL();
-  if (isWisdomForDate(wisdom, date)) {
-    return wisdom!;
+  if (wisdom) {
+    return wisdom;
   }
 
   wisdom = getWisdomFromProjectVars();
