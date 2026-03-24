@@ -63,6 +63,11 @@
                 "key": "point-blur"
             },
             {
+                "url": "assets/images/table.png",
+                "type": "image",
+                "key": "table"
+            },
+            {
                 "url": [
                     "assets/music/transport-music-TEMP.mp3"
                 ],

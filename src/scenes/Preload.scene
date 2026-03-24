@@ -52,6 +52,16 @@
             "isStroked": true,
             "width": 1000,
             "height": 1000
+        },
+        {
+            "type": "Rectangle",
+            "id": "cac8b66f-3697-46c1-bc74-cbc5f58a0dcf",
+            "label": "cameraMaxZone",
+            "scope": "CLASS",
+            "strokeColor": "#ff0808",
+            "isStroked": true,
+            "width": 2000,
+            "height": 2000
         }
     ],
     "plainObjects": [],

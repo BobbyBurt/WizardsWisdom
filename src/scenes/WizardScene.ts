@@ -82,9 +82,17 @@ export default class WizardScene extends Phaser.Scene {
     this.add.existing(orb);
 
     // cameraSafeZone
-    const cameraSafeZone = this.add.rectangle(960, 560, 1300, 1050);
+    const cameraSafeZone = this.add.rectangle(960, 560, 1300, 1200);
     cameraSafeZone.isStroked = true;
     cameraSafeZone.strokeColor = 589620;
+
+    // cameraMaxZone
+    const cameraMaxZone = this.add.rectangle(960, 560, 2900, 2150);
+    cameraMaxZone.isStroked = true;
+    cameraMaxZone.strokeColor = 16713736;
+
+    // table
+    this.add.image(960, 1349, "table");
 
     this.wizardSpineObject = wizardSpineObject;
     this.orbGlow = orbGlow;
@@ -92,6 +100,7 @@ export default class WizardScene extends Phaser.Scene {
     this.fullscreenButtonText = fullscreenButtonText;
     this.orb = orb;
     this.cameraSafeZone = cameraSafeZone;
+    this.cameraMaxZone = cameraMaxZone;
 
     this.events.emit("scene-awake");
   }
@@ -102,6 +111,7 @@ export default class WizardScene extends Phaser.Scene {
   private fullscreenButtonText!: Phaser.GameObjects.BitmapText;
   private orb!: orbLayer;
   private cameraSafeZone!: Phaser.GameObjects.Rectangle;
+  private cameraMaxZone!: Phaser.GameObjects.Rectangle;
 
   /* START-USER-CODE */
 
@@ -214,12 +224,12 @@ export default class WizardScene extends Phaser.Scene {
     this.orb.wisdomAppearAnimation();
 
     // DEBUG
-    this.input.keyboard?.on("keydown-N", () => {
-      this.orb.setClouds(false);
-    });
-    this.input.keyboard?.on("keydown-M", () => {
-      this.orb.setClouds(true);
-    });
+    // this.input.keyboard?.on("keydown-N", () => {
+    //   this.orb.setClouds(false);
+    // });
+    // this.input.keyboard?.on("keydown-M", () => {
+    //   this.orb.setClouds(true);
+    // });
 
     if (!__DEV__) this.sound.play("music", { volume: 0.3 });
 
@@ -384,7 +394,12 @@ export default class WizardScene extends Phaser.Scene {
     }
     // registry mobile flag isn't set, so this wont work
 
-    setCameraZoom(this.cameras.main, this.cameraSafeZone, this.debugScene);
+    setCameraZoom(
+      this.cameras.main,
+      this.cameraSafeZone,
+      this.cameraMaxZone,
+      this.debugScene,
+    );
 
     this.cameras.main.preRender();
 

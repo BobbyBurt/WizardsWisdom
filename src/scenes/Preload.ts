@@ -46,14 +46,21 @@ export default class Preload extends Phaser.Scene {
     cameraSafeZone.isStroked = true;
     cameraSafeZone.strokeColor = 589620;
 
+    // cameraMaxZone
+    const cameraMaxZone = this.add.rectangle(0, 0, 2000, 2000);
+    cameraMaxZone.isStroked = true;
+    cameraMaxZone.strokeColor = 16713736;
+
     this.bitmaptext = bitmaptext;
     this.cameraSafeZone = cameraSafeZone;
+    this.cameraMaxZone = cameraMaxZone;
 
     this.events.emit("scene-awake");
   }
 
   private bitmaptext!: Phaser.GameObjects.BitmapText;
   private cameraSafeZone!: Phaser.GameObjects.Rectangle;
+  private cameraMaxZone!: Phaser.GameObjects.Rectangle;
 
   /* START-USER-CODE */
 
@@ -147,7 +154,7 @@ export default class Preload extends Phaser.Scene {
    */
   adaptToRes() {
     this.cameras.main.centerOn(0, 0);
-    setCameraZoom(this.cameras.main, this.cameraSafeZone);
+    setCameraZoom(this.cameras.main, this.cameraSafeZone, this.cameraMaxZone);
     this.cameras.main.preRender();
   }
 

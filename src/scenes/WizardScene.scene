@@ -96,7 +96,29 @@
             "strokeColor": "#08ff34",
             "isStroked": true,
             "width": 1300,
-            "height": 1050
+            "height": 1200
+        },
+        {
+            "type": "Rectangle",
+            "id": "ee499efe-d073-47ef-9679-34c4a60c58ff",
+            "label": "cameraMaxZone",
+            "scope": "CLASS",
+            "x": 960,
+            "y": 560,
+            "strokeColor": "#ff0808",
+            "isStroked": true,
+            "width": 2900,
+            "height": 2150
+        },
+        {
+            "type": "Image",
+            "id": "96bf0b2e-6349-4989-9425-b3dd69ae3bdf",
+            "label": "table",
+            "texture": {
+                "key": "table"
+            },
+            "x": 960,
+            "y": 1349
         }
     ],
     "plainObjects": [],
