@@ -16,7 +16,7 @@ import {
   selectDialogue,
   selectedDialogue,
 } from "~/dialogueUtil";
-import { setupAdaptiveCamera } from "~/AdaptiveRes";
+import { setCameraZome as setCameraZoom } from "~/AdaptiveRes";
 
 /* END-USER-IMPORTS */
 
@@ -81,11 +81,17 @@ export default class WizardScene extends Phaser.Scene {
     const orb = new orbLayer(this);
     this.add.existing(orb);
 
+    // cameraSafeZone
+    const cameraSafeZone = this.add.rectangle(960, 560, 1300, 1050);
+    cameraSafeZone.isStroked = true;
+    cameraSafeZone.strokeColor = 589620;
+
     this.wizardSpineObject = wizardSpineObject;
     this.orbGlow = orbGlow;
     this.fullscreenButtonBack = fullscreenButtonBack;
     this.fullscreenButtonText = fullscreenButtonText;
     this.orb = orb;
+    this.cameraSafeZone = cameraSafeZone;
 
     this.events.emit("scene-awake");
   }
@@ -95,6 +101,7 @@ export default class WizardScene extends Phaser.Scene {
   private fullscreenButtonBack!: Phaser.GameObjects.Image;
   private fullscreenButtonText!: Phaser.GameObjects.BitmapText;
   private orb!: orbLayer;
+  private cameraSafeZone!: Phaser.GameObjects.Rectangle;
 
   /* START-USER-CODE */
 
@@ -180,9 +187,10 @@ export default class WizardScene extends Phaser.Scene {
     this.orb.create();
     this.orb.setWisdom(this.wisdom);
 
-    setupAdaptiveCamera(this.cameras.main, this.scale);
-    window.addEventListener("resize", this.adaptToRes.bind(this));
-    // This would be a problem if we closed this scene. Would adding an event through Phaser's event system solve that? Need to figure it out for future projects
+    this.cameras.main.setViewport(0, 0, this.scale.width, this.scale.height);
+
+    this.events.on("resize", this.adaptToRes, this);
+
     this.adaptToRes();
 
     this.cameras.main.setBackgroundColor("0x222222");
@@ -375,6 +383,8 @@ export default class WizardScene extends Phaser.Scene {
     if (this.registry.get("mobile") && this.scale.height > this.scale.width) {
     }
     // registry mobile flag isn't set, so this wont work
+
+    setCameraZoom(this.cameras.main, this.cameraSafeZone, this.debugScene);
 
     this.cameras.main.preRender();
 

@@ -22,6 +22,7 @@ window.addEventListener("load", function () {
     type: Phaser.AUTO,
     backgroundColor: "#333333",
     // pixelArt: true,
+    roundPixels: true,
     scale: {
       mode: Phaser.Scale.NONE,
       width: window.innerWidth * window.devicePixelRatio,
@@ -101,8 +102,9 @@ class Boot extends Phaser.Scene {
       if (scene.scene.settings.active) {
         // Scale the camera
         scene.cameras.main.setViewport(0, 0, w, h);
+
+        scene.events.emit("resize");
       }
     }
-    this.game.events.emit("resize");
   }
 }

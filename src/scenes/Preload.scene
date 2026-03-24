@@ -42,6 +42,16 @@
             "text": "loading...",
             "font": "quintessential",
             "fontSize": 72
+        },
+        {
+            "type": "Rectangle",
+            "id": "37145c29-6d49-4666-bf98-dd04aff8c75c",
+            "label": "cameraSafeZone",
+            "scope": "CLASS",
+            "strokeColor": "#08ff34",
+            "isStroked": true,
+            "width": 1000,
+            "height": 1000
         }
     ],
     "plainObjects": [],

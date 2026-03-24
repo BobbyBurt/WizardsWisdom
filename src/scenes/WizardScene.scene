@@ -85,6 +85,18 @@
             "id": "73412a93-8503-4cc7-a8c5-a5a3f3ed1aa8",
             "label": "orb",
             "scope": "CLASS"
+        },
+        {
+            "type": "Rectangle",
+            "id": "909013b7-5c35-46b4-8584-5079af041c73",
+            "label": "cameraSafeZone",
+            "scope": "CLASS",
+            "x": 960,
+            "y": 560,
+            "strokeColor": "#08ff34",
+            "isStroked": true,
+            "width": 1300,
+            "height": 1050
         }
     ],
     "plainObjects": [],

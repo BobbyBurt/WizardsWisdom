@@ -5,7 +5,7 @@
 /* START OF COMPILED CODE */
 
 /* START-USER-IMPORTS */
-import { setupAdaptiveCamera } from "~/AdaptiveRes";
+import { setCameraZome as setCameraZoom } from "~/AdaptiveRes";
 import dataManagerKeys from "~/data/dataManagerKeys";
 /* END-USER-IMPORTS */
 
@@ -41,12 +41,19 @@ export default class Preload extends Phaser.Scene {
     bitmaptext.text = "loading...";
     bitmaptext.fontSize = 72;
 
+    // cameraSafeZone
+    const cameraSafeZone = this.add.rectangle(0, 0, 1000, 1000);
+    cameraSafeZone.isStroked = true;
+    cameraSafeZone.strokeColor = 589620;
+
     this.bitmaptext = bitmaptext;
+    this.cameraSafeZone = cameraSafeZone;
 
     this.events.emit("scene-awake");
   }
 
   private bitmaptext!: Phaser.GameObjects.BitmapText;
+  private cameraSafeZone!: Phaser.GameObjects.Rectangle;
 
   /* START-USER-CODE */
 
@@ -74,10 +81,9 @@ export default class Preload extends Phaser.Scene {
 
   create() {
     // camera & scale
-    setupAdaptiveCamera(this.cameras.main, this.scale);
+    this.cameras.main.setViewport(0, 0, this.scale.width, this.scale.height);
     this.cameras.main.transparent = true;
-    window.addEventListener("resize", this.adaptToRes.bind(this));
-    // This would be a problem if we closed this scene. Would adding an event through Phaser's event system solve that? Need to figure it out for future projects
+    this.events.on("resize", this.adaptToRes, this);
     this.adaptToRes();
 
     this.load.pack("asset-pack", "assets/asset-pack.json");
@@ -122,14 +128,14 @@ export default class Preload extends Phaser.Scene {
     }
 
     if (this.loaded) {
-      this.start();
+      this.startNextScene();
     }
   };
 
   /**s
    * loads next scene
    */
-  start() {
+  startNextScene() {
     window.removeEventListener("touchstart", this.onPointer);
     window.removeEventListener("click", this.onPointer);
 
@@ -141,6 +147,7 @@ export default class Preload extends Phaser.Scene {
    */
   adaptToRes() {
     this.cameras.main.centerOn(0, 0);
+    setCameraZoom(this.cameras.main, this.cameraSafeZone);
     this.cameras.main.preRender();
   }
 

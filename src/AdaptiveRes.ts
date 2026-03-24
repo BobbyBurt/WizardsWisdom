@@ -1,40 +1,31 @@
 /** @format */
 
 import Phaser from "phaser";
+import DebugScene from "./scenes/DebugScene";
 
-export function setupAdaptiveCamera(
+/**
+ *
+ * @param camera
+ * @param safeZone zoom will make sure everything in this rect is visible
+ * @param debugScene
+ */
+export function setCameraZome(
   camera: Phaser.Cameras.Scene2D.Camera,
-  scaleManager: Phaser.Scale.ScaleManager,
+  safeZone: Phaser.GameObjects.Rectangle,
+  debugScene?: DebugScene,
 ) {
-  camera.setViewport(0, 0, scaleManager.width, scaleManager.height);
-  camera.setRoundPixels(true);
-}
+  safeZone.setVisible(false);
 
-export function setCameraZoom(camera: Phaser.Cameras.Scene2D.Camera) {
-  // calculate min size
+  camera.setZoom(1);
+  camera.preRender();
+  let h = camera.displayHeight / safeZone.height;
+  let w = camera.displayWidth / safeZone.width;
+  camera.setZoom(h < w ? h : w);
 
-  this.cameras.main.setZoom(1);
-  if (
-    this.scale.width < this.minScreenWidth ||
-    this.scale.height < this.minScreenHeight
-  ) {
-    // zoom out incrementally until we're past width and height min
-
-    for (let i = 0; i < 20; i++) {
-      this.cameras.main.setZoom(1 - i * 0.05);
-
-      // check min
-      // console.log('w: ' + this.cameras.main.width / (1 - (i * .05)))
-      // console.log('h: ' + this.cameras.main.height / (1 - (i * .05)))
-
-      if (
-        this.cameras.main.width / (1 - i * 0.05) > this.minScreenWidth &&
-        this.cameras.main.height / (1 - i * 0.05) > this.minScreenHeight
-      ) {
-        break;
-      }
-    }
-  }
-
-  this.zoomText.setText("cam zoom: " + this.cameras.main.zoom);
+  // debug display
+  // if (debugScene) {
+  //   debugScene.DisplayVar("display width", camera.displayWidth);
+  //   debugScene.DisplayVar("safe zone width", safeZone.width);
+  //   debugScene.DisplayVar("zoom", camera.zoom);
+  // }
 }
